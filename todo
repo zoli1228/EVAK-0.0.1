@@ -1,8 +1,17 @@
+Regisztráció: 
+    -ÁSZF integrálása
+    -Email / jelszó Regisztráció
+    -Belépés
+    -Maradjon bejelentkezve
+
+
+Token tárolása folyamatos authentikáció miatt, session lejárat
+
 Ötletek:
 
 Árajánlat készítése
 Meglévő árajánlat módosítása, mentése új ajánlatként, vagy az előzőhöz kötött módosító ajánlatként.
-Árajánlatokra kattintva részletes adatok (létrehozás dátuma, lejárat dátuma, )
+Árajánlatokra kattintva részletes adatok (létrehozás dátuma, lejárat dátuma, szerkesztés, ajánlat visszavonása, törlés, lejárat meghosszabbítása)
 Ajánlatok státuszának figyelése, módosítása. 
 Események időszerű logolása. (Eseménynapló)
 Egyedi link létrehozása adott árajánlathoz, hogy a megrendelő azon keresztül meg tudja nézni, illetve tudjon reagálni az ajánlatra, amit a rendszer azonnal rögzít, és jelez. 
@@ -19,8 +28,9 @@ Beállítások menüben kell:
 -Áfakulcs (dropdown menü az összes ÁFA értékkel)
 -Jelszó módosítása
 -Reklámmentesség vásárlása
--Névjegy
+-Névjegy (verziószám, verzió kiadás dátuma, app indítási dátuma, regisztrált felhasználók száma)
 -Kapcsolat
+-Fiók törlése
 
 
 Backend-re beépíteni statisztikát. (Felhasználók száma, napi, heti, havi, évi ajánlatok véglegesítve)
@@ -41,6 +51,7 @@ Users tábla:
     token_expired BOOL
     isLoggedIn BOOL
     hasPremium BOOL
+    displayStyle
 
 Quotes tábla:
     id
@@ -62,3 +73,11 @@ usedTokens tábla:
     content
 
 
+
+
+
+
+KÉSŐBBI TERVEK:
+    -Asztali app (Online / Offline)
+    -Android app (Online / Offline)
+    
