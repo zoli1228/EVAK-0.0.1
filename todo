@@ -15,7 +15,8 @@ Meglévő árajánlat módosítása, mentése új ajánlatként, vagy az előző
 Ajánlatok státuszának figyelése, módosítása. 
 Események időszerű logolása. (Eseménynapló)
 Egyedi link létrehozása adott árajánlathoz, hogy a megrendelő azon keresztül meg tudja nézni, illetve tudjon reagálni az ajánlatra, amit a rendszer azonnal rögzít, és jelez. 
-Az egyedi link az árajánlat érvényességi idejével együtt lejár, többé nem lesz elérhető.
+Az egyedi link az árajánlat érvényességi idejével együtt lejár, többé nem lesz elérhető. A linkhez kötve egy jelszó generálása, amely a kezelőfelületen fel lesz tüntetve.
+Ez a jelszó kell majd a megrendelőnek az ajánlat megtekintéséhez, és műveletek elvégzéséhez. (Elfogadás, Elutasítás)
 Elfogadott ajánlat esetén a megrendelő adataival vállalkozói szerződés kiállítása, az adott ajánlat sorszámával feltüntetve, megadható kezdési dátummal, nyomtatható nézetben.
 Véglegesített árajánlatok automatikus tárolása PDF formátumban.
 
@@ -30,7 +31,7 @@ Beállítások menüben kell:
 -Reklámmentesség vásárlása
 -Névjegy (verziószám, verzió kiadás dátuma, app indítási dátuma, regisztrált felhasználók száma)
 -Kapcsolat
--Fiók törlése
+-Fiók törlése az összes felhasználói adattal együtt. Törlésnél kérdőív bemutatása, hogy mi a törlés oka.
 
 
 Backend-re beépíteni statisztikát. (Felhasználók száma, napi, heti, havi, évi ajánlatok véglegesítve)
@@ -57,6 +58,8 @@ Quotes tábla:
     id
     date_created
     created_by
+    client_name
+    client_address
     expires
     status
     content
