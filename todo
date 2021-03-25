@@ -31,7 +31,7 @@ Beállítások menüben kell:
 -Reklámmentesség vásárlása
 -Névjegy (verziószám, verzió kiadás dátuma, app indítási dátuma, regisztrált felhasználók száma)
 -Kapcsolat
--Fiók törlése az összes felhasználói adattal együtt. Törlésnél kérdőív bemutatása, hogy mi a törlés oka.
+-Fiók törlése az összes felhasználói adattal együtt. Törlésnél kérdőív bemutatása, hogy mi a törlés oka...
 
 
 Backend-re beépíteni statisztikát. (Felhasználók száma, napi, heti, havi, évi ajánlatok véglegesítve)
