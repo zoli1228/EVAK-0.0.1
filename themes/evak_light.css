@@ -1,0 +1,240 @@
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+    
+}
+
+
+
+@media screen and (max-width: 670px) {
+    /* xMOBILE STYLE */
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        overflow-x: hidden;
+        background-blend-mode: multiply;
+        background: #3399ff;
+        background-size: 65px;
+        vertical-align: middle;
+    }
+
+    #mainWindow {
+        display: block;    
+        border-radius: 2px;
+        padding: 5%;
+        position: relative;
+        transform: translate(0,30px);
+        background: #eee;
+        height: auto;
+        min-height: auto;
+        width: 80%;
+        left: 5%;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 0 10px 5px rgba(0, 0, 0, .5);
+    }
+    h1 {
+        font-size: 20px;
+    }
+
+    a {
+        font-size: 14px;
+        margin: 5px;
+        text-align: left;
+    }
+    hr {
+        color: rgba(0,0,0,0);
+        border-top: 1px dashed grey;
+        
+    }
+    p {
+        text-align: left;
+        font-size: 10px;
+    }
+    .imgContainer > img {
+        width: 100%;
+    }
+    .version {
+        font-size: 12px;
+        color: grey;
+    }
+
+    #whatIsEvak {
+        text-decoration: underline #ccff00 2px;
+        color: #3399ff;
+        display: block;
+        
+    }
+    .whatIsEvak {
+        display: none;
+    }
+    #howItWorks {
+        text-decoration: underline #ccff00 2px;
+        color: #3399ff;
+        display: block;
+    }
+    .howItWorks {
+        display: none;
+    }
+    #whosItFor {
+        text-decoration: underline #ccff00 2px;
+        color: #3399ff;
+        display: block;
+    }
+    .whosItFor {
+        display: none;
+    }
+    #pricing {
+        text-decoration: underline #ccff00 2px;
+        color: #3399ff;
+        display: block;
+    }
+    .pricing {
+        display: none;
+    }
+    
+    button {
+        position: relative;
+        display: inline-block;
+        bottom: 0px;
+        background: #ccff00;
+        box-shadow: 0 0 2px rgba(0, 0, 0, .3);
+        border-radius: 2px;
+        padding: 5px 15px;
+        width: 45%;
+        margin: 70px 5px;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+/***************************************************************
+****************************************************************/
+
+@media screen and (min-width: 671px) {
+    /* DESKTOP STYLE */
+
+    body {
+        margin: 0;
+        padding: 0;
+        margin-left: calc(100vw - 100%);
+        align-content: center;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        overflow-x: hidden;
+        
+        
+        
+    }
+
+    #mainWindow {
+        
+        
+    }
+    h1 {
+        font-size: 20px;
+    }
+
+    a {
+        font-size: 14px;
+        margin: 20px 5px;
+        margin-left: 10%;
+        text-align: left;
+    }
+    hr {
+        color: rgba(0,0,0,0);
+        border-bottom: 2px solid grey;
+        
+    }
+    p {
+        padding: 2px 50px;
+        text-align: left;
+        font-size: 12px;
+    }
+    .imgContainer > img {
+        width: 30%;
+        height: 100%;
+        min-width: 120px;
+    }
+
+    .imgContainer {
+        padding: 0;
+        margin: 0;
+        background: #3399ff;
+
+    }
+    .version {
+        font-size: 12px;
+        color: grey;
+    }
+
+    #whatIsEvak {
+        text-decoration: underline #3399ff 2px;
+        color: black;
+        display: block;
+        
+    }
+    .whatIsEvak {
+        display: none;
+    }
+
+    #howItWorks {
+        text-decoration: underline #3399ff 2px;
+        color: black;
+        display: block;
+    }
+    .howItWorks {
+        display: none;
+    }
+    #whosItFor {
+        text-decoration: underline #3399ff 2px;
+        color: black;
+        display: block;
+    }
+    .whosItFor {
+        display: none;
+    }
+    #pricing {
+        text-decoration: underline #3399ff 2px;
+        color: black;
+        display: block;
+    }
+    .pricing {
+        display: none;
+    }
+    
+    #enter, #contact {
+        transition: all 200ms;
+        text-align: center;
+        user-select: none;
+        position: relative;
+        display: inline-block;
+        bottom: 0px;
+        background: #ccff00;
+        border: 1px solid #ccff00;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        border-radius: 2px;
+        padding: 5px 15px;
+        width: 30%;
+        margin: 70px 2vw;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        outline: none;
+    }
+    #enter:hover, #contact:hover {
+        background: #aadd00;
+        border: #3399ff 1px solid;
+        
+    }
+    #enter:active, #contact:active {
+        background: #3399ff;
+        border: #ccff00 1px solid;
+        color: white;
+        transition: none;
+        
+    }
+}
