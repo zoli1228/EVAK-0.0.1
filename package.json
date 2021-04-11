@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/zoli1228/EVAK-0.0.1/issues"
   },
-  "homepage": "http://evak.hu/"
+  "homepage": "http://evak.hu/",
+  "dependencies": {
+    "angular": "^1.8.2"
+  }
 }

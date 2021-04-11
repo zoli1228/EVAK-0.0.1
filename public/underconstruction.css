@@ -19,7 +19,48 @@ body {
     
 }
 
+#whatIsEvak {
+    
+    color: white;
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+.whatIsEvak {
+    display: none;
+}
 
+#howItWorks {
+    
+    color: white;
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+}
+.howItWorks {
+    display: none;
+}
+#whosItFor {
+    
+    color: white;
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+}
+.whosItFor {
+    display: none;
+}
+#pricing {
+    
+    color: white;
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+}
+.pricing {
+    display: none;
+}
 
 .logo {
     margin-bottom: 60px;
@@ -53,9 +94,9 @@ h2 {
     font-size: x-large;
 }
 
-p {
+.footer {
     font-size: small;
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     margin: 30px;
@@ -65,4 +106,17 @@ p {
 }
 .text {
     width: 100vw;
+}
+
+a {
+    margin: 20px;
+    text-align: left;
+    text-decoration: underline ;
+}
+
+
+p {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;
 }

@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="underconstruction.css">
-    <title>EVAK - Fejlesztés alatt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="evak_light.css">
+    <title>EVAK - Egyszerűsített Villanyszerelő Árajánlat Kezelő rendszer</title>
 </head>
 <body>
-    <div class="logo">
-        <img src="./resources/EVAK01.png" alt="EVAK_main_logo">
+    <div class="loginOverlay" aria-disabled="true" >
+        <img src="resources/EVAK01.png" alt="EVAK main logo">
     </div>
-    <div class="text">
-        <h1>Üdvözlöm az EVAK oldalán.</h1>
-        <h2>Ez az oldal jelenleg fejlesztés alatt áll.</h2>
-        <p class="footer">EVAK - Egyszerűsített Villanyszerelő Árajánlat Kezelő rendszer.</p>
+    <div id="mainWindow">
+        <div class="imgContainer">
+           <!--  <img src="https://i.postimg.cc/Jn7XtPZY/EVAK01.png" alt="EVAK main logo"> -->
+            <img src="resources/EVAK01.png" alt="EVAK main logo">
+            <div class="btnContainer">
+                <a id="enter">Belépés</a>
+                <a id="contact">Kapcsolat</a>
+            </div>
+        </div>
+        
+        <h1>Egyszerűsített Villanyszerelő Árajánlat Kezelő rendszer</h1>
+        <span class="version">Verzió: 0.1.0 alpha</span>
+        
         <div class="pageContent">
-    
+
             <a href="#" id="whatIsEvak">Mi az az "EVAK"?</a>
             
             <p class="whatIsEvak" style="display: none;">Az EVAK azért lett megalkotva, hogy a lehető legtöbb
@@ -45,8 +52,10 @@
                 a használata teljesen ingyenes. Amint eléri az 1.0-s verziót, onnantól 1 hónap ingyenes próbaidőt követően havonta Bruttó 2499ft összegért vehető majd igénybe. 
             </p>
         </div>
-
+        
+        
+        
     </div>
-    <script src="undercs.js"></script>
+    <script src="showinfo.js"></script>
 </body>
 </html>
