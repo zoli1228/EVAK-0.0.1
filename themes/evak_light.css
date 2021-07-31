@@ -3,122 +3,129 @@ html {
     width: 100%;
     margin: 0;
     padding: 0;
+    -webkit-user-drag: none;
 }
 
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    z-index: 10;
+  }
+  .lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #444;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+
+
+ .roller-show {
+     display: block;
+     position: fixed;
+     width: 100vw;
+     height: 100vh;
+     overflow: hidden;
+     padding-top: 25%;
+     z-index: 12;
+     user-select: none;
+     -webkit-user-drag: none;
+ }
+
+ .roller-hide {
+     display: none;
+ }
 .login {
     display: none;
 }
 
-
-@media screen and (max-width: 670px) {
-    /* xMOBILE STYLE */
-
-    body {
-        font-family: 'Roboto', sans-serif;
-        overflow-x: hidden;
-        background-blend-mode: multiply;
-        background: #3399ff;
-        background-size: 65px;
-        vertical-align: middle;
-    }
-
-    #mainWindow {
-        display: block;    
-        border-radius: 2px;
-        padding: 5%;
-        position: relative;
-        transform: translate(0,30px);
-        background: #eee;
-        height: auto;
-        min-height: auto;
-        width: 80%;
-        left: 5%;
-        text-align: center;
-        box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 0 10px 5px rgba(0, 0, 0, .5);
-    }
-    h1 {
-        font-size: 20px;
-    }
-
-    a {
-        font-size: 14px;
-        margin: 5px;
-        text-align: left;
-    }
-    hr {
-        color: rgba(0,0,0,0);
-        border-top: 1px dashed grey;
-        
-    }
-    p {
-        text-align: left;
-        font-size: 10px;
-    }
-    .imgContainer > img {
-        width: 100%;
-    }
-    .version {
-        font-size: 12px;
-        color: grey;
-    }
-
-    #whatIsEvak {
-        text-decoration: underline #ccff00 2px;
-        color: #3399ff;
-        display: block;
-        
-    }
-    .whatIsEvak {
-        display: none;
-    }
-    #howItWorks {
-        text-decoration: underline #ccff00 2px;
-        color: #3399ff;
-        display: block;
-    }
-    .howItWorks {
-        display: none;
-    }
-    #whosItFor {
-        text-decoration: underline #ccff00 2px;
-        color: #3399ff;
-        display: block;
-    }
-    .whosItFor {
-        display: none;
-    }
-    #pricing {
-        text-decoration: underline #ccff00 2px;
-        color: #3399ff;
-        display: block;
-    }
-    .pricing {
-        display: none;
-    }
-    
-    button {
-        position: relative;
-        display: inline-block;
-        bottom: 0px;
-        background: #ccff00;
-        box-shadow: 0 0 2px rgba(0, 0, 0, .3);
-        border-radius: 2px;
-        padding: 5px 15px;
-        width: 45%;
-        margin: 70px 5px;
-        font-weight: 700;
-        font-size: 14px;
-        text-decoration: none;
-        outline: none;
-    }
+.display-block {
+    display: block;
 }
 
-/***************************************************************
-****************************************************************/
+img {
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
 
-@media screen and (min-width: 671px) {
-    /* DESKTOP STYLE */
-    .loginOverlay  {
+@media screen and (max-width: 670px) {
+    /* MOBILE STYLE */
+    .loginOverlay, .regOverlay {
         z-index: 10;
         position: fixed;
         opacity: 0;
@@ -131,7 +138,28 @@ html {
         backdrop-filter: blur(8px);
         
     }
-
+    #cancelReg, #cancelLogin {
+        display: none;
+    }
+    .dialogError{
+        display: block;
+        background: rgba(255,0,0,.3);
+        color: red;
+        font-size: 14px;
+        margin-bottom: 20px;
+        padding: 20px 20px;
+    }
+    .dialogConfirm{
+        display: block;
+        background: rgba(0,255,0,.3);
+        color: green;
+        font-size: 14px;
+        margin-bottom: 20px;
+        padding: 20px 20px;
+    }
+    .hide {
+        display: none;
+    }
     .loginbox > img {
         width: 300px;
         margin: 10px;
@@ -141,8 +169,8 @@ html {
         
         display: inline-block;
         width: 70%;
-        height: 10%;
-        margin-bottom: 30px;
+        height: 60px;
+        margin-bottom: 15px;
         padding-top: 5px;
         border: 1px solid #bbb;
         border-radius: 10px;
@@ -173,11 +201,13 @@ html {
         align-content: center;
         background: linear-gradient(#fff, #eee);
         color: black;
-        width: 25%;
-        min-width: 350px;
-        height: 70%;
-        min-height: 700px;
-        transform: translate(37.5vw, 15vh);
+        width: 35%;
+        min-width: 400px;
+        height: 90%;
+        font-size: 12px;
+        overflow-x: hidden;
+        min-height: 800px;
+        transform: translate(30vw, 5vh);
         box-shadow: rgba(0, 0, 0, .8) 0 0 30px 5px;
         border-radius: 5px;
         
@@ -192,8 +222,343 @@ html {
         align-content: center;
         text-align: center;
         font-family: 'Ubuntu', sans-serif;
+        overflow: hidden;
+        background: #eee;
+
+        
+        
+        
+    }
+
+    #mainWindow {
+        
+        background: #eee;
+        align-content: center;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
+        
+        margin-left: 0%
+        
+
+        
+    }
+    h1 {
+        font-size: 30px;
+        color: black;
+    }
+
+    a {
+        font-size: 14px;
+        margin: 20px 5px;
+        margin-left: 10%;
+        text-align: left;
+    }
+
+    .pageContent > a:hover {
+        text-decoration: underline 1px black !important;
+    }
+    hr {
+        color: rgba(0,0,0,0);
+        border-bottom: 2px solid grey;
+        
+    }
+    p {
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 10px 20px;
+        position:relative;
+        left: 10%;
+        width: 80%;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 300;
+    }
+    .imgContainer > img {
+
+        width: 20%;
+        min-width: 60px;
+        /* animation: swing alternate ease-in-out infinite 2s; */
+        padding: 20px;
+    }
+
+    .imgContainer {
+
+        border-bottom: 1px solid #ccff00;
+        box-shadow: 0 3px 60px rgba(0, 0, 0, .5), 0 3px 10px 6px rgb(100, 100, 100);
+        padding: 0;
+        margin: 0;
+        /* background: linear-gradient(#3399ff, #0470d6); */
+        background-image: linear-gradient(#666, #222), url("resources/lightning.gif");
+        background-blend-mode: screen;
+        background-origin: padding-box;
+        background-position-x: center;
+        background-position-y: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        
+
+    }
+    .version {
+        font-size: 12px;
+        color: grey;
+    }
+
+    #whatIsEvak {
+        text-decoration: none;
+        color: black;
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+        
+    }
+    .whatIsEvak {
+        display: block;
+        
+        
+        transition: all 200ms;
+    }
+
+    #howItWorks {
+        text-decoration: none;
+        color: black;
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .howItWorks {
+        display: block;
+        transition: all 200ms;
+    }
+    #whosItFor {
+        text-decoration: none;
+        color: black;
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .whosItFor {
+        display: block;
+        
+        
+        transition: all 200ms;
+    }
+    #pricing {
+        text-decoration: none;
+        color: black;
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .pricing {
+        display: block;
+        
+        
+        transition: all 200ms;
+    }
+    
+    .btn1 {
+        transition: all 200ms;
+        text-align: center;
+        user-select: none;
+        position: relative;
+        display: inline-block;
+        background: #ccff00;
+        border: 1px solid #ccff00;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        border-radius: 2px;
+        padding: 5px 15px;
+        width: 100px;
+        height: 20px;
+        justify-content: center;
+        margin: 10px 2vw;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        outline: none;
+    }
+    .btn2 {
+        transition: all 200ms;
+        text-align: center;
+        user-select: none;
+        position: relative;
+        display: inline-block;
+        background: #ccff00;
+        border: 1px solid #ccff00;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        border-radius: 2px;
+        padding: 5px 15px;
+        width: 200px;
+        height: 30px;
+        justify-content: center;
+        vertical-align: middle;
+        margin: 10px 2vw;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        outline: none;
+    }
+    .btn3 {
+        transition: all 200ms;
+        text-align: center;
+        user-select: none;
+        position: relative;
+        display: inline-block;
+        background: #ccff00;
+        border: 1px solid #ccff00;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        border-radius: 2px;
+        padding: 5px 15px;
+        width: 150px;
+        height: 20px;
+        justify-content: center;
+        margin: 10px 1vw;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        outline: none;
+    }
+
+    .btnContainer {
+        display: block;
+    }
+    .btn1:hover, .btn2:hover, .btn3:hover {
+        background: #aadd00;
+        border: #3399ff 1px solid;
+        
+    }
+    .btn1:active, .btn2:active, .btn3:active {
+        background: #3399ff;
+        border: #ccff00 1px solid;
+        color: white;
+        transition: none;
+        
+    }
+    
+
+    .aszf {
+        font-size: 12px;
+        text-decoration: none;
+        display: block;
+    }
+    .aszf > #aszfLink {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    
+}
+
+/***************************************************************
+****************************************************************/
+
+@media screen and (min-width: 671px) { 
+
+
+    
+    /* DESKTOP STYLE */
+    .loginOverlay, .regOverlay {
+        z-index: 10;
+        position: fixed;
+        opacity: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: rgba(0,0,0,.6);
+        transition: opacity 200ms ease-in-out;
+        pointer-events: none;
+        backdrop-filter: blur(8px);
+        
+    }
+    #cancelReg, #cancelLogin {
+        display: none;
+    }
+    .dialogError{
+        display: block;
+        background: rgba(255,0,0,.3);
+        color: red;
+        font-size: 14px;
+        margin-bottom: 20px;
+        padding: 20px 20px;
+    }
+    .dialogConfirm{
+        display: block;
+        background: rgba(0,255,0,.3);
+        color: green;
+        font-size: 14px;
+        margin-bottom: 20px;
+        padding: 20px 20px;
+    }
+    .hide {
+        display: none;
+    }
+    .loginbox > img {
+        width: 300px;
+        margin: 10px;
+        
+    }
+    .loginbox > div {
+        
+        display: inline-block;
+        width: 70%;
+        height: 60px;
+        margin-bottom: 15px;
+        padding-top: 5px;
+        border: 1px solid #bbb;
+        border-radius: 10px;
+    }
+
+    .loginbox > div > label {
+        display: block;
+        font-size: 16px;
+        position: relative;
+        top: -15px;
+        text-align: left;
+        margin-left: 30px;
+        background: #eee;
+        width: fit-content;
+        padding: 0 10px;
+        border: 1px solid #bbb;
+        border-radius: 5px;
+    }
+    .loginbox > div > input {
+        width: 80%;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 6px;
+        color: #555;
+    }
+    .loginbox {
+        text-align: center;
+        align-content: center;
+        background: linear-gradient(#fff, #eee);
+        color: black;
+        width: 35%;
+        min-width: 400px;
+        height: 90%;
+        font-size: 12px;
         overflow-x: hidden;
-        background: #555;
+        min-height: 800px;
+        transform: translate(30vw, 5vh);
+        box-shadow: rgba(0, 0, 0, .8) 0 0 30px 5px;
+        border-radius: 5px;
+        
+
+    }
+
+
+    body {
+        margin: 0;
+        padding: 0;
+        margin-left: calc(100vw - 100%);
+        align-content: center;
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+        overflow: hidden;
+        background: #eee;
 
         
         
@@ -249,18 +614,24 @@ html {
 
         width: 20%;
         min-width: 60px;
-        animation: swing alternate ease-in-out infinite 2s;
+        /* animation: swing alternate ease-in-out infinite 2s; */
         padding: 20px;
     }
 
     .imgContainer {
 
         border-bottom: 1px solid #ccff00;
-        
         box-shadow: 0 3px 60px rgba(0, 0, 0, .5), 0 3px 10px 6px rgb(100, 100, 100);
         padding: 0;
         margin: 0;
-        background: linear-gradient(#3399ff, #0470d6);
+        /* background: linear-gradient(#3399ff, #0470d6); */
+        background-image: linear-gradient(#666, #222), url("resources/lightning.gif");
+        background-blend-mode: screen;
+        background-origin: padding-box;
+        background-position-x: center;
+        background-position-y: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 100%;
         
 
@@ -279,7 +650,10 @@ html {
         
     }
     .whatIsEvak {
-        display: none;
+        display: block;
+        
+        
+        transition: all 200ms;
     }
 
     #howItWorks {
@@ -290,7 +664,8 @@ html {
         font-weight: 600;
     }
     .howItWorks {
-        display: none;
+        display: block;
+        transition: all 200ms;
     }
     #whosItFor {
         text-decoration: none;
@@ -300,7 +675,10 @@ html {
         font-weight: 600;
     }
     .whosItFor {
-        display: none;
+        display: block;
+        
+        
+        transition: all 200ms;
     }
     #pricing {
         text-decoration: none;
@@ -310,7 +688,10 @@ html {
         font-weight: 600;
     }
     .pricing {
-        display: none;
+        display: block;
+        
+        
+        transition: all 200ms;
     }
     
     .btn1 {
@@ -354,28 +735,69 @@ html {
         text-decoration: none;
         outline: none;
     }
+    .btn3 {
+        transition: all 200ms;
+        text-align: center;
+        user-select: none;
+        position: relative;
+        display: inline-block;
+        background: #ccff00;
+        border: 1px solid #ccff00;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        border-radius: 2px;
+        padding: 5px 15px;
+        width: 150px;
+        height: 20px;
+        justify-content: center;
+        margin: 10px 1vw;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        outline: none;
+    }
 
     .btnContainer {
         display: block;
     }
-    .btn1:hover, .btn2:hover {
+    .btn1:hover, .btn2:hover, .btn3:hover {
         background: #aadd00;
         border: #3399ff 1px solid;
         
     }
-    .btn1:active, .btn2:active {
+    .btn1:active, .btn2:active, .btn3:active {
         background: #3399ff;
         border: #ccff00 1px solid;
         color: white;
         transition: none;
         
     }
-
-
-    @keyframes swing {
     
-        0% {transform: rotate(3deg) scale(1);}
-        100% {transform: rotate(-3deg) scale(1.1);}
+
+    .aszf {
         
+        font-size: 12px;
+        text-decoration: none;
+        display: block;
     }
+    .aszf > #aszfLink {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    #userdetails {
+        font-weight: 600;
+        color: white;
+        position: relative;
+        width: 300px;
+        display: inline-block;
+        text-align: right;
+    }
+        
+}
+@keyframes swing {
+    
+    0% {transform: rotate(3deg) scale(1);}
+    100% {transform: rotate(-3deg) scale(1.1);}
+    
 }

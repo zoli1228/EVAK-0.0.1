@@ -1,0 +1,109 @@
+.navbar {
+    width: 250px;
+    top:0px;
+    position: fixed;
+    overflow-x: hidden;
+    height: 100%;
+    left:0;
+    background: #444;
+    z-index: 13;
+}
+
+.header {
+    width: 100%;
+    top:0px;
+    position: fixed;
+    overflow: hidden;
+    height: 50px;
+    background: #444;
+}
+
+#mainframe {
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+        background: #eee;
+        position: fixed;
+        text-align: center;
+        padding: 0 200px;
+        overflow: auto;
+        display: inline-block;
+        width: calc(100% - 650px);
+        left: 250px;
+        height: 100%;
+        margin-top: 50px;
+        z-index: 11;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#mainframe::-webkit-scrollbar {
+    display: none;
+  }
+
+
+
+.nav_button1 {
+    transition: all 100ms;
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    text-shadow: 0px 0px 3px black;
+    margin: 5px 0;
+    padding: 5px 0;
+}
+
+.nav_button1:hover {
+    background: #666;
+    transform: scale(1.05);
+}
+
+.nav_button1::before {
+    color: #cf0;
+    font-weight: 900;
+    text-shadow: 0px 0px 1px black;
+    font-size: 20px;
+    margin: 15px 20px 15px 10px;
+    content: ">"
+}
+
+.selected {
+    border-radius: 0;
+    box-shadow: #cf0 0 0 2px 2px;
+    background: #aaa;
+    transform: scale(1.05);
+}
+
+#navbar_logo {
+    margin: 20px 0;
+    width: 80%;
+}
+
+
+.lgtbtn1 {
+    transition: all 100ms;
+    text-align: center;
+    user-select: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    background: #cf0;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+    padding: 5px 0;
+    width: 100%;
+
+    margin: 0;
+    font-weight: 700;
+    padding: 20px 0;
+    font-size: 16px;
+    text-decoration: none;
+    outline: none;
+}
+
+.lgtbtn1:hover {
+    box-shadow: #cf0 0 0 2px 2px, #cf0 0 0 20px 2px;
+    color: #aaa;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="evak_light.css">
+    <link rel="stylesheet" href="protected.css">
+    <title>EVAK - Egyszerűsített Villanyszerelő Árajánlat Kezelő rendszer</title>
+</head>
+
+<body onload="selectPage('main')">
+    
+    <div class="header">
+        <div id="userdetails">
+            
+        </div>
+
+    </div>
+    <div class="navbar">
+        <img src="resources/EVAK01.png" id="navbar_logo" alt="EVAK main logo">
+        <a href="#" onclick="selectPage('main')" class="nav_button1 selected">Főoldal</a>
+        <a href="#" onclick="selectPage('quotes')" class="nav_button1">Árajánlatok kezelése</a>
+        <a href="#" onclick="selectPage('profile')" class="nav_button1">Felhasználói fiók</a>
+        <a href="#" onclick="selectPage('forum')" class="nav_button1">Elektro Forum</a>
+        <a href="#" onclick="selectPage('help')" class="nav_button1">Segítség</a>
+        <a href="#" onclick="selectPage('settings')" class="nav_button1">Beállítások</a>
+        <a href="#" onclick="selectPage('fapapucs')" class="nav_button1">Fapapucs</a>
+        <a href="/logout" class="lgtbtn1">Kijelentkezés</a>
+    </div>
+    <div id="roller" class="roller-hide">
+
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+    </div>
+    <div id="mainframe">
+        <span class="version">Verzió: 0.1.0 alpha</span>
+        <div id="update">
+            <!-- Dynamic -->
+        </div>
+    </div>
+    <script src="protected.js"></script>
+    <script src="navbarhighlight.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,429 @@
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-user-drag: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    align-content: center;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    overflow-x: hidden;
+    background: rgb(141, 141, 141);    
+}
+
+.display-block {
+    display: block;
+}
+
+img {
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+@media screen and (min-width: 671px) {
+
+
+img {
+
+    width: 50%;
+    margin-top: 30px;
+    min-width: 60px;
+    border-bottom: 1px solid #ccff00;
+    text-align: center;
+    transform: translateX(50%)
+    
+
+}
+#mainWindow {
+        
+
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+
+
+    
+}
+.rc-container > h1 {
+    text-align: center;
+}
+
+span {
+    font-size: 14px;
+    color: black;
+    
+}
+
+
+
+.rc {
+        
+    display: block;
+    width: 400px;
+    height: 60px;
+    transform:  translate(150px,0);
+    margin: 15px 0;
+    padding-top: 5px;
+    border: 1px solid #bbb;
+    border-radius: 10px;
+}
+
+.rc > label {
+    display: block;
+    font-size: 16px;
+    position: relative;
+    top: -15px;
+    text-align: left;
+    margin-left: 30px;
+    background: #eee;
+    width: fit-content;
+    padding: 0 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+.rc > input {
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 6px;
+    color: #555;
+}
+
+.rc > button {
+    margin: 50px;
+}
+
+.rc-container {
+    display: inline-block;
+    background: #eee;
+    margin-bottom: 15px;
+    margin-top: 50px;
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    width: 700px;
+    height: fit-content;
+    padding: 50px;
+    text-align: justify;
+    box-shadow: rgba(0, 0, 0, .5) 2px 2px 10px;
+}
+
+.btn1 {
+    transition: all 200ms;
+    text-align: center;
+    user-select: none;
+    position: relative;
+    display: block;
+    background: #ccff00;
+    border: 1px solid #ccff00;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+    border-radius: 2px;
+    padding: 7px 0;
+    width: 100%;
+    height: 20px;
+    margin: 0;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    outline: none;
+}
+
+.btn2 {
+    transition: all 200ms;
+    text-align: center;
+    user-select: none;
+    position: relative;
+    display: block;
+    background: #ccff00;
+    border: 1px solid #ccff00;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+    border-radius: 2px;
+    padding: 5px 15px;
+    width: 300px;
+    height: 30px;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    outline: none;
+    left: calc(50% - 150px);
+}
+
+.btnContainer {
+    display: block;
+}
+.btn1:hover, .btn2:hover {
+    background: #aadd00;
+    border: #3399ff 1px solid;
+    
+}
+.btn1:active, .btn2:active {
+    background: #3399ff;
+    border: #ccff00 1px solid;
+    color: white;
+    transition: none;
+    
+}
+
+
+.hide {
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}
+
+.error {
+    text-align: center;
+    justify-content: center;    
+    padding: 20px 0;
+    background: rgba(255,0,0,.3);
+    color: black;
+}
+
+.confirm {
+    text-align: center;
+    justify-content: center; 
+    padding: 20px 0;
+    background: rgba(0,255,0,.3);
+    color: green;
+}
+
+#dialogCloseBtn {
+    display: block;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: red;
+    font-weight: 800;
+    position: relative;
+    top: 0px;
+    left: 0px;
+
+}
+}
+
+/* MOBILE VIEW */
+
+@media screen and (max-width: 670px) {
+
+
+    .imgContainer > img {
+    
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        
+        min-width: 60px;
+
+        padding: 0;
+    }
+    
+    form {
+        padding: 0 20px;
+    }
+    .imgContainer {
+    
+        border-bottom: 1px solid #ccff00;
+        
+        box-shadow: 0 3px 60px rgba(0, 0, 0, .5), 0 3px 10px 6px rgb(100, 100, 100);
+        padding: 0;
+        margin: 0;
+
+        background: linear-gradient(#3399ff, #0470d6);
+        width: 100%;
+        height: auto;
+        
+    
+    }
+    #mainWindow {
+            
+        background: rgb(141, 141, 141);
+        align-content: center;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
+        box-shadow: 0 3px 60px black, 0 3px 10px 6px black;
+        margin-left: 0%
+        
+    
+        
+    }
+    
+    span {
+        font-size: 14px;
+        color: black;
+        text-align: justify;
+        
+    }
+    
+    
+    
+    .rc {
+            
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 20px auto;
+
+        padding-top: 5px;
+        border: 1px solid #bbb;
+        border-radius: 10px;
+        
+    }
+    
+    .rc > label {
+        display: block;
+        font-size: 16px;
+        position: relative;
+        top: -20px;
+        text-align: left;
+        margin-left: 20px;
+        background: #eee;
+        width: fit-content;
+        padding: 5px;
+        border: 1px solid #bbb;
+        border-radius: 5px;
+        
+    }
+    
+    .rc > input {
+        width: 70%;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 10px;
+        color: #555;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+    
+    .rc > button {
+        margin: 50px;
+    }
+    
+    .rc-container {
+        display: inline-block;
+        background: #eee;
+        margin-bottom: 15px;
+
+        text-align: center;
+        overflow-x: hidden;
+        border: 1px solid #bbb;
+        
+        width: 100%;
+
+        height: 100%;
+
+        box-shadow: rgba(0, 0, 0, .5) 2px 2px 10px;
+    }
+    
+    .btn1 {
+        transition: all 200ms;
+        text-align: center;
+        user-select: none;
+        position: fixed;
+        display: block;
+        background: #ccff00;
+        border: 1px solid #ccff00;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        bottom:0;
+        padding: 10px 0;
+        width: 100%;
+        height: 20px;
+        margin-left: -20px;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        outline: none;
+    }
+    
+    .btn2 {
+        transition: all 200ms;
+        text-align: center;
+        user-select: none;
+        position: relative;
+        display: block;
+        background: #ccff00;
+        border: 1px solid #ccff00;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        margin-left: auto;
+        margin-right: auto;
+        padding: 5px 15px;
+        width: 50%;
+        height: 30px;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        outline: none;
+
+    }
+    
+    .btnContainer {
+        display: block;
+    }
+    .btn1:hover, .btn2:hover {
+        background: #aadd00;
+        border: #3399ff 1px solid;
+        
+    }
+    .btn1:active, .btn2:active {
+        background: #3399ff;
+        border: #ccff00 1px solid;
+        color: white;
+        transition: none;
+        
+    }
+    
+    
+    .hide {
+        opacity: 0;
+    }
+    
+    .show {
+        opacity: 1;
+    }
+    
+    .error {
+        text-align: center;
+        justify-content: center;    
+        padding: 20px 0;
+        background: rgba(255,0,0,.3);
+        color: black;
+    }
+    
+    .confirm {
+        text-align: center;
+        justify-content: center; 
+        padding: 20px 0;
+        background: rgba(0,255,0,.3);
+        color: green;
+    }
+    
+    #dialogCloseBtn {
+        display: block;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        color: red;
+        font-weight: 800;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    
+    }
+    }

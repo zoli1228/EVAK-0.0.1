@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="evak_pwchange.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Elfelejtett jelszó</title>
+</head>
+
+<body>
+    <div id="roller" class="roller-hide">
+
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+    </div>
+
+    <div id="mainWindow">
+
+        <div class="rc-container">
+            <div class="imgContainer">
+                <img src="resources/EVAK01.png" alt="EVAK main logo">
+            </div>
+
+
+            <h1>Elfelejtett jelszó</h1>
+            <form action="/passwordrecovery" method="POST">
+                <span class="display-block">Adja meg a fiókjához tartozó email címet!</span>
+                <span class="display-block">A 'Küldés' gomb megnyomásával, amennyiben létezik a rendszerben ez a cím,
+                    küldünk egy új jelszót.</span>
+                <span class="display-block">Ezt a jelszót rögtön bejelentkezés után meg kell változtatnia.</span>
+                <div class="rc">
+                    <label for="email">Email cím</label>
+                    <input id="email" name="email" type="email">
+                </div>
+                    <div id="dialog">
+
+                        <span id="dialogMessage"></span>
+                    </div>
+                    <div class="display-block">
+
+                        <button id="submit" type="submit" class="btn2">Küldés</button>
+                        <a href="/" class="btn1">Mégse</a>
+                    </div>
+
+            </form>
+        </div>
+    </div>
+
+
+<script src="pwrecovery.js"></script>
+</body>
+
+</html>
