@@ -11,24 +11,33 @@
     <title>EVAK - Egyszerűsített Villanyszerelő Árajánlat Kezelő rendszer</title>
 </head>
 
-<body onload="selectPage('main')">
-    
+<body onload="selectPage('home')">
+
     <div class="header">
+        <div class="version">
+            <span>Verzió: 0.1.0 alpha</span>
+
+        </div>
+        <div id="title">
+
+        </div>
         <div id="userdetails">
-            
+            <span>Bejelentkezve, mint:</span>
         </div>
 
     </div>
     <div class="navbar">
         <img src="resources/EVAK01.png" id="navbar_logo" alt="EVAK main logo">
-        <a href="#" onclick="selectPage('main')" class="nav_button1 selected">Főoldal</a>
+        <a href="#" onclick="selectPage('home')" class="nav_button1 selected">Főoldal</a>
+        <a href="#" onclick="selectPage('chat')" class="nav_button1">Chat fal</a>
         <a href="#" onclick="selectPage('quotes')" class="nav_button1">Árajánlatok kezelése</a>
         <a href="#" onclick="selectPage('profile')" class="nav_button1">Felhasználói fiók</a>
         <a href="#" onclick="selectPage('forum')" class="nav_button1">Elektro Forum</a>
         <a href="#" onclick="selectPage('help')" class="nav_button1">Segítség</a>
         <a href="#" onclick="selectPage('settings')" class="nav_button1">Beállítások</a>
-        <a href="#" onclick="selectPage('fapapucs')" class="nav_button1">Fapapucs</a>
-        <a href="/logout" class="lgtbtn1">Kijelentkezés</a>
+        <a href="#" onclick="selectPage('ismeretlen')" class="nav_button1">404 teszt</a>
+
+        <a href="/logout" id="logoutBtn" class="lgtbtn1">Kijelentkezés</a>
     </div>
     <div id="roller" class="roller-hide">
 
@@ -45,7 +54,7 @@
 
     </div>
     <div id="mainframe">
-        <span class="version">Verzió: 0.1.0 alpha</span>
+
         <div id="update">
             <!-- Dynamic -->
         </div>

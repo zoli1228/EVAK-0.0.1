@@ -1,46 +1,68 @@
 .navbar {
+    transition: all ease-in 100ms;
     width: 250px;
-    top:0px;
+    top: 50px;
     position: fixed;
+    display: inline-block;
+    margin-right: 0;
     overflow-x: hidden;
-    height: 100%;
-    left:0;
+    height: 100vh;
     background: #444;
     z-index: 13;
+    padding-right: 100px;
+    left: -330px;
+}
+
+.hidenav {
+    padding-right: 100px;
+    left: -330px;
+}
+
+.shownav {
+    padding-right: 0;
+    left: 0
 }
 
 .header {
     width: 100%;
-    top:0px;
+    top: 0px;
     position: fixed;
     overflow: hidden;
     height: 50px;
-    background: #444;
+    z-index: 14;
+    background: linear-gradient(#555, #333);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .8), 0 0 10px rgba(0, 0, 0, .6);;
 }
 
 #mainframe {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    background: #eee;
+    position: fixed;
+    padding: 0 150px;
+    overflow: auto;
+    display: block;
+    float: right;
+    width: calc(100% - 300px);
+    left: 0;
+    height: 100%;
+    margin-top: 50px;
+    z-index: 11;
+    transition: all 100ms ease-in;
+}
 
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-        background: #eee;
-        position: fixed;
-        text-align: center;
-        padding: 0 200px;
-        overflow: auto;
-        display: inline-block;
-        width: calc(100% - 650px);
-        left: 250px;
-        height: 100%;
-        margin-top: 50px;
-        z-index: 11;
+.shrinkmainframe {
+    width: calc(100% - 525px) !important;
+    margin-left: 250px;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
+
 #mainframe::-webkit-scrollbar {
     display: none;
-  }
-
-
+}
 
 .nav_button1 {
     transition: all 100ms;
@@ -77,24 +99,23 @@
 }
 
 #navbar_logo {
+    
     margin: 20px 0;
-    width: 80%;
+    width: 70%;
 }
-
 
 .lgtbtn1 {
     transition: all 100ms;
     text-align: center;
     user-select: none;
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
     left: 0;
     display: inline-block;
     background: #cf0;
     box-shadow: 0 0 3px rgba(0, 0, 0, .3);
     padding: 5px 0;
     width: 100%;
-
     margin: 0;
     font-weight: 700;
     padding: 20px 0;

@@ -1,0 +1,204 @@
+<div id="module">
+    <div class="rules">
+        <h2>Chat szabályzat</h2>
+        <h4>Ha csatlakozol a beszélgetéshez, azzal elfogadod az alábbi szabályokat:</h4>
+        <ul>
+            <li><span>Trágár szavak használata csak MÉRSÉKELTEN</span></li>
+            <li><span>Mások rágalmazása, szóbeli bántalmazása szigorúan tilos. Figyelmeztetés, illetve többszörös figyelmeztetés 
+                után a chatfalról és a fórumról való kitiltás a következménye.</span></li>
+            <li><span>Mások személyi jogait sértő tartalom közzététele szigorúan tilos. Jogi következményekkel is járhat.</span></li>
+            <li><span>A chat fal elárasztása (spam) figyelmeztetést, illetve a chat falról való kitiltást eredményezhet.</span></li>
+        </ul>
+        <a href="#" id="proceed">Továbblépek a beszélgetéshez.</a>
+    </div>
+    <div id="main" class="main nodisplay">
+        <form action="/chat/messages" method="POST">
+            <input type="text" id="message" name="message">
+            <button id="send">Küldés</button>
+        </form>
+        <div id="chatwindow">
+
+        </div>
+
+
+    </div>
+    <style>
+        .show {
+            display: block;
+        }
+        .rules > a {
+            width: 300px;
+            color: black;
+            transition: all 200ms;
+            display: inline-block;
+            position: absolute;
+            padding: 10px 0;
+            left: 0;
+            background: #cf0;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 2px solid rgba(0, 0, 0, .3);
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, .3)
+        }
+
+
+        ul {
+            text-align: left;
+        }
+
+        ul > li {
+            margin: 10px 0;
+        }
+        .nodisplay {
+            display: none;
+        }
+        #module {
+            text-align: center;
+            overflow: auto;
+            width: 100%;
+        }
+
+        #module > #main {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+
+            position: absolute;
+            text-align: left;
+            padding: 40px 40px;
+            width: 80%;
+            min-height: 70vh;
+            max-height: 70vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, .1);
+            border: 1px solid rgba(0, 0, 0, .3)
+        }
+        #module > #main::-webkit-scrollbar {
+            display: none;
+        }
+
+        #module>#main>span {
+            display: block;
+            position: static;
+            bottom: 0;
+        }
+
+        #chatwindow>div {
+            display: flex;
+            align-content: center;
+            padding: 10px;
+            font-weight: 600;
+            margin: 10px 0;
+            width: auto;
+            background: rgba(0, 0, 0, .15);
+            border-radius: 10px;
+            border-radius: 5px;
+            animation: swimin 400ms ease-in-out
+        }
+
+        #chatwindow>div>span {
+            font-weight: 600;
+
+
+        }
+
+        @keyframes swimin {
+            0% {
+                transform: translate(-50vh, 0);
+                opacity: 0
+            }
+
+            70% {
+                transform: translate(0, 0);
+                opacity: 1
+            }
+
+            85% {
+                transform: translate(-1vh, 0);
+                opacity: 1
+            }
+
+            100% {
+                transform: translate(0, 0);
+                opacity: 1
+            }
+        }
+
+        .time {
+            margin-right: 10px;
+
+        }
+
+        .user {
+            cursor: pointer;
+            user-select: none;
+            margin-right: 10px;
+            text-shadow: .08em .08em 2px black, -.08em -.08em 2px black, -.08em .08em 2px black, .08em -.08em 2px black;
+        }
+
+        .user::after {
+            color: black;
+
+            content: "  :";
+            text-shadow: none;
+        }
+
+        #module>#main>form {
+            display: flex;
+            position: relative;
+            padding: 5px 40px;
+            bottom: 0;
+            width: calc(100%-100px);
+            background: rgba(0, 0, 0, .3);
+            border-radius: 5px;
+
+        }
+
+        #module>#main>form>button {
+            user-select: none;
+            cursor: pointer;
+            display: inline;
+            margin: 5px;
+            height: auto;
+            border-radius: 5px;
+            background: #cf0;
+            border: 1px solid black;
+            font-weight: 600;
+            font-size: 16px;
+            width: 100px;
+        }
+
+        #module>#main>form>input {
+            display: inline-block;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            background: #fff;
+            border: none;
+            outline: none;
+            padding: 5px;
+            margin: 10px;
+            font-size: 14px;
+            width: 90%;
+            
+        }
+        .ownmessage {
+            background: rgba(0, 0, 0, .5) !important;
+        }
+        .ownmessage > span.message {
+            color: white;
+            font-weight: 900 !important;
+           
+        }
+    </style>
+</div>
+
+<script>modules/chat.js</script>

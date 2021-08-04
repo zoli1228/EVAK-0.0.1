@@ -245,7 +245,7 @@ regButton.addEventListener("click", async (e) => {
         }
         else if (response.data.status == "OK") {
             showRegDialog(response.data.message, "confirm")
-            setTimeout(function () { regMenu() }, 5000)
+            setTimeout(function () { regMenu() }, 3000)
         }
     }
 })

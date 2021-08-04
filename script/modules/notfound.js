@@ -1,0 +1,1 @@
+console.error("404 - A keresett tartalom nem található")

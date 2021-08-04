@@ -4,17 +4,39 @@ let dom = document.querySelector("#update")
 let userDetails = document.querySelector("#userdetails")
 let roller = document.querySelector("#roller")
 let span = document.createElement("span")
-span.innerHTML = "username"
-userDetails.appendChild(span)
+span.setAttribute("id", "usernameField")
+let navbarMenu = document.querySelector(".navbar")
+let mainFrame = document.querySelector("#mainframe")
+let logoutBtn = document.querySelector("#logoutBtn")
 
-/* let genRandomNumber = () => {
-    result = ""
-    for(let i = 0; i < 20; i++) {
-        result+= Math.round(Math.random()*9)
-    }
-    return result;
-} */
-let selectPage = async (string) => {
+var getCookie = (name) =>
+  {
+    let re = new RegExp(name + "=([^;]+)");
+    let value = re.exec(document.cookie);
+    return (value != null) ? unescape(value[1]) : null;
+  }
+
+var getUserDetails = async () => {
+    let span = document.createElement("span")
+    await fetch("/system/getuserdetails/").then(
+        response => response.json()).then((data) => {
+            if (data.username) {
+                span.innerHTML = data.username
+                span.setAttribute("style", "color: #cf0;")
+                userDetails.appendChild(span)
+            }
+        }).catch((err) => { console.log("Hiba az adatok lekérdezésében" + err) })
+
+}
+getUserDetails()
+
+logoutBtn.addEventListener("click", (e) => {
+    document.cookie = "username=" + getCookie("username") + "=; Max-Age=-999;"
+
+})
+
+
+var selectPage = async (string) => {
     setRoller(true)
 
     await fetch(`/content/${string}`).then(Response => {
@@ -23,12 +45,13 @@ let selectPage = async (string) => {
             return "404 - A keresett oldal nem található."
         }
         else if (Response.status == 200) {
-            return Response.text()
-        }
-    }).then(function (data) {
 
-        if (data) {
-            changeContent(data)
+            return Response.json()
+        }
+    }).then(function (input) {
+        if (input) {
+            changeHeader(input.data.header)
+            changeContent(input.template)
         } else {
             changeContent("Nincs tartalom...")
             console.log("Nincs tartalom")
@@ -44,15 +67,25 @@ let selectPage = async (string) => {
 
 }
 
-let genRandomNumber = (length) => {
+var changeHeader = (content) => {
+    let title = document.querySelector("#title")
+
+    let span = document.createElement("span")
+    span.innerHTML = content
+    title.innerHTML = ""
+    title.appendChild(span)
+}
+
+var genRandomNumber = (length) => {
     let result = "";
-    for(let i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         result += Math.round(Math.random() * 9)
     }
     return result;
 }
 
-let changeContent = (content) => {
+var changeContent = (content) => {
+
     let parser = new DOMParser()
     let htmlDoc = parser.parseFromString(content, 'text/html').body
     let scriptTag = htmlDoc.querySelector("script")
@@ -73,8 +106,8 @@ let changeContent = (content) => {
 }
 
 
-let rollerTimeout;
-let setRoller = (bool) => {
+var rollerTimeout;
+var setRoller = (bool) => {
     if (bool) {
         rollerTimeout = setTimeout(function () {
             roller.setAttribute("class", "roller-show")
@@ -86,3 +119,13 @@ let setRoller = (bool) => {
         return
     }
 }
+
+navbarMenu.addEventListener("mouseenter", () => {
+    navbarMenu.classList.toggle("shownav")
+    mainFrame.classList.toggle("shrinkmainframe")
+})
+
+navbarMenu.addEventListener("mouseleave", () => {
+    navbarMenu.classList.remove("shownav")
+    mainFrame.classList.remove("shrinkmainframe")
+})

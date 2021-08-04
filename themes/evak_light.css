@@ -12,12 +12,14 @@ html {
     width: 80px;
     height: 80px;
     z-index: 10;
-  }
-  .lds-roller div {
+}
+
+.lds-roller div {
     animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     transform-origin: 40px 40px;
-  }
-  .lds-roller div:after {
+}
+
+.lds-roller div:after {
     content: " ";
     display: block;
     position: absolute;
@@ -26,89 +28,105 @@ html {
     border-radius: 50%;
     background: #444;
     margin: -4px 0 0 -4px;
-  }
-  .lds-roller div:nth-child(1) {
+}
+
+.lds-roller div:nth-child(1) {
     animation-delay: -0.036s;
-  }
-  .lds-roller div:nth-child(1):after {
+}
+
+.lds-roller div:nth-child(1):after {
     top: 63px;
     left: 63px;
-  }
-  .lds-roller div:nth-child(2) {
+}
+
+.lds-roller div:nth-child(2) {
     animation-delay: -0.072s;
-  }
-  .lds-roller div:nth-child(2):after {
+}
+
+.lds-roller div:nth-child(2):after {
     top: 68px;
     left: 56px;
-  }
-  .lds-roller div:nth-child(3) {
+}
+
+.lds-roller div:nth-child(3) {
     animation-delay: -0.108s;
-  }
-  .lds-roller div:nth-child(3):after {
+}
+
+.lds-roller div:nth-child(3):after {
     top: 71px;
     left: 48px;
-  }
-  .lds-roller div:nth-child(4) {
+}
+
+.lds-roller div:nth-child(4) {
     animation-delay: -0.144s;
-  }
-  .lds-roller div:nth-child(4):after {
+}
+
+.lds-roller div:nth-child(4):after {
     top: 72px;
     left: 40px;
-  }
-  .lds-roller div:nth-child(5) {
+}
+
+.lds-roller div:nth-child(5) {
     animation-delay: -0.18s;
-  }
-  .lds-roller div:nth-child(5):after {
+}
+
+.lds-roller div:nth-child(5):after {
     top: 71px;
     left: 32px;
-  }
-  .lds-roller div:nth-child(6) {
+}
+
+.lds-roller div:nth-child(6) {
     animation-delay: -0.216s;
-  }
-  .lds-roller div:nth-child(6):after {
+}
+
+.lds-roller div:nth-child(6):after {
     top: 68px;
     left: 24px;
-  }
-  .lds-roller div:nth-child(7) {
+}
+
+.lds-roller div:nth-child(7) {
     animation-delay: -0.252s;
-  }
-  .lds-roller div:nth-child(7):after {
+}
+
+.lds-roller div:nth-child(7):after {
     top: 63px;
     left: 17px;
-  }
-  .lds-roller div:nth-child(8) {
+}
+
+.lds-roller div:nth-child(8) {
     animation-delay: -0.288s;
-  }
-  .lds-roller div:nth-child(8):after {
+}
+
+.lds-roller div:nth-child(8):after {
     top: 56px;
     left: 12px;
-  }
-  @keyframes lds-roller {
+}
+
+@keyframes lds-roller {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
+}
 
+.roller-show {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding-top: 25%;
+    z-index: 12;
+    user-select: none;
+    -webkit-user-drag: none;
+}
 
- .roller-show {
-     display: block;
-     position: fixed;
-     width: 100vw;
-     height: 100vh;
-     overflow: hidden;
-     padding-top: 25%;
-     z-index: 12;
-     user-select: none;
-     -webkit-user-drag: none;
- }
+.roller-hide {
+    display: none;
+}
 
- .roller-hide {
-     display: none;
- }
 .login {
     display: none;
 }
@@ -132,26 +150,25 @@ img {
         width: 100vw;
         height: 100vh;
         overflow: hidden;
-        background: rgba(0,0,0,.6);
+        background: rgba(0, 0, 0, .6);
         transition: opacity 200ms ease-in-out;
         pointer-events: none;
         backdrop-filter: blur(8px);
-        
     }
     #cancelReg, #cancelLogin {
         display: none;
     }
-    .dialogError{
+    .dialogError {
         display: block;
-        background: rgba(255,0,0,.3);
+        background: rgba(255, 0, 0, .3);
         color: red;
         font-size: 14px;
         margin-bottom: 20px;
         padding: 20px 20px;
     }
-    .dialogConfirm{
+    .dialogConfirm {
         display: block;
-        background: rgba(0,255,0,.3);
+        background: rgba(0, 255, 0, .3);
         color: green;
         font-size: 14px;
         margin-bottom: 20px;
@@ -160,13 +177,11 @@ img {
     .hide {
         display: none;
     }
-    .loginbox > img {
+    .loginbox>img {
         width: 300px;
         margin: 10px;
-        
     }
-    .loginbox > div {
-        
+    .loginbox>div {
         display: inline-block;
         width: 70%;
         height: 60px;
@@ -175,8 +190,7 @@ img {
         border: 1px solid #bbb;
         border-radius: 10px;
     }
-
-    .loginbox > div > label {
+    .loginbox>div>label {
         display: block;
         font-size: 16px;
         position: relative;
@@ -189,7 +203,7 @@ img {
         border: 1px solid #bbb;
         border-radius: 5px;
     }
-    .loginbox > div > input {
+    .loginbox>div>input {
         width: 80%;
         border: 1px solid black;
         border-radius: 5px;
@@ -210,11 +224,7 @@ img {
         transform: translate(30vw, 5vh);
         box-shadow: rgba(0, 0, 0, .8) 0 0 30px 5px;
         border-radius: 5px;
-        
-
     }
-
-
     body {
         margin: 0;
         padding: 0;
@@ -224,67 +234,51 @@ img {
         font-family: 'Ubuntu', sans-serif;
         overflow: hidden;
         background: #eee;
-
-        
-        
-        
     }
-
     #mainWindow {
-        
         background: #eee;
         align-content: center;
         overflow: hidden;
         width: 100%;
         height: 100vh;
-        
         margin-left: 0%
-        
-
-        
     }
     h1 {
         font-size: 30px;
         color: black;
     }
-
     a {
         font-size: 14px;
         margin: 20px 5px;
         margin-left: 10%;
         text-align: left;
     }
-
-    .pageContent > a:hover {
+    .pageContent>a:hover {
         text-decoration: underline 1px black !important;
     }
     hr {
-        color: rgba(0,0,0,0);
+        color: rgba(0, 0, 0, 0);
         border-bottom: 2px solid grey;
-        
     }
     p {
         background: #fff;
         border: 1px solid #ccc;
         border-radius: 3px;
         padding: 10px 20px;
-        position:relative;
+        position: relative;
         left: 10%;
         width: 80%;
         text-align: left;
         font-size: 16px;
         font-weight: 300;
     }
-    .imgContainer > img {
-
+    .imgContainer>img {
         width: 20%;
         min-width: 60px;
         /* animation: swing alternate ease-in-out infinite 2s; */
         padding: 20px;
     }
-
     .imgContainer {
-
         border-bottom: 1px solid #ccff00;
         box-shadow: 0 3px 60px rgba(0, 0, 0, .5), 0 3px 10px 6px rgb(100, 100, 100);
         padding: 0;
@@ -298,29 +292,18 @@ img {
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
-        
-
     }
-    .version {
-        font-size: 12px;
-        color: grey;
-    }
-
     #whatIsEvak {
         text-decoration: none;
         color: black;
         display: block;
         font-size: 20px;
         font-weight: 600;
-        
     }
     .whatIsEvak {
         display: block;
-        
-        
         transition: all 200ms;
     }
-
     #howItWorks {
         text-decoration: none;
         color: black;
@@ -341,8 +324,6 @@ img {
     }
     .whosItFor {
         display: block;
-        
-        
         transition: all 200ms;
     }
     #pricing {
@@ -354,11 +335,8 @@ img {
     }
     .pricing {
         display: block;
-        
-        
         transition: all 200ms;
     }
-    
     .btn1 {
         transition: all 200ms;
         text-align: center;
@@ -420,45 +398,35 @@ img {
         text-decoration: none;
         outline: none;
     }
-
     .btnContainer {
         display: block;
     }
     .btn1:hover, .btn2:hover, .btn3:hover {
         background: #aadd00;
         border: #3399ff 1px solid;
-        
     }
     .btn1:active, .btn2:active, .btn3:active {
         background: #3399ff;
         border: #ccff00 1px solid;
         color: white;
         transition: none;
-        
     }
-    
-
     .aszf {
         font-size: 12px;
         text-decoration: none;
         display: block;
     }
-    .aszf > #aszfLink {
+    .aszf>#aszfLink {
         color: blue;
         text-decoration: underline;
         cursor: pointer;
     }
-
-    
 }
 
 /***************************************************************
 ****************************************************************/
 
-@media screen and (min-width: 671px) { 
-
-
-    
+@media screen and (min-width: 671px) {
     /* DESKTOP STYLE */
     .loginOverlay, .regOverlay {
         z-index: 10;
@@ -467,26 +435,25 @@ img {
         width: 100vw;
         height: 100vh;
         overflow: hidden;
-        background: rgba(0,0,0,.6);
+        background: rgba(0, 0, 0, .6);
         transition: opacity 200ms ease-in-out;
         pointer-events: none;
         backdrop-filter: blur(8px);
-        
     }
     #cancelReg, #cancelLogin {
         display: none;
     }
-    .dialogError{
+    .dialogError {
         display: block;
-        background: rgba(255,0,0,.3);
+        background: rgba(255, 0, 0, .3);
         color: red;
         font-size: 14px;
         margin-bottom: 20px;
         padding: 20px 20px;
     }
-    .dialogConfirm{
+    .dialogConfirm {
         display: block;
-        background: rgba(0,255,0,.3);
+        background: rgba(0, 255, 0, .3);
         color: green;
         font-size: 14px;
         margin-bottom: 20px;
@@ -495,13 +462,11 @@ img {
     .hide {
         display: none;
     }
-    .loginbox > img {
+    .loginbox>img {
         width: 300px;
         margin: 10px;
-        
     }
-    .loginbox > div {
-        
+    .loginbox>div {
         display: inline-block;
         width: 70%;
         height: 60px;
@@ -510,8 +475,7 @@ img {
         border: 1px solid #bbb;
         border-radius: 10px;
     }
-
-    .loginbox > div > label {
+    .loginbox>div>label {
         display: block;
         font-size: 16px;
         position: relative;
@@ -524,7 +488,7 @@ img {
         border: 1px solid #bbb;
         border-radius: 5px;
     }
-    .loginbox > div > input {
+    .loginbox>div>input {
         width: 80%;
         border: 1px solid black;
         border-radius: 5px;
@@ -545,11 +509,7 @@ img {
         transform: translate(30vw, 5vh);
         box-shadow: rgba(0, 0, 0, .8) 0 0 30px 5px;
         border-radius: 5px;
-        
-
     }
-
-
     body {
         margin: 0;
         padding: 0;
@@ -559,67 +519,52 @@ img {
         font-family: 'Ubuntu', sans-serif;
         overflow: hidden;
         background: #eee;
-
-        
-        
-        
     }
-
     #mainWindow {
-        
         background: #eee;
         align-content: center;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
         height: 100vh;
         box-shadow: 0 3px 60px black, 0 3px 10px 6px black;
         margin-left: 0%
-        
-
-        
     }
     h1 {
         font-size: 30px;
         color: black;
     }
-
     a {
         font-size: 14px;
         margin: 20px 5px;
         margin-left: 10%;
         text-align: left;
     }
-
-    .pageContent > a:hover {
+    .pageContent>a:hover {
         text-decoration: underline 1px black !important;
     }
     hr {
-        color: rgba(0,0,0,0);
+        color: rgba(0, 0, 0, 0);
         border-bottom: 2px solid grey;
-        
     }
     p {
         background: #fff;
         border: 1px solid #ccc;
         border-radius: 3px;
         padding: 10px 20px;
-        position:relative;
+        position: relative;
         left: 10%;
         width: 80%;
         text-align: left;
         font-size: 16px;
         font-weight: 300;
     }
-    .imgContainer > img {
-
+    .imgContainer>img {
         width: 20%;
         min-width: 60px;
         /* animation: swing alternate ease-in-out infinite 2s; */
         padding: 20px;
     }
-
     .imgContainer {
-
         border-bottom: 1px solid #ccff00;
         box-shadow: 0 3px 60px rgba(0, 0, 0, .5), 0 3px 10px 6px rgb(100, 100, 100);
         padding: 0;
@@ -633,29 +578,28 @@ img {
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
-        
-
     }
     .version {
         font-size: 12px;
-        color: grey;
+        color: whitesmoke;
+        position: absolute;
+        display: inline-block;
+        vertical-align: middle;
+        align-content: center;
+        top: 18px;
+        left: 30px;
     }
-
     #whatIsEvak {
         text-decoration: none;
         color: black;
         display: block;
         font-size: 20px;
         font-weight: 600;
-        
     }
     .whatIsEvak {
         display: block;
-        
-        
         transition: all 200ms;
     }
-
     #howItWorks {
         text-decoration: none;
         color: black;
@@ -676,8 +620,6 @@ img {
     }
     .whosItFor {
         display: block;
-        
-        
         transition: all 200ms;
     }
     #pricing {
@@ -689,11 +631,8 @@ img {
     }
     .pricing {
         display: block;
-        
-        
         transition: all 200ms;
     }
-    
     .btn1 {
         transition: all 200ms;
         text-align: center;
@@ -755,49 +694,61 @@ img {
         text-decoration: none;
         outline: none;
     }
-
     .btnContainer {
         display: block;
     }
     .btn1:hover, .btn2:hover, .btn3:hover {
         background: #aadd00;
         border: #3399ff 1px solid;
-        
     }
     .btn1:active, .btn2:active, .btn3:active {
         background: #3399ff;
         border: #ccff00 1px solid;
         color: white;
         transition: none;
-        
     }
-    
-
     .aszf {
-        
         font-size: 12px;
         text-decoration: none;
         display: block;
     }
-    .aszf > #aszfLink {
+    .aszf>#aszfLink {
         color: blue;
         text-decoration: underline;
         cursor: pointer;
     }
-
     #userdetails {
-        font-weight: 600;
         color: white;
-        position: relative;
-        width: 300px;
-        display: inline-block;
-        text-align: right;
+        position: absolute;
+        width: auto;
+        display: inline;
+        text-align: center;
+        float: right;
+        top: 25%;
+        right: 150px;
     }
-        
+    #title {
+        color: white;
+        position: fixed;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        /* top: 10px; */
+        /* left: 50vw; */
+        text-align: center;
+    }
 }
+
 @keyframes swing {
-    
-    0% {transform: rotate(3deg) scale(1);}
-    100% {transform: rotate(-3deg) scale(1.1);}
-    
+    0% {
+        transform: rotate(3deg) scale(1);
+    }
+    100% {
+        transform: rotate(-3deg) scale(1.1);
+    }
 }
