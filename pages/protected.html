@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="evak_light.css">
     <link rel="stylesheet" href="protected.css">
+    <link rel="stylesheet" href="./resources/fontawesome-free-web/css/all.css">
+    <script defer src="./resources/fontawesome-free-web/js/all.js"></script>
     <title>EVAK - Egyszerűsített Villanyszerelő Árajánlat Kezelő rendszer</title>
 </head>
 
@@ -26,21 +28,27 @@
         </div>
 
     </div>
+    
     <div class="navbar">
         <img src="resources/EVAK01.png" id="navbar_logo" alt="EVAK main logo">
-        <a href="#" onclick="selectPage('home')" class="nav_button1 selected">Főoldal</a>
-        <a href="#" onclick="selectPage('chat')" class="nav_button1">Chat fal</a>
-        <a href="#" onclick="selectPage('quotes')" class="nav_button1">Árajánlatok kezelése</a>
-        <a href="#" onclick="selectPage('profile')" class="nav_button1">Felhasználói fiók</a>
-        <a href="#" onclick="selectPage('forum')" class="nav_button1">Elektro Forum</a>
-        <a href="#" onclick="selectPage('help')" class="nav_button1">Segítség</a>
-        <a href="#" onclick="selectPage('settings')" class="nav_button1">Beállítások</a>
-        <a href="#" onclick="selectPage('ismeretlen')" class="nav_button1">404 teszt</a>
-
+        <a href="#" onclick="selectPage('home')" class="nav_button1 selected"><i class="fas fa-arrow-circle-right nav_button1_arrow"></i>Főoldal</a>
+        <a href="#" onclick="selectPage('chat')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Chat fal</a>
+        <a href="#" onclick="selectPage('quotes/landing')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Árajánlatok kezelése</a>
+        <a href="#" onclick="selectPage('profile')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Felhasználói fiók</a>
+        <a href="#" onclick="selectPage('forum')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Elektro Forum</a>
+        <a href="#" onclick="selectPage('help')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Segítség</a>
+        <a href="#" onclick="selectPage('settings')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Beállítások</a>
+        <a href="#" onclick="selectPage('ismeretlen')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>404 teszt</a>
+        <div class="nav_indicator" id="navindicator">
+            <i class="fas fa-align-justify"></i>
+    
+        </div>
+        
+        
         <a href="/logout" id="logoutBtn" class="lgtbtn1">Kijelentkezés</a>
     </div>
     <div id="roller" class="roller-hide">
-
+        
         <div class="lds-roller">
             <div></div>
             <div></div>
@@ -51,9 +59,11 @@
             <div></div>
             <div></div>
         </div>
-
+        
     </div>
     <div id="mainframe">
+        
+        
 
         <div id="update">
             <!-- Dynamic -->

@@ -1,0 +1,661 @@
+<div id="quote_module">
+    <div id="loading" class="hide">
+        <img src="resources/spinner.gif" alt="loading_icon">
+    </div>
+
+    <div class="toolbar">
+        <div class="searchbar">
+            <span><i class="fas fa-search"></i></span>
+            <input type="text" name="" id="">
+        </div>
+    </div>
+    <table class="table_header">
+        <tbody>
+            <tr>
+                <td><span>Megrendelő</span></td>
+                <td><span>Létrehozás dátuma</span></td>
+                <td><span>Összesített anyagár</span></td>
+                <td><span>Összesített munkadíj</span></td>
+                <td><span>Lejárat dátuma</span></td>
+                <td><span>Státusz</span></td>
+                <td class="quote_actions_header"><span>Kezelés</span></td>
+
+            </tr>
+        </tbody>
+    </table>
+    <div id="quote_frame">
+        <!-- QUOTE CARD START -->
+        <div class="quote _HOVER_color_grey" id="quote_1">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="quote_name">Rafaelné Tóth Jolán</span>
+                        </td>
+                        <td><span class="quote_date">2019.01.21</span></td>
+                        <td><span class="quote_matprice">65.400Ft</span></td>
+                        <td><span class="quote_workprice">102.200Ft</span></td>
+                        <td><span class="quote_expiry">2019.02.21</span></td>
+                        <td><span class="quote_status">Jóváhagyásra vár</span></td>
+                        <td class="quote_actions">
+                            <a class="quote_action_btn color_blue _HOVER_border"><i class="fas fa-pen"></i></a>
+                            <a class="quote_action_btn color_red _HOVER_border"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- QUOTE CARD END-->
+
+        </div>
+        <!-- QUOTE DETAILS START -->
+        <div class="quote_details quote_hidden">
+            <span class="quote_id">Sorszám: AB0001</span>
+            <table class="quote_persons_details">
+                <tbody>
+                    <tr>
+                        <th>Adatok</th>
+                    </tr>
+                    <tr>
+                        <td>Megrendelő neve: Rafaelné Tóth Jólán
+                            <!-- <input type="text" value="Rafaelné Tóth Jólán" class="quote_client_name"></input> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Címe: <span>1234 Baktalófalva Putri u. 23</span>
+                            <!-- <input type="text" value="1234 Baktalófalva Putri u. 23"
+                        class="quote_client_name"></input> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Munka típusa: </span>
+                            <span>Új hálózat</span>
+                            <!-- <select name="contract_type">
+                        <option value="1">Új hálózat</option>
+                        <option value="2">Meglévő hálózat átalakítása</option>
+                        <option value="3">Meglévő hálózat felújítása</option>
+                        <option value="4">Meglévő hálózat bővítése</option>
+                        <option value="5">Meglévő hálózat bontása</option>
+                    </select> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+            <table class="workphases">
+                <tbody>
+                    <tr>
+                        <th>Munkafolyamatok</th>
+                        <th>Norma ár</th>
+                        <th>Mennyiség</th>
+                        <th>Mértékegység</th>
+                        <th>Összesített ár</th>
+                        <th>Norma szorzó</th>
+                    </tr>
+
+                    <tr id="workphase_1">
+
+                        <td><span>Horonymarás</span>
+                            <!-- <select name="" id="">
+                    <option value="none">Válasszon munkafolyamatot!</option>
+                    <option value="chasing">Horonymarás</option>
+                </select> -->
+                        </td>
+                        <td><span>500</span><!-- <input type="number" name="" id="" value="500"> -->Ft</td>
+                        <td><span>10</span><!-- <input type="number" name="" id="" value="10"> -->
+                        </td>
+                        <td><span>fm</span>
+                            <!-- <select name="" id="">
+                        <option value="fm">fm</option>
+                        <option value="db">db</option>
+                    </select> -->
+                        </td>
+                        <td>5000 <span>Ft</span></td>
+                        <td><span>1</span><!-- <input type="number" name="" id="" value="1" step=".1"> -->x</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <table class="quote_work_total">
+                <tbody>
+                    <tr>
+                        <th>Összesített munkadíj:</th>
+                        <th>5000 Ft</th>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="workphases">
+
+                <tbody>
+                    <tr>
+                        <th>Szükséges anyagok</th>
+                        <th>Egység ár</th>
+                        <th>Mennyiség</th>
+                        <th>Mértékegység</th>
+                        <th>Összesített ár</th>
+                        <th>Egység szorzó</th>
+                    </tr>
+
+                    <tr id="workphase_1">
+
+                        <td><span>Szerelvénydoboz 65mm</span>
+                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero fuga esse ducimus sit
+                                tempore praesentium, aperiam a accusantium, consequuntur quis tempora quae eum iste
+                                provident! Nemo adipisci provident consequatur rerum iste minus distinctio, qui est eius
+                                asperiores! Nemo, ut. Enim pariatur vero, repellendus qui corporis mollitia debitis
+                                tempora quaerat totam eum. Fugit facilis nemo corporis exercitationem illum optio iste
+                                recusandae, beatae eaque vel, saepe quibusdam id laudantium a quidem? Tempore reiciendis
+                                adipisci ut velit voluptatem blanditiis, eveniet odit dolore. Expedita tenetur dicta et
+                                accusamus voluptatem vitae? Quidem id cum fuga recusandae dolorum culpa quas delectus
+                                deserunt quae eligendi veritatis, distinctio tenetur porro. Atque, in. Tempore voluptas
+                                possimus mollitia nam rem molestiae doloribus asperiores nisi explicabo autem quos,
+                                repudiandae facere dolorem at magni rerum dolores praesentium eum necessitatibus a?
+                                Consectetur, suscipit laborum? Minus, repudiandae impedit laboriosam ex saepe quas
+                                quibusdam, aut corrupti pariatur molestias veniam commodi voluptatibus neque nostrum
+                                vero maxime totam! Fuga error eligendi ullam, iste illum quis provident quas excepturi
+                                nesciunt, dolorem delectus nobis voluptas recusandae adipisci debitis aliquam.
+                                Perspiciatis enim provident officia. Magnam amet nulla dignissimos et inventore,
+                                exercitationem natus consequatur voluptates, error aliquid officiis, eius voluptate
+                                consectetur harum numquam veniam distinctio eos recusandae tenetur quos. Nemo et
+                                voluptatem optio necessitatibus vero nesciunt pariatur consectetur, voluptatibus, dicta
+                                cupiditate aliquid dolorum qui, voluptatum quae adipisci. Natus accusantium vero, quasi
+                                provident ut non perspiciatis voluptatibus corrupti est odit nulla ad pariatur repellat
+                                laborum explicabo? Qui est atque quam nemo accusamus quibusdam at cumque corporis
+                                consequuntur quisquam debitis aut quis, quo pariatur excepturi dicta inventore
+                                repudiandae modi. Distinctio aliquam asperiores aperiam minima voluptatibus quaerat
+                                nihil dolorem impedit nobis error ea, consequatur, sunt accusamus perferendis quam,
+                                doloremque sed ut repudiandae rerum vitae! Ut sapiente voluptatem facilis asperiores
+                                reiciendis sed maiores repellat vel soluta dignissimos. Consequatur amet, repellendus
+                                repellat facere et eum maxime beatae labore dolore quis, sint adipisci iure blanditiis
+                                modi porro quia hic esse tempora? Voluptatibus est corrupti ab, atque modi laudantium
+                                minus architecto veritatis animi iusto, deleniti voluptatem cumque magnam eius unde
+                                voluptatum! Doloribus animi totam amet corrupti distinctio eaque facilis repellendus
+                                iste enim consequuntur, perferendis rerum consequatur, rem ipsum voluptatem nihil sed
+                                nostrum dicta! Soluta voluptate minima quia, officiis placeat, dicta dolorum dolores
+                                ipsum sequi fugiat sit ipsam, eaque provident sapiente. Ullam, in inventore! Eius
+                                corrupti, aliquam commodi illum quidem neque laborum aperiam repudiandae quibusdam eum
+                                ratione officia error animi? Cumque, harum? Doloremque facere quam molestiae quisquam
+                                nesciunt, ab soluta nobis nisi temporibus dignissimos quia assumenda ipsa placeat libero
+                                delectus repudiandae sapiente optio. Unde aliquid asperiores iste expedita odit
+                                doloremque voluptas ducimus, eligendi autem totam minima aperiam, ipsum neque. Nam ad
+                                distinctio nulla officia a similique sint, molestias iste sunt, eius nostrum sequi
+                                possimus officiis. Ipsam iste recusandae molestias debitis iusto, libero nemo non. Aut
+                                nemo ad deleniti magni officia magnam nisi suscipit, similique vitae maxime, ipsam,
+                                voluptas error! Reiciendis mollitia illum esse aspernatur consectetur architecto quidem
+                                nam reprehenderit voluptate culpa praesentium nihil expedita error eos commodi, laborum
+                                nemo deserunt cum similique tenetur. Similique numquam nam, eligendi tempora laborum
+                                suscipit ab error, voluptate omnis dignissimos odio corrupti quisquam possimus? Labore
+                                debitis nostrum voluptates illo saepe, enim nesciunt quod asperiores, eos ab accusantium
+                                ullam optio. Ipsam itaque eum minima, culpa in facilis perferendis placeat voluptatibus
+                                sequi deserunt cumque eaque unde adipisci omnis, ducimus consequuntur et veritatis
+                                distinctio quo sint suscipit porro quidem accusantium. Accusamus maxime ut laborum neque
+                                a hic odit vitae deleniti nobis voluptatibus et, iusto, sequi mollitia eveniet sunt,
+                                perspiciatis aliquid quis in libero eligendi quia ad cum quaerat. Saepe molestias
+                                assumenda voluptates magni inventore quibusdam doloribus dicta dolore? Sint perferendis
+                                laudantium hic quaerat debitis expedita, sed aliquid facere fuga sapiente repudiandae
+                                qui, a placeat quasi repellat. Dolor et aut, nemo minus velit, provident eum qui, optio
+                                magnam porro odit odio. Reiciendis doloremque voluptate obcaecati! Ut temporibus
+                                officiis nemo ad eveniet, ipsam inventore molestias minima sunt commodi? Vel placeat
+                                quis dolore, ullam perferendis nostrum sit, hic officia, velit expedita ad voluptas
+                                suscipit corrupti nemo quas quidem minus deserunt cum. Nesciunt illo quos rem? Assumenda
+                                adipisci perferendis harum ullam! Beatae laborum voluptatem assumenda voluptatum enim
+                                expedita ex aliquid vitae perspiciatis doloremque eum quos alias inventore libero iusto
+                                rem, odio fugit illo quae ea, veritatis molestias odit sequi? Autem, maiores sunt iste
+                                neque modi consequatur non vitae possimus, aliquam ipsum quos ipsam nam! Explicabo, in
+                                beatae voluptatem, amet numquam debitis, aut recusandae distinctio animi aperiam
+                                mollitia aliquam. Impedit iusto blanditiis ex eos corporis consequatur nostrum
+                                accusantium porro, vel officiis sequi natus tenetur. Veritatis modi in, perspiciatis
+                                aspernatur, harum reiciendis neque optio illum debitis cupiditate impedit eligendi,
+                                voluptas assumenda quaerat odit eos. Alias porro aliquam explicabo error delectus sed
+                                laudantium corporis fugiat adipisci voluptate. Illo praesentium fugiat quisquam cumque
+                                deserunt dignissimos accusamus inventore molestiae non. Libero cum voluptates quod
+                                temporibus commodi, nisi ratione maxime cupiditate tenetur voluptas eum sapiente
+                                accusantium laudantium laborum natus praesentium ipsa? Impedit, inventore autem mollitia
+                                exercitationem cupiditate repellat et! Sapiente hic corporis beatae unde. Facere, sunt
+                                iure molestiae necessitatibus culpa corrupti tenetur ipsum ex laborum optio quam minus?
+                                Officiis facilis corporis tempora quia blanditiis? Maiores, minima quis quasi quas
+                                temporibus sint, blanditiis dolorem ratione, architecto cum eveniet provident. Eveniet
+                                placeat temporibus at, aliquam quidem commodi porro dolor quod dicta ipsam ducimus rerum
+                                reiciendis laboriosam similique harum, inventore ex, nihil excepturi. Alias sint
+                                laboriosam quasi incidunt tempora natus ipsam perspiciatis, eligendi illum delectus nisi
+                                placeat omnis optio at! Rerum blanditiis tempora consectetur vero quia necessitatibus
+                                hic eveniet qui fugit et ipsum, vitae minima voluptatem repellat, assumenda accusamus
+                                cupiditate perferendis nam culpa error ipsam laborum voluptatum corrupti! Perferendis
+                                ipsa consequatur ipsum nam ullam saepe dolores quam laborum, eaque eveniet dignissimos
+                                libero exercitationem animi quos cupiditate velit quae cum tenetur itaque nostrum iure.
+                                Eveniet maiores labore consectetur placeat earum quia. Explicabo, in labore fugit itaque
+                                minus quam laborum odit animi quidem, ipsum soluta, natus cum. Excepturi maiores
+                                corrupti, magni error sunt voluptate explicabo, recusandae possimus facilis eius, esse
+                                hic. Perferendis, deserunt id iusto laborum, esse rem dicta pariatur soluta sed
+                                cupiditate impedit enim itaque praesentium consectetur culpa sint dolorum
+                                eveniet?</span>
+                            <!-- <select name="" id="">
+                    <option value="none">Válasszon munkafolyamatot!</option>
+                    <option value="chasing">Horonymarás</option>
+                </select> -->
+                        </td>
+                        <td><span>55</span><!-- <input type="number" name="" id="" value="500"> -->Ft</td>
+                        <td><span>10</span><!-- <input type="number" name="" id="" value="10"> -->
+                        </td>
+                        <td><span>db</span>
+                            <!-- <select name="" id="">
+                        <option value="fm">fm</option>
+                        <option value="db">db</option>
+                    </select> -->
+                        </td>
+                        <td>550 <span>Ft</span></td>
+                        <td><span>1</span><!-- <input type="number" name="" id="" value="1" step=".1"> -->x</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <table class="quote_work_total">
+                <tbody>
+                    <tr>
+                        <th>Összesített anyagköltség:</th>
+                        <th>550 Ft</th>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <div class="quote_edit_toolbar">
+                <!-- <a href="#" class="quote_edit_btn width_250 align_left color_blue _HOVER_border"><i class="fas fa-plus-circle"></i>Munkafolyamat hozzáadása</a>
+        <a href="#" class="quote_edit_btn color_blue _HOVER_border">Mentés</a>
+        <a href="#" class="quote_edit_btn color_red _HOVER_border">Mégsem</a> -->
+
+
+            </div>
+
+            <table class="quote_summary">
+                <tbody>
+                    <tr>
+                        <th>Teljes végösszeg</th>
+                        <th>Kedvezmény %</th>
+                        <th>Kedvezmény összeg</th>
+                        <th>Nettó összeg</th>
+                        <th>ÁFA %</th>
+                        <th>ÁFA összeg</th>
+                        <th>Bruttó végösszeg</th>
+                    </tr>
+                    <tr>
+                        <th>23.000 Ft</th>
+                        <th>10%</th>
+                        <th>2300 Ft</th>
+                        <th>21.700 Ft</th>
+                        <th>27%</th>
+                        <th>6500 Ft</th>
+                        <th>28.200 Ft</th>
+                    </tr>
+                    <tr>
+
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <a href="#" id="closebtn_1" class="color_blue _HOVER_border closebtn">Bezárás</a>
+                            <a href="#" id="edit_1" class="color_blue _HOVER_border closebtn">Szerkesztés</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <!-- QUOTE DETAILS END -->
+    <style>
+        .show {
+            display: block !important;
+        }
+
+        .hide {
+            display: none !important;
+        }
+
+        #loading {
+            display: block;
+            position: absolute;
+            background: rgba(0, 0, 0, .8);
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+        }
+
+        #loading>img {
+            display: block;
+            position: absolute;
+            width: 64px;
+            margin: 0 auto;
+            top: calc(50% - 32px);
+            left: calc(50% - 32px);
+        }
+
+        .quote>table {
+            pointer-events: none;
+        }
+
+        #quote_frame {
+            overflow: hidden;
+        }
+
+        .closebtn {
+            display: table;
+            margin: 10px auto;
+            padding: 10px auto;
+            text-decoration: none;
+            cursor: pointer;
+            color: white;
+            width: 300px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+        .searchbar {
+            border-radius: 5px;
+            padding: 2px;
+            background: #fff;
+            display: flex;
+            float: left;
+            color: #333;
+            text-align: left;
+            left: 0;
+            width: 300px;
+        }
+
+        .searchbar>input {
+            font-size: 15px;
+            border: none;
+            outline: none;
+            margin-left: 10px;
+        }
+
+        .searchbar>span {
+            margin-left: 20px;
+        }
+
+        .quote_summary {
+            display: table;
+            position: sticky;
+            bottom: -20px;
+            width: 100%;
+            padding: 0 20px;
+            height: 60px;
+            margin: 0 auto;
+            left: 0px;
+            background: #ddd;
+            font-size: 18px;
+            border-collapse: collapse;
+        }
+
+        .quote_summary>tbody>tr>th {
+            border: 1px solid #aaa;
+            padding: 5px;
+
+        }
+
+        .quote_work_total {
+            display: flex;
+            float: left;
+            font-size: 18px;
+            margin: 30px 20px 30px 0;
+            background: rgba(0, 0, 0, .15);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .quote_id {
+            display: block;
+            float: right;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fa-plus-circle {
+            margin-right: 10px;
+        }
+
+        .align_left {
+            float: left !important;
+            left: 10px;
+            justify-content: left;
+        }
+
+        .width_250 {
+            width: 250px !important;
+        }
+
+        .quote_close_btn {
+            position: fixed;
+            display: block;
+            float: right;
+            color: white;
+            right: 10px;
+            bottom: 50px;
+            font-size: 20px;
+            border-radius: 5px;
+            text-align: center;
+            padding: 2px;
+            width: 20px;
+
+
+        }
+
+        .quote_edit_toolbar {
+
+            width: 100%;
+            margin: 50px auto 60px auto;
+            top: 0px;
+            position: fixed;
+        }
+
+        .quote_edit_btn {
+            display: block;
+            position: relative;
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            padding: 10px 10px;
+            font-weight: 600;
+            border-radius: 5px;
+            width: 100px;
+            height: auto;
+            float: right;
+            right: 15px;
+            text-align: center;
+        }
+
+        .workphases {
+            margin: 0 auto;
+            width: 100%;
+            text-align: left;
+        }
+
+        .quote_persons_details {
+            margin: 0 auto;
+
+            width: 100%;
+        }
+
+        .quote_hidden {
+            overflow: hidden !important;
+            pointer-events: none !important;
+            user-select: none !important;
+            transform: scale(0) !important;
+            opacity: 0 !important;
+            padding: 0 10px !important;
+        }
+
+        .quote_details {
+            opacity: 1;
+
+            display: block;
+            transform-origin: top;
+            text-align: left;
+            position: absolute;
+            background: #fff;
+            overflow-x: hidden;
+            overflow-y: auto;
+            margin: 30px 30px;
+            height: 85%;
+            max-height: 85%;
+            padding: 20px 10px;
+            top: 0 !important;
+            left: 0 !important;
+            z-index: 200;
+            box-shadow: 0 0 40px 10px rgba(0, 0, 0, .8);
+        }
+
+
+
+        .quote_details>table>tbody>tr>td,
+        th :not(.quote_work_total) {
+            border: 1px solid #aaa;
+            padding: 5px;
+        }
+
+        .quote_details>table {
+            border-collapse: collapse;
+
+        }
+
+        .quote_status {
+            background: orange;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .quote_actions>a>i {
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .color_blue {
+            background: #37d;
+        }
+
+        .color_red {
+            background: #c22;
+        }
+
+        .color_green {
+            background: #8b5;
+        }
+
+        .width_100_percent {
+            width: 100% !important;
+        }
+
+        .quote_action_btn {
+            pointer-events: auto;
+            cursor: pointer;
+            user-select: none;
+            margin: 5px;
+
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 10%;
+
+        }
+
+        .quote_action_btn:hover {}
+
+        ._HOVER_border:hover {
+            box-shadow: #fff 0px 0px 0px 2px, black 0px 0px 2px 3px;
+        }
+
+        ._HOVER_color_grey:hover {
+            background-color: #ddd;
+        }
+
+        td:not(.quote_actions .quote_actions_header) {
+            width: calc(100% / 7);
+        }
+
+        .quote_actions {
+            width: 60px;
+        }
+
+        .toolbar {
+
+            width: calc(100% - 20px);
+            position: sticky;
+            text-align: center;
+            display: inline-block;
+            background: #333;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            z-index: 99;
+        }
+
+        .toolbar>button {
+            background: green;
+            display: inline-block;
+            width: 100px;
+            margin: 0 20px;
+            border-radius: 5px;
+            border-bottom: 1px solid black;
+        }
+
+        .table_header {
+            position: sticky;
+            top: 40px;
+            text-align: center;
+            margin: 0 auto;
+            width: calc(100% - 20px);
+            background: #ddd;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 0;
+            z-index: 99;
+
+
+        }
+
+        .quote>table {
+            text-align: center;
+            margin: 0 auto;
+            width: 100%;
+
+        }
+
+        .quote {
+            transition: all 100ms ease;
+            font-size: 14px;
+            font-weight: 500;
+            background: white;
+            border-radius: 0;
+            margin: 2px 10px;
+            padding: 15px 0;
+            display: block;
+            user-select: none;
+
+        }
+
+        #quote_module {
+            max-height: 85vh;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            overflow-y: auto;
+            scrollbar-width: 50px;
+            background: #333;
+            margin-top: 30px;
+            box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
+            border-radius: 10px;
+
+        }
+    </style>
+</div>
+<script>modules / quotes.js</script>

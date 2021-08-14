@@ -8,13 +8,24 @@ span.setAttribute("id", "usernameField")
 let navbarMenu = document.querySelector(".navbar")
 let mainFrame = document.querySelector("#mainframe")
 let logoutBtn = document.querySelector("#logoutBtn")
-
-var getCookie = (name) =>
-  {
+let indicator = document.querySelector("#navindicator")
+var getCookie = (name) => {
     let re = new RegExp(name + "=([^;]+)");
     let value = re.exec(document.cookie);
     return (value != null) ? unescape(value[1]) : null;
-  }
+}
+
+var rollerDiv = document.createElement("div")
+var container = document.createElement("div")
+var rollerImg = document.createElement("img")
+container.setAttribute("class", "container")
+rollerImg.src = "resources/spinner04.gif"
+rollerImg.alt = "evak_roller_img"
+rollerDiv.setAttribute("id", "rollerDiv")
+container.appendChild(rollerImg)
+/* container.appendChild(loadingText) */
+rollerDiv.appendChild(container)
+
 
 var getUserDetails = async () => {
     let span = document.createElement("span")
@@ -31,13 +42,13 @@ var getUserDetails = async () => {
 getUserDetails()
 
 logoutBtn.addEventListener("click", (e) => {
-    document.cookie = "username=" + getCookie("username") + "=; Max-Age=-999;"
+    document.cookie = "username=" + getCookie("username") + "=; Max-Age=-9999;"
 
 })
 
 
 var selectPage = async (string) => {
-    setRoller(true)
+    setRoller(dom, true)
 
     await fetch(`/content/${string}`).then(Response => {
 
@@ -56,12 +67,12 @@ var selectPage = async (string) => {
             changeContent("Nincs tartalom...")
             console.log("Nincs tartalom")
         }
-        setRoller(false)
+        setRoller(dom, false)
     }).catch(err => {
         console.log(err)
 
         changeContent("Hiba az adatok lekérdezésében")
-        setRoller(false)
+        setRoller(dom, false)
     })
 
 
@@ -97,7 +108,9 @@ var changeContent = (content) => {
         let newScript = document.createElement("script")
 
         newScript.id = "injected"
-        newScript.src = scriptTag.innerHTML
+
+        let trimmedLoc = scriptTag.innerHTML.replace(/\s/g, '')
+        newScript.src = trimmedLoc
         newScript.setAttribute("version", genRandomNumber(10))
         document.body.appendChild(newScript)
     }
@@ -107,15 +120,24 @@ var changeContent = (content) => {
 
 
 var rollerTimeout;
-var setRoller = (bool) => {
+var setRoller = (parent, bool) => {
     if (bool) {
         rollerTimeout = setTimeout(function () {
-            roller.setAttribute("class", "roller-show")
-        }, 400)
+            parent.appendChild(rollerDiv)
+        }, 500)
     }
     else {
+
         clearTimeout(rollerTimeout)
-        roller.setAttribute("class", "roller-hide")
+
+        /* roller.setAttribute("class", "roller-hide") */
+        if (parent.children.toString().includes(rollerDiv)) {
+            parent.removeChild(rollerDiv)
+
+        }
+
+
+
         return
     }
 }
@@ -123,9 +145,12 @@ var setRoller = (bool) => {
 navbarMenu.addEventListener("mouseenter", () => {
     navbarMenu.classList.toggle("shownav")
     mainFrame.classList.toggle("shrinkmainframe")
+    indicator.classList.toggle("hideIndicator")
 })
 
 navbarMenu.addEventListener("mouseleave", () => {
     navbarMenu.classList.remove("shownav")
     mainFrame.classList.remove("shrinkmainframe")
+    indicator.classList.remove("hideIndicator")
+
 })

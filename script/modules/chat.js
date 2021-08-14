@@ -22,8 +22,8 @@ submit.addEventListener("click", (e) => {
     if (!input.value.trim().length) {
         return
     }
-    if (input.value.trim().length > 150) {
-        alert("Maximum 150 karakter engedélyezett.")
+    if (input.value.trim().length > 500) {
+        alert("Maximum 500 karakter engedélyezett.")
         return;
     }
     sendMessage(input.value.trim(), e)
@@ -38,7 +38,8 @@ var sendMessage = async (message) => {
         method: "POST",
         body: JSON.stringify({ "message": messageToSend }),
         headers: {
-            "Content-Type": "Application/Json"
+            "Content-Type": "Application/Json",
+            "Cache-Control": "no-cache"
         }
     }).then(
         data => data
@@ -48,6 +49,27 @@ var sendMessage = async (message) => {
         })
 }
 
+var swapEmoji = (input) => {
+    input = input.replace(":)", "🙂")
+    input = input.replace(":D", "😃")
+    input = input.replace(":|", "😐")
+    input = input.replace(":(", "☹️")
+    input = input.replace(":'D", "😂")
+    input = input.replace("XD", "🤣")
+    input = input.replace(":P", "😜")
+    input = input.replace(":'('", "😢")
+    input = input.replace(":O", "😲")
+    input = input.replace(":@", "🤬")
+    input = input.replace(":*", "😙")
+    input = input.replace("B-)", "😎")
+    input = input.replace(":$", "🤢")
+    input = input.replace("<3", "❤️")
+    return input
+}
+
+input.addEventListener("keyup", () => {
+    input.value = swapEmoji(input.value)
+})
 /* var genRandomUser = (length) => {
     let string = ""
         let abc = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
@@ -71,6 +93,7 @@ var sendMessage = async (message) => {
 var insertMessage = (json) => {
 
     let messageDiv = document.createElement("div")
+    messageDiv.setAttribute("id", "message" + (chatWindow.children.length + 1))
     let time = document.createElement("span")
     let user = document.createElement("span")
     let message = document.createElement("span")
@@ -78,25 +101,28 @@ var insertMessage = (json) => {
     time.setAttribute("class", "time")
     user.innerHTML = json.username
     message.innerHTML = json.message
-    
+
     message.setAttribute("class", "message")
     user.addEventListener("click", (e) => {
         let highlight = e.target.innerHTML
-        input.value += " " + highlight + " "
+        input.value += "@" + highlight + " "
         input.focus()
     })
-    if (message.innerHTML.trim().toLowerCase().includes(getCookie("username"))) {
+    if (message.innerHTML.trim().toLowerCase().includes("@" + getCookie("username"))) {
         messageDiv.classList.toggle("ownmessage")
     }
-
 
     user.setAttribute("style", `color: rgb(${json.colour.R}, ${json.colour.G}, ${json.colour.B})`)
     user.setAttribute("class", "user")
     messageDiv.appendChild(time)
     messageDiv.appendChild(user)
     messageDiv.appendChild(message)
-
     /* chatWindow.appendChild(messageDiv) */
+    if (chatWindow.childNodes.length >= 5) {
+        for (let i = 100; i < chatWindow.childNodes.length - 1; i++) {
+            chatWindow.removeChild(chatWindow.children[i])
+        }
+    }
     chatWindow.insertBefore(messageDiv, chatWindow.firstChild)
 }
 
@@ -107,25 +133,23 @@ var loopChatRefresh = async () => {
         data => data.json()
     ).then(
         (json) => {
+            if (json.length) {
+                if (JSON.stringify(json[0]) != JSON.stringify(messages[messages.length - 1])) {
+                    if (!messages.length) {
+                        for (let i = 0; i < json.length; i++) {
+                            messages.unshift(json[i])
 
-            if (json) {
-                if (!messages.length) {
-
-
-                    for (let i = 0; i < json.length; i++) {
-                        insertMessage(json[i])
-
+                        }
+                        for (let i = 0; i < messages.length; i++) {
+                            insertMessage(messages[i])
+                        }
+                        return
                     }
-                    for (let i = 0; i < json.length; i++) {
-                        messages.push(json[i])
-                    }
-
-                }
-                if (messages.length != json.length) {
-                    if (messages[messages.length - 1] != json[json.length - 1]) {
-                        let lastEntry = json[json.length - 1]
-                        messages.push(lastEntry)
+                    let lastEntry = json[0]
+                    if (lastEntry != messages[0]) {
                         insertMessage(lastEntry)
+                        messages.push(lastEntry)
+
 
                     }
                 }
