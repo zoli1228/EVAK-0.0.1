@@ -13,11 +13,11 @@
     <title>EVAK - Egyszerűsített Villanyszerelő Árajánlat Kezelő rendszer</title>
 </head>
 
-<body onload="selectPage('home')">
+<body onload="selectPage('admin/dbactions')">
 
     <div class="header">
         <div class="version">
-            <span>Verzió: 0.1.0 alpha</span>
+            <span>Verzió: 0.3.1 alpha</span>
 
         </div>
         <div id="title">
@@ -31,13 +31,13 @@
     
     <div class="navbar">
         <img src="resources/EVAK01.png" id="navbar_logo" alt="EVAK main logo">
-        <a href="#" onclick="selectPage('home')" class="nav_button1 selected"><i class="fas fa-arrow-circle-right nav_button1_arrow"></i>Főoldal</a>
-        <a href="#" onclick="selectPage('chat')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Chat fal</a>
-        <a href="#" onclick="selectPage('quotes/landing')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Árajánlatok kezelése</a>
-        <a href="#" onclick="selectPage('profile')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Felhasználói fiók</a>
-        <a href="#" onclick="selectPage('forum')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Elektro Forum</a>
-        <a href="#" onclick="selectPage('help')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Segítség</a>
-        <a href="#" onclick="selectPage('settings')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Beállítások</a>
+        <a href="#" onclick="selectPage('content/home')" class="nav_button1 selected"><i class="fas fa-arrow-circle-right nav_button1_arrow"></i>Főoldal</a>
+        <a href="#" onclick="selectPage('content/chat/landing')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Chat fal</a>
+        <a href="#" onclick="selectPage('content/quotes/landing')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Árajánlatok kezelése</a>
+        <a href="#" onclick="selectPage('content/profile')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Felhasználói fiók</a>
+        <a href="#" onclick="selectPage('content/forum')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Elektro Forum</a>
+        <a href="#" onclick="selectPage('content/help')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Segítség</a>
+        <a href="#" onclick="selectPage('content/settings')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Beállítások</a>
         <a href="#" onclick="selectPage('ismeretlen')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>404 teszt</a>
         <div class="nav_indicator" id="navindicator">
             <i class="fas fa-align-justify"></i>
@@ -47,20 +47,7 @@
         
         <a href="/logout" id="logoutBtn" class="lgtbtn1">Kijelentkezés</a>
     </div>
-    <div id="roller" class="roller-hide">
-        
-        <div class="lds-roller">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        
-    </div>
+
     <div id="mainframe">
         
         
@@ -69,6 +56,7 @@
             <!-- Dynamic -->
         </div>
     </div>
+    <script src="spinner.js"></script>
     <script src="protected.js"></script>
     <script src="navbarhighlight.js"></script>
 </body>

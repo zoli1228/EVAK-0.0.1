@@ -9,6 +9,7 @@ let navbarMenu = document.querySelector(".navbar")
 let mainFrame = document.querySelector("#mainframe")
 let logoutBtn = document.querySelector("#logoutBtn")
 let indicator = document.querySelector("#navindicator")
+let rollerDelay = 500
 var getCookie = (name) => {
     let re = new RegExp(name + "=([^;]+)");
     let value = re.exec(document.cookie);
@@ -36,6 +37,13 @@ var getUserDetails = async () => {
                 span.setAttribute("style", "color: #cf0;")
                 userDetails.appendChild(span)
             }
+            if (data.role) {
+                if (data.role == "admin") {
+                    let parser = new DOMParser()
+                    let elem = parser.parseFromString(data.adminmenu, "text/html")
+                    navbarMenu.insertBefore(elem.body.firstChild, navbarMenu.querySelector("a"))
+                }
+            }
         }).catch((err) => { console.log("Hiba az adatok lekérdezésében" + err) })
 
 }
@@ -48,18 +56,18 @@ logoutBtn.addEventListener("click", (e) => {
 
 
 var selectPage = async (string) => {
-    setRoller(dom, true)
-
-    await fetch(`/content/${string}`).then(Response => {
+    await fetch(`/${string}`).then(Response => {
 
         if (Response.status == 404) {
             return "404 - A keresett oldal nem található."
         }
-        else if (Response.status == 200) {
-
+        else if (Response.status == 401) {
+           return 401
+        } else if(Response.status == 200) {
             return Response.json()
         }
     }).then(function (input) {
+        input == 401 ? window.location.href = "/" : null
         if (input) {
             changeHeader(input.data.header)
             changeContent(input.template)
@@ -69,9 +77,8 @@ var selectPage = async (string) => {
         }
         setRoller(dom, false)
     }).catch(err => {
-        console.log(err)
 
-        changeContent("Hiba az adatok lekérdezésében")
+        changeContent("Hiba az adatok lekérdezésében:  " + err)
         setRoller(dom, false)
     })
 
@@ -124,7 +131,7 @@ var setRoller = (parent, bool) => {
     if (bool) {
         rollerTimeout = setTimeout(function () {
             parent.appendChild(rollerDiv)
-        }, 500)
+        }, rollerDelay)
     }
     else {
 

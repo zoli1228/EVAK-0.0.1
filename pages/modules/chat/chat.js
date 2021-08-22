@@ -4,12 +4,7 @@ var chatWindow = document.querySelector("#chatwindow")
 var rules = document.querySelector(".rules")
 var input = document.querySelector("#message")
 var submit = document.querySelector("#send")
-var proceedBtn = document.querySelector("#proceed")
 
-proceedBtn.addEventListener("click", () => {
-    rules.classList.add("nodisplay")
-    mainChatFrame.classList.remove("nodisplay")
-})
 
 var getCookie = (name) => {
     let re = new RegExp(name + "=([^;]+)");
@@ -128,36 +123,46 @@ var insertMessage = (json) => {
 
 var messages = []
 
+
+
 var loopChatRefresh = async () => {
-    await fetch("/chat/messages").then(
-        data => data.json()
-    ).then(
-        (json) => {
-            if (json.length) {
-                if (JSON.stringify(json[0]) != JSON.stringify(messages[messages.length - 1])) {
-                    if (!messages.length) {
-                        for (let i = 0; i < json.length; i++) {
-                            messages.unshift(json[i])
+    isActive = document.querySelector("#injected")?.src.includes("chat")
+    if(isActive) {
 
+        await fetch("/chat/messages").then(
+            data => data.json()
+        ).then(
+            (json) => {
+                if (json.length) {
+                    if (JSON.stringify(json[0]) != JSON.stringify(messages[messages.length - 1])) {
+                        if (!messages.length) {
+                            for (let i = 0; i < json.length; i++) {
+                                messages.unshift(json[i])
+    
+                            }
+                            for (let i = 0; i < messages.length; i++) {
+                                insertMessage(messages[i])
+                            }
+                            return
                         }
-                        for (let i = 0; i < messages.length; i++) {
-                            insertMessage(messages[i])
+                        let lastEntry = json[0]
+                        if (lastEntry != messages[0]) {
+                            insertMessage(lastEntry)
+                            messages.push(lastEntry)
+    
+    
                         }
-                        return
-                    }
-                    let lastEntry = json[0]
-                    if (lastEntry != messages[0]) {
-                        insertMessage(lastEntry)
-                        messages.push(lastEntry)
-
-
                     }
                 }
             }
-        }
-    ).catch((err) => {
-        console.error(err)
-    })
+        ).catch((err) => {
+            console.error(err)
+        })
+    }
 }
 
 setInterval(loopChatRefresh, 1000)
+
+
+
+

@@ -1,0 +1,94 @@
+<div id="module">
+    <div class="rules">
+        <h2>Chat szabályzat</h2>
+        <h4>Ha csatlakozol a beszélgetéshez, azzal elfogadod az alábbi szabályokat:</h4>
+        <ul>
+            <li><span>Trágár szavak használata csak MÉRSÉKELTEN</span></li>
+            <li><span>Mások rágalmazása, szóbeli bántalmazása szigorúan tilos. Figyelmeztetés, illetve többszörös
+                    figyelmeztetés
+                    után a chatfalról és a fórumról való kitiltás a következménye.</span></li>
+            <li><span>Mások személyi jogait sértő tartalom közzététele szigorúan tilos. Jogi következményekkel is
+                    járhat.</span></li>
+            <li><span>A chat fal elárasztása (spam) figyelmeztetést, illetve a chat falról való kitiltást
+                    eredményezhet.</span></li>
+        </ul>
+        <a href="#" id="proceed" onclick="selectPage('content/chat/chat')">Továbblépek a beszélgetéshez.</a>
+    </div>
+
+    <style>
+
+        .rules>a {
+            width: 300px;
+            color: black;
+            transition: all 200ms;
+            display: inline-block;
+            position: absolute;
+            padding: 10px 0;
+            left: 0;
+            background: #cf0;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 2px solid rgba(0, 0, 0, .3);
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, .3)
+        }
+
+
+        ul {
+            text-align: left;
+        }
+
+        ul>li {
+            margin: 10px 0;
+        }
+
+        .nodisplay {
+            display: none;
+        }
+
+        #module {
+            margin-top: 30px;
+            box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
+            border: 1px solid rgba(0, 0, 0, .3);
+            border-radius: 10px;
+            text-align: center;
+            overflow: auto;
+            width: 100%;
+        }
+
+        #module>#main {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+            margin-top: 50px;
+            position: absolute;
+            text-align: left;
+            padding: 0 40px;
+            width: 90%;
+            min-height: 70vh;
+            max-height: 70vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, .1);
+            border: 1px solid rgba(0, 0, 0, .3)
+        }
+
+        #module>#main::-webkit-scrollbar {
+            display: none;
+        }
+
+        #module>#main>span {
+            display: block;
+            position: static;
+            bottom: 0;
+        }
+
+    </style>
+</div>
+<script></script>

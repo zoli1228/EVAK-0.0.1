@@ -532,7 +532,7 @@ img {
         overflow: hidden;
         background: #eee;
     }
-    #mainWindow {
+    #_OFF_mainWindow {
         background: #eee;
         align-content: center;
         overflow: auto;
@@ -756,6 +756,7 @@ img {
         /* left: 50vw; */
         text-align: center;
     }
+
 }
 
 @keyframes swing {

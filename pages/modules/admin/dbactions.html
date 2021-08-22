@@ -1,0 +1,133 @@
+<div id="module">
+    <a href="" id="module_back_button"><i class="fas fa-arrow-circle-left"></i></a>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <span>
+                        Munkafolyamat                        
+                    </span>
+                </th>
+                <th>
+                    <span>
+                        Norma ár
+                    </span>
+                </th>
+                <th>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" id="work_title">
+                </th>
+                <th>
+                    <input type="number" id="work_price" step="50">Ft
+                </th>
+                <th>
+                    <div class="btn_container">
+                        <a href="" class="action_btn color_blue width_100" id="work_add"><i class="fas fa-plus-circle"></i></a>
+
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="workflowtable">
+            <!-- injected -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <span>Munkafolyamatok száma: </span>
+                    <span id="work_counter"></span>
+                    <span>db</span>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <style scoped>
+        
+
+        thead > tr {
+            margin: 0;
+            background: #ccc;
+        }
+
+        .btn_container {
+            text-align: center;
+            width: 100px;
+            margin: 5px auto;
+            align-content: center;
+            justify-content: center;
+            vertical-align: middle;
+            text-indent: 0;
+            overflow: hidden;
+            padding: 0;
+            height: 30px;
+            border-radius: 10px;
+        }
+
+        .action_btn {
+            display: inline-block;
+            position: relative;
+            padding: 0;
+            margin: 0;
+            color: white;
+            text-align: center;
+            text-indent: 0;
+            width: 50%;
+            height: 100%;
+            font-size: 16px;
+            line-height: 30px;
+        }
+
+        .list_row {
+            font-weight: 400;
+            font-size: 16px;
+            text-align: left;
+            padding: 5px;
+
+            
+        }
+        
+        table {
+            text-indent: 50px;
+            margin-top: 50px;
+            border-collapse: collapse;
+            
+            display: table;
+            width: 100%;
+            overflow: auto;
+            
+
+        }
+        tr {
+            
+            background: #eee;
+            border: 1px solid rgba(0, 0, 0, .2);
+        }
+        td {
+            padding: 5px;
+        }
+        th > input {
+            
+            width: 300px;
+            line-height: 30px;
+        }
+
+        #work_price {
+            width: 100px;
+        }
+        th {
+            border: 1px solid rgba(0, 0, 0, .3);
+            text-align: left;
+            text-indent: 50px;
+            margin: 0 auto;
+        }
+
+        .width_100 {
+            width: 100%;
+        }
+        
+    </style>
+</div>
+<script>admin/dbactions.js</script>

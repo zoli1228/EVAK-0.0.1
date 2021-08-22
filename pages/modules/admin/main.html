@@ -1,0 +1,134 @@
+<div id="module">
+    
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="4">
+                        <h1>Adminisztrátor kezelőpult</h1>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="card _HOVER_SCALE" id="db_button">
+                            <div>
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <span>Munkafolyamat adatbázis kezelése</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="card _HOVER_SCALE" id="users_button">
+                            <div>
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <span>Felhasználók kezelése</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="card _HOVER_SCALE" id="chat_button">
+                            <div>
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <span>Chat kezelése</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="card _HOVER_SCALE" id="forum_button">
+                            <div>
+                                <i class="fab fa-wpforms"></i>                                
+                            </div>
+                            <span>Fórum kezelése</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"></td>
+                    <td>
+                        <div class="card cf0bg _HOVER_BORDER" id="logout_button">
+                            <div>
+                                <i class="fas fa-sign-out-alt"></i>                                
+                            </div>
+                            <span>Kijelentkezés az admin kezelőpultból</span>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    <style scoped>
+        table {
+            display: table;
+            margin: 0 auto;
+            vertical-align: middle;
+            height: 100%;
+            border-spacing: 30px;
+
+        }
+        .card {
+            cursor: pointer;
+            width: 200px;
+            min-width: 150px;
+            height: 200px;
+            text-align: center;
+            transition: background-color 100ms;
+            display: table-cell;
+            vertical-align: middle;
+            border-radius: 25px;
+            text-decoration: none;
+            color: black;
+            background: #eee;
+            padding: 10px;
+            transition: all 100ms ease;
+            transform-origin: center;
+            box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, .6)
+        }
+        .card > div {
+            user-select: none;
+            margin: auto 0;
+            font-size: 100px;
+            text-decoration: none;
+            color: #333;
+        }
+        .card > span {
+            user-select: none;
+            margin: auto 0;
+            font-size: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .msgerror {
+            background: rgba(255, 0, 0, .3);
+            color: red;
+        }
+
+        .msgsuccess {
+            background: rgba(0, 255, 0, .3);
+            color: green;
+        }
+
+        .button1 {
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            padding: 10px 30px;
+            color: black;
+            font-weight: 600;
+            text-decoration: none;
+            background: #cf0;
+            border-radius: 25px;
+            border: 1px solid black;
+            transition: box-shadow 100ms ease;
+
+        }
+
+        .cf0bg {
+            background: #cf0;
+        }
+        
+    </style>
+</div>
+<script>admin/main.js</script>
