@@ -1,7 +1,5 @@
 <div id="quote_module">
-    <div id="loading" class="hide">
-        <img src="resources/spinner.gif" alt="loading_icon">
-    </div>
+    
 
     <div class="toolbar">
         <div class="searchbar">
@@ -14,8 +12,7 @@
             <tr>
                 <td><span>Megrendelő</span></td>
                 <td><span>Létrehozás dátuma</span></td>
-                <td><span>Összesített anyagár</span></td>
-                <td><span>Összesített munkadíj</span></td>
+                <td><span>Bruttó költség</span></td>
                 <td><span>Lejárat dátuma</span></td>
                 <td><span>Státusz</span></td>
                 <td class="quote_actions_header"><span>Kezelés</span></td>
@@ -29,16 +26,12 @@
             <table>
                 <tbody>
                     <tr>
+                        <td>Rafaelné Tóth Jolán</td>
+                        <td>2019.01.21</td>
+                        <td>28.200 Ft</td>
+                        <td>2019.02.21</td>
+                        <td>Jóváhagyásra vár</span></td>
                         <td>
-                            <span class="quote_name">Rafaelné Tóth Jolán</span>
-                        </td>
-                        <td><span class="quote_date">2019.01.21</span></td>
-                        <td><span class="quote_matprice">65.400Ft</span></td>
-                        <td><span class="quote_workprice">102.200Ft</span></td>
-                        <td><span class="quote_expiry">2019.02.21</span></td>
-                        <td><span class="quote_status">Jóváhagyásra vár</span></td>
-                        <td class="quote_actions">
-                            <a class="quote_action_btn color_blue _HOVER_border"><i class="fas fa-pen"></i></a>
                             <a class="quote_action_btn color_red _HOVER_border"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
@@ -50,6 +43,9 @@
         </div>
         <!-- QUOTE DETAILS START -->
         <div class="quote_details quote_hidden">
+            <div id="loading" class="hide">
+                <img src="resources/spinner02.gif" alt="loading_icon">
+            </div>
             <span class="quote_id">Sorszám: AB0001</span>
             <table class="quote_persons_details">
                 <tbody>
@@ -87,189 +83,68 @@
             <table class="workphases">
                 <tbody>
                     <tr>
-                        <th>Munkafolyamatok</th>
-                        <th>Norma ár</th>
-                        <th>Mennyiség</th>
-                        <th>Mértékegység</th>
-                        <th>Összesített ár</th>
-                        <th>Norma szorzó</th>
+                        <th colspan="1" class="darkbg">Tétel</th>
+                        <th colspan="4" class="darkbg">Egységre jutó</th>
+                        <th colspan="3" class="darkbg">Összesített</th>
+                        <th class="darkbg">Norma szorzó</th>
+                    </tr>
+                    <tr>
+                        <th class="darkbg">Anyag</th>
+                        <th class="darkbg">Norma idő</th>
+                        <th class="darkbg">Anyagköltség</th>
+                        <th class="darkbg">Mennyiség</th>
+                        <th class="darkbg">Mértékegység</th>
+                        <th class="darkbg">Anyagköltség</th>
+                        <th class="darkbg">Munkadíj</th>
+                        <th class="darkbg">Összesen</th>
+                        <th class="darkbg">Anyag szorzó</th>
+
                     </tr>
 
                     <tr id="workphase_1">
 
-                        <td><span>Horonymarás</span>
-                            <!-- <select name="" id="">
-                    <option value="none">Válasszon munkafolyamatot!</option>
-                    <option value="chasing">Horonymarás</option>
-                </select> -->
+                        <td colspan="8" class="bold _leftAlign">
+                            Védőcső elhelyezése horonyvéséssel együtt.
                         </td>
-                        <td><span>500</span><!-- <input type="number" name="" id="" value="500"> -->Ft</td>
-                        <td><span>10</span><!-- <input type="number" name="" id="" value="10"> -->
+                        <td class="_centerAlign">
+                           1x
                         </td>
-                        <td><span>fm</span>
-                            <!-- <select name="" id="">
-                        <option value="fm">fm</option>
-                        <option value="db">db</option>
-                    </select> -->
+
+                    </tr>
+                    <tr class="_centerAlign">
+                        <td class="_leftAlign">
+                            MÜ III. műanyag védőcső 16mm átmérő
                         </td>
-                        <td>5000 <span>Ft</span></td>
-                        <td><span>1</span><!-- <input type="number" name="" id="" value="1" step=".1"> -->x</td>
+                        <td>
+                            0.35
+                        </td>
+                        <td>
+                            48 Ft
+                        </td>
+                        <td>
+                            200
+                        </td>
+                        <td>
+                            fm
+                        </td>
+                        <td>
+                            9.600 Ft
+                        </td>
+                        <td>
+                            40.000 Ft
+                        </td>
+                        <td>
+                            49.600 Ft
+                        </td>
+                        <td>
+                            1x                      
+                        </td>
                     </tr>
 
                 </tbody>
             </table>
-            <table class="quote_work_total">
-                <tbody>
-                    <tr>
-                        <th>Összesített munkadíj:</th>
-                        <th>5000 Ft</th>
-                    </tr>
-                </tbody>
-            </table>
-
-            <table class="workphases">
-
-                <tbody>
-                    <tr>
-                        <th>Szükséges anyagok</th>
-                        <th>Egység ár</th>
-                        <th>Mennyiség</th>
-                        <th>Mértékegység</th>
-                        <th>Összesített ár</th>
-                        <th>Egység szorzó</th>
-                    </tr>
-
-                    <tr id="workphase_1">
-
-                        <td><span>Szerelvénydoboz 65mm</span>
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero fuga esse ducimus sit
-                                tempore praesentium, aperiam a accusantium, consequuntur quis tempora quae eum iste
-                                provident! Nemo adipisci provident consequatur rerum iste minus distinctio, qui est eius
-                                asperiores! Nemo, ut. Enim pariatur vero, repellendus qui corporis mollitia debitis
-                                tempora quaerat totam eum. Fugit facilis nemo corporis exercitationem illum optio iste
-                                recusandae, beatae eaque vel, saepe quibusdam id laudantium a quidem? Tempore reiciendis
-                                adipisci ut velit voluptatem blanditiis, eveniet odit dolore. Expedita tenetur dicta et
-                                accusamus voluptatem vitae? Quidem id cum fuga recusandae dolorum culpa quas delectus
-                                deserunt quae eligendi veritatis, distinctio tenetur porro. Atque, in. Tempore voluptas
-                                possimus mollitia nam rem molestiae doloribus asperiores nisi explicabo autem quos,
-                                repudiandae facere dolorem at magni rerum dolores praesentium eum necessitatibus a?
-                                Consectetur, suscipit laborum? Minus, repudiandae impedit laboriosam ex saepe quas
-                                quibusdam, aut corrupti pariatur molestias veniam commodi voluptatibus neque nostrum
-                                vero maxime totam! Fuga error eligendi ullam, iste illum quis provident quas excepturi
-                                nesciunt, dolorem delectus nobis voluptas recusandae adipisci debitis aliquam.
-                                Perspiciatis enim provident officia. Magnam amet nulla dignissimos et inventore,
-                                exercitationem natus consequatur voluptates, error aliquid officiis, eius voluptate
-                                consectetur harum numquam veniam distinctio eos recusandae tenetur quos. Nemo et
-                                voluptatem optio necessitatibus vero nesciunt pariatur consectetur, voluptatibus, dicta
-                                cupiditate aliquid dolorum qui, voluptatum quae adipisci. Natus accusantium vero, quasi
-                                provident ut non perspiciatis voluptatibus corrupti est odit nulla ad pariatur repellat
-                                laborum explicabo? Qui est atque quam nemo accusamus quibusdam at cumque corporis
-                                consequuntur quisquam debitis aut quis, quo pariatur excepturi dicta inventore
-                                repudiandae modi. Distinctio aliquam asperiores aperiam minima voluptatibus quaerat
-                                nihil dolorem impedit nobis error ea, consequatur, sunt accusamus perferendis quam,
-                                doloremque sed ut repudiandae rerum vitae! Ut sapiente voluptatem facilis asperiores
-                                reiciendis sed maiores repellat vel soluta dignissimos. Consequatur amet, repellendus
-                                repellat facere et eum maxime beatae labore dolore quis, sint adipisci iure blanditiis
-                                modi porro quia hic esse tempora? Voluptatibus est corrupti ab, atque modi laudantium
-                                minus architecto veritatis animi iusto, deleniti voluptatem cumque magnam eius unde
-                                voluptatum! Doloribus animi totam amet corrupti distinctio eaque facilis repellendus
-                                iste enim consequuntur, perferendis rerum consequatur, rem ipsum voluptatem nihil sed
-                                nostrum dicta! Soluta voluptate minima quia, officiis placeat, dicta dolorum dolores
-                                ipsum sequi fugiat sit ipsam, eaque provident sapiente. Ullam, in inventore! Eius
-                                corrupti, aliquam commodi illum quidem neque laborum aperiam repudiandae quibusdam eum
-                                ratione officia error animi? Cumque, harum? Doloremque facere quam molestiae quisquam
-                                nesciunt, ab soluta nobis nisi temporibus dignissimos quia assumenda ipsa placeat libero
-                                delectus repudiandae sapiente optio. Unde aliquid asperiores iste expedita odit
-                                doloremque voluptas ducimus, eligendi autem totam minima aperiam, ipsum neque. Nam ad
-                                distinctio nulla officia a similique sint, molestias iste sunt, eius nostrum sequi
-                                possimus officiis. Ipsam iste recusandae molestias debitis iusto, libero nemo non. Aut
-                                nemo ad deleniti magni officia magnam nisi suscipit, similique vitae maxime, ipsam,
-                                voluptas error! Reiciendis mollitia illum esse aspernatur consectetur architecto quidem
-                                nam reprehenderit voluptate culpa praesentium nihil expedita error eos commodi, laborum
-                                nemo deserunt cum similique tenetur. Similique numquam nam, eligendi tempora laborum
-                                suscipit ab error, voluptate omnis dignissimos odio corrupti quisquam possimus? Labore
-                                debitis nostrum voluptates illo saepe, enim nesciunt quod asperiores, eos ab accusantium
-                                ullam optio. Ipsam itaque eum minima, culpa in facilis perferendis placeat voluptatibus
-                                sequi deserunt cumque eaque unde adipisci omnis, ducimus consequuntur et veritatis
-                                distinctio quo sint suscipit porro quidem accusantium. Accusamus maxime ut laborum neque
-                                a hic odit vitae deleniti nobis voluptatibus et, iusto, sequi mollitia eveniet sunt,
-                                perspiciatis aliquid quis in libero eligendi quia ad cum quaerat. Saepe molestias
-                                assumenda voluptates magni inventore quibusdam doloribus dicta dolore? Sint perferendis
-                                laudantium hic quaerat debitis expedita, sed aliquid facere fuga sapiente repudiandae
-                                qui, a placeat quasi repellat. Dolor et aut, nemo minus velit, provident eum qui, optio
-                                magnam porro odit odio. Reiciendis doloremque voluptate obcaecati! Ut temporibus
-                                officiis nemo ad eveniet, ipsam inventore molestias minima sunt commodi? Vel placeat
-                                quis dolore, ullam perferendis nostrum sit, hic officia, velit expedita ad voluptas
-                                suscipit corrupti nemo quas quidem minus deserunt cum. Nesciunt illo quos rem? Assumenda
-                                adipisci perferendis harum ullam! Beatae laborum voluptatem assumenda voluptatum enim
-                                expedita ex aliquid vitae perspiciatis doloremque eum quos alias inventore libero iusto
-                                rem, odio fugit illo quae ea, veritatis molestias odit sequi? Autem, maiores sunt iste
-                                neque modi consequatur non vitae possimus, aliquam ipsum quos ipsam nam! Explicabo, in
-                                beatae voluptatem, amet numquam debitis, aut recusandae distinctio animi aperiam
-                                mollitia aliquam. Impedit iusto blanditiis ex eos corporis consequatur nostrum
-                                accusantium porro, vel officiis sequi natus tenetur. Veritatis modi in, perspiciatis
-                                aspernatur, harum reiciendis neque optio illum debitis cupiditate impedit eligendi,
-                                voluptas assumenda quaerat odit eos. Alias porro aliquam explicabo error delectus sed
-                                laudantium corporis fugiat adipisci voluptate. Illo praesentium fugiat quisquam cumque
-                                deserunt dignissimos accusamus inventore molestiae non. Libero cum voluptates quod
-                                temporibus commodi, nisi ratione maxime cupiditate tenetur voluptas eum sapiente
-                                accusantium laudantium laborum natus praesentium ipsa? Impedit, inventore autem mollitia
-                                exercitationem cupiditate repellat et! Sapiente hic corporis beatae unde. Facere, sunt
-                                iure molestiae necessitatibus culpa corrupti tenetur ipsum ex laborum optio quam minus?
-                                Officiis facilis corporis tempora quia blanditiis? Maiores, minima quis quasi quas
-                                temporibus sint, blanditiis dolorem ratione, architecto cum eveniet provident. Eveniet
-                                placeat temporibus at, aliquam quidem commodi porro dolor quod dicta ipsam ducimus rerum
-                                reiciendis laboriosam similique harum, inventore ex, nihil excepturi. Alias sint
-                                laboriosam quasi incidunt tempora natus ipsam perspiciatis, eligendi illum delectus nisi
-                                placeat omnis optio at! Rerum blanditiis tempora consectetur vero quia necessitatibus
-                                hic eveniet qui fugit et ipsum, vitae minima voluptatem repellat, assumenda accusamus
-                                cupiditate perferendis nam culpa error ipsam laborum voluptatum corrupti! Perferendis
-                                ipsa consequatur ipsum nam ullam saepe dolores quam laborum, eaque eveniet dignissimos
-                                libero exercitationem animi quos cupiditate velit quae cum tenetur itaque nostrum iure.
-                                Eveniet maiores labore consectetur placeat earum quia. Explicabo, in labore fugit itaque
-                                minus quam laborum odit animi quidem, ipsum soluta, natus cum. Excepturi maiores
-                                corrupti, magni error sunt voluptate explicabo, recusandae possimus facilis eius, esse
-                                hic. Perferendis, deserunt id iusto laborum, esse rem dicta pariatur soluta sed
-                                cupiditate impedit enim itaque praesentium consectetur culpa sint dolorum
-                                eveniet?</span>
-                            <!-- <select name="" id="">
-                    <option value="none">Válasszon munkafolyamatot!</option>
-                    <option value="chasing">Horonymarás</option>
-                </select> -->
-                        </td>
-                        <td><span>55</span><!-- <input type="number" name="" id="" value="500"> -->Ft</td>
-                        <td><span>10</span><!-- <input type="number" name="" id="" value="10"> -->
-                        </td>
-                        <td><span>db</span>
-                            <!-- <select name="" id="">
-                        <option value="fm">fm</option>
-                        <option value="db">db</option>
-                    </select> -->
-                        </td>
-                        <td>550 <span>Ft</span></td>
-                        <td><span>1</span><!-- <input type="number" name="" id="" value="1" step=".1"> -->x</td>
-                    </tr>
-
-                </tbody>
-            </table>
-            <table class="quote_work_total">
-                <tbody>
-                    <tr>
-                        <th>Összesített anyagköltség:</th>
-                        <th>550 Ft</th>
-                    </tr>
-                </tbody>
-            </table>
-
-
             <div class="quote_edit_toolbar">
-                <!-- <a href="#" class="quote_edit_btn width_250 align_left color_blue _HOVER_border"><i class="fas fa-plus-circle"></i>Munkafolyamat hozzáadása</a>
-        <a href="#" class="quote_edit_btn color_blue _HOVER_border">Mentés</a>
-        <a href="#" class="quote_edit_btn color_red _HOVER_border">Mégsem</a> -->
-
-
             </div>
-
             <table class="quote_summary">
                 <tbody>
                     <tr>
@@ -290,24 +165,34 @@
                         <th>6500 Ft</th>
                         <th>28.200 Ft</th>
                     </tr>
-                    <tr>
 
-                    </tr>
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="7">
-                            <a href="#" id="closebtn_1" class="color_blue _HOVER_border closebtn">Bezárás</a>
-                            <a href="#" id="edit_1" class="color_blue _HOVER_border closebtn">Szerkesztés</a>
-                        </td>
-                    </tr>
-                </tfoot>
+            </table>
+            <table class="navButtonContainer">
+                <tr>
+                    <td colspan="7">
+                        <a href="#" id="closebtn_1" class="color_blue _HOVER_border closebtn">Bezárás</a>
+                        <a href="#" id="edit_1" class="color_blue _HOVER_border closebtn">Szerkesztés</a>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
 
     <!-- QUOTE DETAILS END -->
-    <style>
+    <style scoped>
+        .navButtonContainer {
+            width: 100%;
+        }
+        .workphases>tbody>tr>th {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .workphases>tbody>tr>td:not(.bold) {
+            font-size: 12px;
+        }
+
         .show {
             display: block !important;
         }
@@ -319,23 +204,25 @@
         #loading {
             display: block;
             position: absolute;
-            background: rgba(0, 0, 0, .8);
+            background: white;
             width: 100%;
             height: 100%;
             overflow: hidden;
             left: 0;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(2px);
+
+            
         }
 
         #loading>img {
             display: block;
             position: absolute;
-            width: 64px;
+            width: 150px;
             margin: 0 auto;
-            top: calc(50% - 32px);
-            left: calc(50% - 32px);
+            border-radius: 100%;
+            top: calc(50% - 75px);
+            left: calc(50% - 75px);
         }
 
         .quote>table {
@@ -344,19 +231,21 @@
 
         #quote_frame {
             overflow: hidden;
+
         }
 
         .closebtn {
-            display: table;
-            margin: 10px auto;
+            display: inline-block;
+            margin: 10px 20px;
             padding: 10px auto;
             text-decoration: none;
             cursor: pointer;
             color: white;
-            width: 300px;
+            width: 100px;
+            line-height: 30px;
             text-align: center;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 16px;
             border-radius: 5px;
         }
 
@@ -393,7 +282,7 @@
             margin: 0 auto;
             left: 0px;
             background: #ddd;
-            font-size: 18px;
+            font-size: 14px;
             border-collapse: collapse;
         }
 
@@ -406,7 +295,7 @@
         .quote_work_total {
             display: flex;
             float: left;
-            font-size: 18px;
+            font-size: 14px;
             margin: 30px 20px 30px 0;
             background: rgba(0, 0, 0, .15);
             padding: 10px;
@@ -498,10 +387,10 @@
 
         .quote_details {
             opacity: 1;
-
+            width: calc(100% - 80px);
             display: block;
             transform-origin: top;
-            text-align: left;
+            text-align: center;
             position: absolute;
             background: #fff;
             overflow-x: hidden;
@@ -520,7 +409,7 @@
 
         .quote_details>table>tbody>tr>td,
         th :not(.quote_work_total) {
-            border: 1px solid #aaa;
+            border: 1px solid rgba(0, 0, 0, .15);
             padding: 5px;
         }
 
@@ -540,7 +429,7 @@
             pointer-events: none;
         }
 
-        
+
 
         .width_100_percent {
             width: 100% !important;
@@ -567,12 +456,13 @@
             background-color: #ddd;
         }
 
-        td:not(.quote_actions .quote_actions_header) {
+        /* td:not(.quote_actions .quote_actions_header) {
             width: calc(100% / 7);
         }
-
+ */
         .quote_actions {
-            width: 60px;
+
+            text-align: center;
         }
 
         .toolbar {
@@ -614,13 +504,16 @@
 
         .quote>table {
             text-align: center;
-            margin: 0 auto;
-            width: 100%;
+            width: calc(100% - 20px);
+            display: table;
+            line-height: 20px;
+            border-collapse: collapse;
+
 
         }
 
         .quote {
-            transition: all 100ms ease;
+
             font-size: 14px;
             font-weight: 500;
             background: white;
@@ -643,6 +536,31 @@
             box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
             border-radius: 10px;
 
+        }
+
+        .bold {
+            font-weight: 600;
+            font-size: 14px;
+            text-indent: 20px;
+        }
+
+        ._leftAlign {
+            text-align: left;
+        }
+
+        ._centerAlign {
+            text-align: center;
+        }
+
+        .darkbg {
+            background: rgba(0, 0, 0, .10);
+            border: 1px solid rgba(0, 0, 0, .35)
+        }
+
+        .quote_summary>tfoot>* {
+            background: white;
+            display: none;
+            border: none;
         }
     </style>
 </div>

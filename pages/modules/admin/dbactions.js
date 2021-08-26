@@ -4,6 +4,7 @@ var addBtn = moduleDom.querySelector("#work_add")
 var workList = moduleDom.querySelector("#workflowtable")
 var input_workTitle = moduleDom.querySelector("#work_title")
 var input_workPrice = moduleDom.querySelector("#work_price")
+var input_workCategory = moduleDom.querySelector("#work_category")
 
 var getWorkList = async (input) => {
 
@@ -25,14 +26,15 @@ var getWorkList = async (input) => {
 }
 addBtn.addEventListener("click", (e) => {
     e.preventDefault()
-    postWork(input_workTitle.value, input_workPrice.value)
-    input_workTitle.value = input_workPrice.value = null;
+    postWork(input_workTitle.value, input_workCategory.value, input_workPrice.value)
+    input_workTitle.value = input_workPrice.value = input_workCategory.value = null;
 })
 
-var postWork = async (title, price) => {
+var postWork = async (title, category, price) => {
 
     let data = {
         title,
+        category,
         price,
         "uniqueId" : genRandomId(6)
     }
@@ -99,6 +101,7 @@ var populateTable = (object) => {
         let element = object[i]
         let tr = document.createElement("tr")
         let titleTd = document.createElement("td")
+        let categoryTd = document.createElement("td")
         let priceTd = document.createElement("td")
         let actionsTd = document.createElement("td")
         let deleteBtn = document.createElement("a")
@@ -111,9 +114,10 @@ var populateTable = (object) => {
         titleTd.id = element.uniqueId
         titleTd.innerHTML = element.worktitle
         priceTd.innerHTML = element.workprice
+        categoryTd.innerHTML = element.category
         deleteBtn.addEventListener("click", (e) => {
             e.preventDefault()
-            if(confirm("Biztos törlöd a bejegyzést? Ezt nem lehet visszavonni.")) {
+            if(confirm("Biztos törlöd a tételt? Ezt nem lehet visszavonni.")) {
                 deleteFromDb(element.uniqueId)
             }
             
@@ -130,6 +134,7 @@ var populateTable = (object) => {
         btnContainer.appendChild(deleteBtn)
         actionsTd.appendChild(btnContainer)
         tr.appendChild(titleTd)
+        tr.appendChild(categoryTd)
         tr.appendChild(priceTd)
         tr.appendChild(actionsTd)
 

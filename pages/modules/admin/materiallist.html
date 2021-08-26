@@ -5,7 +5,12 @@
             <tr>
                 <th>
                     <span>
-                        Munkafolyamat                        
+                        Anyag megnevezése
+                    </span>
+                </th>
+                <th>
+                    <span>
+                        Ár
                     </span>
                 </th>
                 <th>
@@ -13,83 +18,98 @@
                         Kategória
                     </span>
                 </th>
+
                 <th>
                     <span>
-                        Norma ár
+                        Egyéb adatok
                     </span>
                 </th>
-                <th>
-                    <span>
-                        Műveletek
-                    </span>
-                </th>
+
             </tr>
             <tr>
-                
+
                 <th>
-                    <input type="text" id="work_title">
+                    <input type="text" id="material_title" placeholder="pl. Műanyag védőcső 16mm átmérő" >
                 </th>
                 <th>
-                    <select id="work_category">
-                        <option value="1">Alapszerelés</option>
-                        <option value="2">Vezetékbehúzás</option>
-                        <option value="3">Kamerarendszer</option>
-                        <option value="4">Riasztórendszer</option>
-                        <option value="5">Gyengeáram</option>
-                        <option value="6">Szerelvényezés</option>
-                        <option value="7">Fényforrások szerelése</option>
-                        <option value="8">Földelés kiépítése</option>
-                        <option value="9">Mérőhely kialakítás</option>
-                        <option value="10">Készülékek beüzemelése</option>
-                        <option value="11">Hibakeresés</option>
-                        <option value="12">Eseti javítások</option>
-                        <option value="13">Tervezés</option>
-                        <option value="14">Szaktanácsadás</option>
-                        <option value="15">Egyéb költségek</option>
+                    <input type="number" id="material_price" step="50" placeholder="pl. 2500" >Ft
+                </th>
+                <th>
+                    <select id="material_category" >
+
                     </select>
                 </th>
+
                 <th>
-                    <input type="number" id="work_price" step="50">Ft
-                </th>
-                
-                <th>
-                    <div class="btn_container">
-                        <a href="" class="action_btn color_blue width_100" id="work_add"><i class="fas fa-plus-circle"></i></a>
+                    <input type="text" id="option_key" placeholder="Kulcsszó">
+                    <input type="text" id="option_value" placeholder="Érték">
+                    <div>
+                        <label for="keepcheck">Lista megjegyzése</label>
+                        <input type="checkbox" name="keepcheck" id="keep_properties">
 
                     </div>
+                    <div class="btn_container">
+                        <a href="#" class="action_btn color_blue" id="option_add"><i class="fas fa-plus-circle"></i></a>
+                        <a href="#" class="action_btn color_red" id="option_remove"><i
+                                class="fas fa-calendar-times"></i></i></a>
+                    </div>
+                    <div>
+                        <span>
+                            Hozzáadott értékek:
+                        </span>
+                        <ul id="options_row">
+
+                        </ul>
+                    </div>
                 </th>
+
+
             </tr>
+
         </thead>
-        <tbody id="workflowtable">
+        <tbody id="materialflowtable">
             <!-- injected -->
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4">
-                    <span>Munkafolyamatok száma: </span>
-                    <span id="work_counter"></span>
+                <td colspan="5">
+                    <span>Megjelenített lista elemeinek száma: </span>
+                    <span id="material_counter"></span>
                     <span>db</span>
                 </td>
             </tr>
         </tfoot>
     </table>
     <style scoped>
-        
+        .dimmed {
+            background: #fff;
+        }
+        details {
+            text-align: left;
+        }
 
-        thead > tr {
+        details > span {
+            padding-left: 50px;
+        }
+        tbody {
+            text-align: left;
+        }
+
+        thead>tr {
             margin: 0;
-            background: #ccc;
+            background: #ddd;
 
         }
 
 
         .btn_container {
+            display: block;
             text-align: center;
-            width: 100px;
+            width: 100%;
             margin: 5px auto;
             align-content: center;
             justify-content: center;
-            vertical-align: middle;
+
             text-indent: 0;
             overflow: hidden;
             padding: 0;
@@ -105,10 +125,11 @@
             color: white;
             text-align: center;
             text-indent: 0;
-            width: 50%;
+            width: 30%;
             height: 100%;
             font-size: 16px;
             line-height: 30px;
+            border-radius: 10px;
         }
 
         .list_row {
@@ -117,55 +138,69 @@
             text-align: left;
             padding: 5px;
 
-            
+
         }
-        
+
         table {
             text-indent: 50px;
             margin-top: 50px;
             border-collapse: collapse;
-            
+
             display: table;
             width: 100%;
             overflow: auto;
-            
+
 
         }
+
         tr {
-            
+
             background: #eee;
             border: 1px solid rgba(0, 0, 0, .2);
         }
+
         td {
             padding: 5px;
         }
-        th > input {
-            
+
+        th>input {
+
             width: 300px;
             line-height: 30px;
         }
+
         select {
             line-height: 30px;
             height: 35px;
             padding: 5px;
         }
-        #work_price {
+
+        #material_price {
             width: 100px;
         }
-        #work_title {
+
+        #material_title {
             width: 80%;
         }
+
         th {
             border: 1px solid rgba(0, 0, 0, .3);
             text-align: center;
             text-indent: 0;
             margin: 0 auto;
         }
-        
+
         .width_100 {
             width: 100%;
         }
-        
+
+        #module {
+            overflow: scroll;
+            max-height: 90vh;
+            padding-bottom: 50px;
+        }
     </style>
 </div>
-<script>admin/dbactions.js</script>
+<script>global / eventlistener.js</script>
+<script>global / selector.js</script>
+<script>admin / materiallist.js</script>

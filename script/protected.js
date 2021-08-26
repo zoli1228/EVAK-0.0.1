@@ -1,5 +1,5 @@
 
-
+let docBody = document.querySelector("body")
 let dom = document.querySelector("#update")
 let userDetails = document.querySelector("#userdetails")
 let roller = document.querySelector("#roller")
@@ -62,8 +62,8 @@ var selectPage = async (string) => {
             return "404 - A keresett oldal nem található."
         }
         else if (Response.status == 401) {
-           return 401
-        } else if(Response.status == 200) {
+            return 401
+        } else if (Response.status == 200) {
             return Response.json()
         }
     }).then(function (input) {
@@ -101,25 +101,33 @@ var genRandomNumber = (length) => {
     }
     return result;
 }
-
+var deleteScripts = () => {
+    let scripts = document.querySelectorAll("script")
+    scripts.forEach(element => {
+        let elemId = element.getAttribute("id")
+        if(elemId?.includes("injected")) {
+                element.remove()
+        } 
+    })
+}
 var changeContent = (content) => {
 
     let parser = new DOMParser()
     let htmlDoc = parser.parseFromString(content, 'text/html').body
-    let scriptTag = htmlDoc.querySelector("script")
-    let findScript = document.querySelector("#injected")
-    if (findScript) {
-        findScript.remove()
-    }
+    let scriptTag = htmlDoc.querySelectorAll("script")
+    deleteScripts()
     if (scriptTag) {
-        let newScript = document.createElement("script")
-
-        newScript.id = "injected"
-
-        let trimmedLoc = scriptTag.innerHTML.replace(/\s/g, '')
-        newScript.src = trimmedLoc
-        newScript.setAttribute("version", genRandomNumber(10))
-        document.body.appendChild(newScript)
+        let id = 0
+        scriptTag.forEach(element => {
+            let newScript = document.createElement("script")
+            newScript.id = "injected" + id
+            let trimmedLoc = element.innerHTML.replace(/\s/g, '')
+            newScript.src = trimmedLoc
+            newScript.innerHTML = ""
+            newScript.setAttribute("version", genRandomNumber(10))
+            id++
+            docBody.appendChild(newScript)
+        });
     }
     dom.innerHTML = ""
     dom.appendChild(htmlDoc.firstChild)
