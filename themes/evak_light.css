@@ -380,6 +380,7 @@ img {
         width: 200px;
         height: 30px;
         justify-content: center;
+        align-items: center;
         vertical-align: middle;
         margin: 10px 2vw;
         font-weight: 700;
@@ -396,12 +397,13 @@ img {
         position: relative;
         display: inline-block;
         background: #ccff00;
+        color: black;
         border: 1px solid #ccff00;
         box-shadow: 0 0 3px rgba(0, 0, 0, .3);
         border-radius: 2px;
         padding: 5px 15px;
         width: 150px;
-        height: 20px;
+        height: 30px;
         justify-content: center;
         margin: 10px 1vw;
         font-weight: 700;
@@ -472,7 +474,8 @@ img {
         padding: 20px 20px;
     }
     .hide {
-        display: none;
+        display: none !important;
+
     }
     .loginbox>img {
         width: 300px;
@@ -531,6 +534,7 @@ img {
         font-family: 'Ubuntu', sans-serif;
         overflow: hidden;
         background: #eee;
+        height: 100%;
     }
     #_OFF_mainWindow {
         background: #eee;
@@ -677,9 +681,8 @@ img {
         border: 1px solid #ccff00;
         box-shadow: 0 0 3px rgba(0, 0, 0, .3);
         border-radius: 2px;
-        padding: 5px 15px;
+        padding: 15px 15px;
         width: 200px;
-        height: 30px;
         justify-content: center;
         vertical-align: middle;
         margin: 10px 2vw;

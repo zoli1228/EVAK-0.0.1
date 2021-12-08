@@ -1,4 +1,4 @@
-let body = document.body
+/* let body = document.body
 let img = document.createElement("img")
         img.src = "spinner02.gif"
         img.alt = "Spinner_gif"
@@ -16,4 +16,4 @@ var spinner = {
             elem.remove()
         }
     }
-}
+} */

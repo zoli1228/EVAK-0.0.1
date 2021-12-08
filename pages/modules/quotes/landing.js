@@ -1,16 +1,6 @@
-var browseBtn = document.querySelector("#browse")
-var addBtn = document.querySelector("#add")
-var adminBtn = document.querySelector("#admin")
+var browseBtn = sel("#browse")
+var addBtn = sel("#add")
+var adminBtn = sel("#admin")
 
-browseBtn.addEventListener("click", (e) => {
-    selectPage("content/quotes/quotes")
-    e.preventDefault()
-})
-addBtn.addEventListener("click", (e) => {
-    selectPage("content/quotes/newquote")
-    e.preventDefault()
-})
-adminBtn.addEventListener("click", (e) => {
-    selectPage("content/quotes/admin")
-    e.preventDefault()
-})
+setEvent.click(addBtn, function() {selectPage("content/quotes/newquote")})
+setEvent.click(browseBtn, function() {selectPage("content/quotes/quotes")})

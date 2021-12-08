@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+<!--     <link rel="stylesheet" href="/dist/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="evak_light.css">
     <link rel="stylesheet" href="protected.css">
     <link rel="stylesheet" href="./resources/fontawesome-free-web/css/all.css">
@@ -13,7 +14,7 @@
     <title>EVAK - Egyszerűsített Villanyszerelő Árajánlat Kezelő rendszer</title>
 </head>
 
-<body onload="selectPage('admin/materiallist')">
+<body onload="selectPage('content/home')">
 
     <div class="header">
         <div class="version">
@@ -31,14 +32,15 @@
     
     <div class="navbar">
         <img src="resources/EVAK01.png" id="navbar_logo" alt="EVAK main logo">
-        <a href="#" onclick="selectPage('content/home')" class="nav_button1 selected"><i class="fas fa-arrow-circle-right nav_button1_arrow"></i>Főoldal</a>
-        <a href="#" onclick="selectPage('content/chat/landing')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Chat fal</a>
-        <a href="#" onclick="selectPage('content/quotes/landing')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Árajánlatok kezelése</a>
-        <a href="#" onclick="selectPage('content/profile')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Felhasználói fiók</a>
-        <a href="#" onclick="selectPage('content/forum')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Elektro Forum</a>
-        <a href="#" onclick="selectPage('content/help')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Segítség</a>
-        <a href="#" onclick="selectPage('content/settings')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Beállítások</a>
-        <a href="#" onclick="selectPage('ismeretlen')" class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>404 teszt</a>
+        <!-- <a href="#" onclick="selectPage('content/home')" class="nav_button1 selected"><i class="fas fa-arrow-circle-right nav_button1_arrow"></i>Főoldal</a> -->
+        <a href="/" id="navbar_homeBtn" target='content/home' class="nav_button1 selected"><i class="fas fa-arrow-circle-right nav_button1_arrow"></i>Főoldal</a>
+        <a href="/" id="navbar_chatBtn" target='content/chat/landing' class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Chat fal</a>
+        <a href="/" id="navbar_quotesBtn" target='content/quotes/landing' class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Árajánlatok kezelése</a>
+        <a href="/" id="navbar_profileBtn" target='content/profile' class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Felhasználói fiók</a>
+        <a href="/" id="navbar_forumBtn" target='content/forum' class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Elektro Forum</a>
+        <a href="/" id="navbar_helpBtn" target='content/help' class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Segítség</a>
+        <a href="/" id="navbar_settingsBtn" target='content/settings' class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>Beállítások</a>
+        <a href="/" id="navbar_404testBtn" target='ismeretlen' class="nav_button1"><i class="fas fa-arrow-circle-right nav_button1_arrow" ></i>404 teszt</a>
         <div class="nav_indicator" id="navindicator">
             <i class="fas fa-align-justify"></i>
     
@@ -49,14 +51,13 @@
     </div>
 
     <div id="mainframe">
-        
-        
-
         <div id="update">
             <!-- Dynamic -->
         </div>
     </div>
     <script src="spinner.js"></script>
+    <script src="global/eventlistener.js"></script>
+    <script src="global/selector.js"></script>
     <script src="protected.js"></script>
     <script src="navbarhighlight.js"></script>
 </body>

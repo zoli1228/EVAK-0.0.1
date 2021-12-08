@@ -1,130 +1,143 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EVAK Rendszer</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="evak_light.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
-</head>
-<body>
-    <div id="roller" class="roller-hide">
 
-        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</head>
+
+<body>
+   
+    <div class="regOverlay">
+        <form class="loginbox" action="/signup" method="POST">
+            <img src="resources/EVAK01.png" alt="EVAK main logo">
+
+            <h1>Regisztrációs lap</h1>
+
+            <div class="username">
+                <label for="username">Felhasználónév</label>
+                <input id="usernamefield" name="username" value="" type="text" value="">
+            </div>
+            <div class="username">
+                <label for="email">Email cím</label>
+                <input id="emailfield" name="email" value="" type="email" value="">
+            </div>
+            <div class="password">
+                <label for="password">Jelszó</label>
+                <input id="passwordfield" name="password" type="password" value="">
+            </div>
+            <div class="password">
+                <label for="cpassword">Jelszó megerősítése</label>
+                <input id="cpasswordfield" name="cpassword" type="password" value="">
+            </div>
+
+            <span class="aszf">
+                <input type="checkbox" id="aszfCheck">Elfogadom az <span id="aszfLink">általános szerződési
+                    feltételeket</span>.
+            </span>
+
+
+            <button type="submit" id="signup" class="btn2" disabled>Regisztráció</button>
+            <button type="button" id="cancelReg" class="btn2">Mégse</button>
+            <span id="regerror"></span>
+        </form>
+    </div>
+    <div class="loginOverlay">
+        <form class="loginbox" action="/login" method="POST">
+            <img src="resources/EVAK01.png" alt="EVAK main logo">
+
+            <h1>Bejelentkezés</h1>
+            <div class="username">
+                <label for="usernameLogin">Felhasználónév</label>
+                <input id="usernamefieldLogin" name="usernameLogin" value="" type="text" value="">
+            </div>
+            <div class="password">
+                <label for="passwordLogin">Jelszó</label>
+                <input id="passwordfieldLogin" name="passwordLogin" type="password" value="">
+            </div>
+
+            <button type="submit" id="login" class="btn2">Bejelentkezés</button>
+            <button type="button" id="cancelLogin" class="btn2">Mégse</button>
+            <a class="display-block" href="/passwordRecovery">Elfelejtette a jelszavát?</a>
+            <span id="loginerror"></span>
+        </form>
+    </div>
+    <div id="mainWindow">
+
+
+        <div class="imgContainer">
+            <!--  <img src="https://i.postimg.cc/Jn7XtPZY/EVAK01.png" alt="EVAK main logo"> -->
+            <img src="resources/EVAK01.png" alt="EVAK main logo">
+            <div class="btnContainer">
+                <a id="enter" class="btn3">Bejelentkezés</a>
+                <a id="showSignup" class="btn3">Regisztráció</a>
+                <a id="contact" class="btn3">Kapcsolat</a>
+            </div>
+        </div>
+
+        <div class="home">
+            <h1>Épületvillamossági Árajánlat Kezelő rendszer</h1>
+            <span class="version">Verzió: 0.1.0 alpha</span>
+
+            <div class="pageContent">
+
+                <a href="#" id="whatIsEvak">Mi az az "EVAK"?</a>
+
+                <p class="whatIsEvak" style="display: block; font-size: 0px; padding: 0;">Az EVAK azért lett megalkotva,
+                    hogy a lehető legtöbb
+                    segítséget nyújtsa a felhasználójának. Mint a nevében is benne van, ez a rendszer kifejezetten
+                    villanyszerelők számára lett
+                    tervezve. A papírmunka a múlté.
+                </p>
+
+                <a href="#" id="howItWorks">Hogyan működik?</a>
+                <p class="howItWorks" style="display: block; font-size: 0px; padding: 0;">Regisztráció után a rendszer
+                    megkérdezi Önt a cége/vállalkozása adatairól, illetve be kell állítson egy felhasználónevet is.
+                    A cégadatok az árajánlatok kezeléséhez szükségesek, a felhasználónév pedig a beépített
+                    'ElektroForum' közösségi portálon való azonosításra szolgál.
+                    Miután elkészített egy árajánlatot, a rendszer létrehoz egy linket, amelyet az Ön ügyfelének
+                    továbbíthat. Az ügyfél ezen a linken keresztül éri el
+                    az Ön által kiállított árajánlatot, és azon a felületen reagálni is tud rá, amit Ön lát a
+                    rendszerben. Minden árajánlat státusza ennek megfelelően változik.
+                    Egy elfogadott árajánlat esetén lehetőség van az adott munkához fűződően automatikusan előállított
+                    vállalkozói szerződés, és egyéb papírok létrehozására.
+                    Adott munkához létrejön egy nyílvántartó oldal, ahol az árajánlat alapján az anyagszükségletet lehet
+                    nyomon követni, a munkát jegyzetelni.
+                    Sok egyéb funkciót tartogat még az EVAK. Ha felkeltettük az érdeklődését, lépjen be!
+                </p>
+                <a href="#" id="whosItFor">Kiknek ajánljuk?</a>
+                <p class="whosItFor" style="display: block; font-size: 0px; padding: 0;">Ezt a rendszert azon
+                    villanyszerelőknek ajánljuk, akik szeretik egyszerűen, egy helyen intézni a munkájukkal kapcsolatos
+                    adminisztrációt,
+                    csökkentve a papírmunkával töltött időt.</p>
+                <a href="#" id="pricing">Költségek</a>
+                <p class="pricing" style="display: block; font-size: 0px; padding: 0;">A rendszer jelenleg még
+                    folyamatos fejlesztés alatt áll, így amíg a verzió nem lép ki a fejlesztői ('alpha', 'béta')
+                    stádiumból, addig
+                    a használata teljesen ingyenes. Amint eléri az 1.0-s verziót, onnantól 1 hónap ingyenes próbaidőt
+                    követően havonta Bruttó 2499ft összegért vehető majd igénybe.
+                </p>
+            </div>
+        </div><!-- HOME -->
+        <div class="login"></div>
+
+
 
     </div>
-        <div class="regOverlay" >
-            <form class="loginbox" action="/signup" method="POST" >
-                <img src="resources/EVAK01.png" alt="EVAK main logo">
-                
-                <h1>Regisztrációs lap</h1>
-                
-                <div class="username">
-                    <label for="username">Felhasználónév</label>
-                    <input id="usernamefield" name="username" value="" type="text" value="" >
-                </div>
-                <div class="username">
-                    <label for="email">Email cím</label>
-                    <input id="emailfield" name="email" value="" type="email" value="" >
-                </div>
-                <div class="password">
-                    <label for="password">Jelszó</label>
-                    <input id="passwordfield" name="password" type="password" value="">
-                </div>
-                <div class="password">
-                    <label for="cpassword">Jelszó megerősítése</label>
-                    <input id="cpasswordfield" name="cpassword" type="password" value="">
-                </div>
-
-                    <span class="aszf">
-                        <input type="checkbox" id="aszfCheck">Elfogadom az <span id="aszfLink">általános szerződési feltételeket</span>.
-                    </span>
 
 
-                    <button type="submit" id="signup" class="btn2" disabled>Regisztráció</button>
-                    <button type="button" id="cancelReg" class="btn2">Mégse</button>
-                    <span id="regerror"></span>
-            </form>
-        </div>
-        <div class="loginOverlay" >
-            <form class="loginbox" action="/login" method="POST">
-                <img src="resources/EVAK01.png" alt="EVAK main logo">
-                
-                <h1>Bejelentkezés</h1>
-                <div class="username">
-                    <label for="usernameLogin">Felhasználónév</label>
-                    <input id="usernamefieldLogin" name="usernameLogin" value="" type="text" value="" >
-                </div>
-                <div class="password">
-                    <label for="passwordLogin">Jelszó</label>
-                    <input id="passwordfieldLogin" name="passwordLogin" type="password" value="">
-                </div>
-                
-                    <button type="submit" id="login" class="btn2">Bejelentkezés</button>
-                    <button type="button" id="cancelLogin" class="btn2">Mégse</button>
-                    <a class="display-block" href="/passwordRecovery">Elfelejtette a jelszavát?</a>
-                <span id="loginerror"></span>
-            </form>
-        </div>
-        <div id="mainWindow">
-            
-            
-            <div class="imgContainer">
-                <!--  <img src="https://i.postimg.cc/Jn7XtPZY/EVAK01.png" alt="EVAK main logo"> -->
-                <img src="resources/EVAK01.png" alt="EVAK main logo">
-                <div class="btnContainer">
-                    <a id="enter" class="btn3">Bejelentkezés</a>
-                    <a id="showSignup" class="btn3">Regisztráció</a>
-                    <a id="contact" class="btn3">Kapcsolat</a>
-                </div>
-            </div>
-            
-            <div class="home">
-                <h1>Épületvillamossági Árajánlat Kezelő rendszer</h1>
-                <span class="version">Verzió: 0.1.0 alpha</span>
-                
-                <div class="pageContent">
-        
-                    <a href="#" id="whatIsEvak">Mi az az "EVAK"?</a>
-                    
-                    <p class="whatIsEvak" style="display: block; font-size: 0px; padding: 0;">Az EVAK azért lett megalkotva, hogy a lehető legtöbb
-                        segítséget nyújtsa a felhasználójának. Mint a nevében is benne van, ez a rendszer kifejezetten villanyszerelők számára lett
-                        tervezve. A papírmunka a múlté.
-                    </p>
-        
-                    <a href="#" id="howItWorks">Hogyan működik?</a>
-                    <p class="howItWorks" style="display: block; font-size: 0px; padding: 0;">Regisztráció után a rendszer megkérdezi Önt a cége/vállalkozása adatairól, illetve be kell állítson egy felhasználónevet is.
-                        A cégadatok az árajánlatok kezeléséhez szükségesek, a felhasználónév pedig a beépített 'ElektroForum' közösségi portálon való azonosításra szolgál.
-                        Miután elkészített egy árajánlatot, a rendszer létrehoz egy linket, amelyet az Ön ügyfelének továbbíthat. Az ügyfél ezen a linken keresztül éri el
-                        az Ön által kiállított árajánlatot, és azon a felületen reagálni is tud rá, amit Ön lát a rendszerben. Minden árajánlat státusza ennek megfelelően változik.
-                        Egy elfogadott árajánlat esetén lehetőség van az adott munkához fűződően automatikusan előállított vállalkozói szerződés, és egyéb papírok létrehozására.
-                        Adott munkához létrejön egy nyílvántartó oldal, ahol az árajánlat alapján az anyagszükségletet lehet nyomon követni, a munkát jegyzetelni. 
-                        Sok egyéb funkciót tartogat még az EVAK. Ha felkeltettük az érdeklődését, lépjen be!
-                    </p>
-                    <a href="#" id="whosItFor">Kiknek ajánljuk?</a>
-                    <p class="whosItFor" style="display: block; font-size: 0px; padding: 0;">Ezt a rendszert azon villanyszerelőknek ajánljuk, akik szeretik egyszerűen, egy helyen intézni a munkájukkal kapcsolatos
-                         adminisztrációt,
-                        csökkentve a papírmunkával töltött időt.</p>
-                    <a href="#" id="pricing">Költségek</a>
-                    <p class="pricing" style="display: block; font-size: 0px; padding: 0;">A rendszer jelenleg még folyamatos fejlesztés alatt áll, így amíg a verzió nem lép ki a fejlesztői ('alpha', 'béta') stádiumból, addig 
-                        a használata teljesen ingyenes. Amint eléri az 1.0-s verziót, onnantól 1 hónap ingyenes próbaidőt követően havonta Bruttó 2499ft összegért vehető majd igénybe. 
-                    </p>
-                </div>
-            </div><!-- HOME -->
-            <div class="login"></div>
-            
-            
-            
-        </div>
-
-    
-    
-    
+    <script src="/dist/js/bootstrap.min.js"></script>
+    <script src="spinner.js"></script>
     <script src="showinfo.js"></script>
 
 
 </body>
+
 </html>

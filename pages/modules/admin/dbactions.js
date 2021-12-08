@@ -1,10 +1,11 @@
 var workListArray = {};
-var moduleDom = document.querySelector("#module")
-var addBtn = moduleDom.querySelector("#work_add")
-var workList = moduleDom.querySelector("#workflowtable")
-var input_workTitle = moduleDom.querySelector("#work_title")
-var input_workPrice = moduleDom.querySelector("#work_price")
-var input_workCategory = moduleDom.querySelector("#work_category")
+var moduleDom = sel("#module")
+var addBtn = sel("#work_add")
+var workList = sel("#workflowtable")
+var input_workTitle = sel("#work_title")
+var input_workPrice = sel("#work_price")
+var input_workCategory = sel("#work_category")
+var backBtn = sel("#module_back_button")
 
 var getWorkList = async (input) => {
 
@@ -144,3 +145,6 @@ var populateTable = (object) => {
 
 }
 getWorkList()
+setEvent.click(backBtn, () => {
+    selectPage("admin")
+})

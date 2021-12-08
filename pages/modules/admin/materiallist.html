@@ -1,4 +1,4 @@
-<div id="module">
+<div id="module" >
     <a href="" id="module_back_button"><i class="fas fa-arrow-circle-left"></i></a>
     <table>
         <thead>
@@ -26,7 +26,7 @@
                 </th>
 
             </tr>
-            <tr>
+            <tr class="propRow">
 
                 <th>
                     <input type="text" id="material_title" placeholder="pl. Műanyag védőcső 16mm átmérő" >
@@ -41,8 +41,12 @@
                 </th>
 
                 <th>
-                    <input type="text" id="option_key" placeholder="Kulcsszó">
-                    <input type="text" id="option_value" placeholder="Érték">
+                    <div>
+                        <input type="text" id="option_key" placeholder="Kulcsszó">
+                    </div>
+                    <div>
+                        <input type="text" id="option_value" placeholder="Érték">
+                    </div>
                     <div>
                         <label for="keepcheck">Lista megjegyzése</label>
                         <input type="checkbox" name="keepcheck" id="keep_properties">
@@ -81,13 +85,20 @@
         </tfoot>
     </table>
     <style scoped>
+
+        #materialflowtable {
+            line-height: auto;
+            padding: 0;
+        }
         .dimmed {
             background: #fff;
         }
         details {
             text-align: left;
         }
-
+        .prop_dropdown {
+            width: 300px;
+        }
         details > span {
             padding-left: 50px;
         }
@@ -134,9 +145,9 @@
 
         .list_row {
             font-weight: 400;
-            font-size: 16px;
+            font-size: 14px;
             text-align: left;
-            padding: 5px;
+            padding: 2px;
 
 
         }
@@ -157,15 +168,18 @@
 
             background: #eee;
             border: 1px solid rgba(0, 0, 0, .2);
+            font-weight: 100;
+
         }
 
         td {
-            padding: 5px;
+            padding: 2px;
+            border: 1px solid rgba(0, 0, 0, .2)
         }
 
-        th>input {
+        th > div > input {
 
-            width: 300px;
+            width: auto;
             line-height: 30px;
         }
 
@@ -180,7 +194,7 @@
         }
 
         #material_title {
-            width: 80%;
+            width: 600px;
         }
 
         th {
@@ -195,7 +209,7 @@
         }
 
         #module {
-            overflow: scroll;
+            overflow: hidden auto;
             max-height: 90vh;
             padding-bottom: 50px;
         }

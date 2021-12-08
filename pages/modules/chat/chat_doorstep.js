@@ -1,0 +1,1 @@
+setEvent.click(sel("#proceed"), function() {selectPage(sel("#proceed").target)})

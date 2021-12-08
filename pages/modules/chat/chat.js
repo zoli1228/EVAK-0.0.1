@@ -5,23 +5,25 @@ var rules = document.querySelector(".rules")
 var input = document.querySelector("#message")
 var submit = document.querySelector("#send")
 
+spinner.add()
 
-var getCookie = (name) => {
+/* var getCookie = (name) => {
     let re = new RegExp(name + "=([^;]+)");
     let value = re.exec(document.cookie);
     return (value != null) ? unescape(value[1]) : null;
-}
+} */
 
 submit.addEventListener("click", (e) => {
     e.preventDefault()
-    if (!input.value.trim().length) {
+    let enteredMessage = input.value.trim()
+    if (!enteredMessage.length) {
         return
     }
-    if (input.value.trim().length > 500) {
+    if (enteredMessage.length > 500) {
         alert("Maximum 500 karakter engedélyezett.")
         return;
     }
-    sendMessage(input.value.trim(), e)
+    sendMessage(enteredMessage, e)
     input.value = ""
     input.placeholder = ""
 })
@@ -69,24 +71,20 @@ input.addEventListener("keyup", () => {
     let string = ""
         let abc = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
         let array = []
-
         for (let i = 0; i < (length / 2); i++) {
             array.push(Math.round(Math.random() * 9))
             let randomIndex = (Math.floor(Math.random() * abc.length))
             array.push(abc[randomIndex])
-
         }
-
         for (item in array) {
             string += array[item]
         }
-
         return string;
     } */
 
 
 var insertMessage = (json) => {
-
+    
     let messageDiv = document.createElement("div")
     messageDiv.setAttribute("id", "message" + (chatWindow.children.length + 1))
     let time = document.createElement("span")
@@ -112,8 +110,8 @@ var insertMessage = (json) => {
     messageDiv.appendChild(time)
     messageDiv.appendChild(user)
     messageDiv.appendChild(message)
-    /* chatWindow.appendChild(messageDiv) */
-    if (chatWindow.childNodes.length >= 5) {
+
+    if (chatWindow.childNodes.length >= 100) {
         for (let i = 100; i < chatWindow.childNodes.length - 1; i++) {
             chatWindow.removeChild(chatWindow.children[i])
         }
@@ -126,9 +124,8 @@ var messages = []
 
 
 var loopChatRefresh = async () => {
-    isActive = document.querySelector("#injected")?.src.includes("chat")
+    isActive = document.querySelector("#injected1")?.src.includes("chat")
     if(isActive) {
-
         await fetch("/chat/messages").then(
             data => data.json()
         ).then(
@@ -138,11 +135,12 @@ var loopChatRefresh = async () => {
                         if (!messages.length) {
                             for (let i = 0; i < json.length; i++) {
                                 messages.unshift(json[i])
-    
+                                
                             }
                             for (let i = 0; i < messages.length; i++) {
                                 insertMessage(messages[i])
                             }
+                            
                             return
                         }
                         let lastEntry = json[0]
@@ -152,17 +150,16 @@ var loopChatRefresh = async () => {
     
     
                         }
+
                     }
+                    spinner.remove()
                 }
             }
         ).catch((err) => {
+            spinner.remove()
             console.error(err)
         })
     }
 }
 
 setInterval(loopChatRefresh, 1000)
-
-
-
-

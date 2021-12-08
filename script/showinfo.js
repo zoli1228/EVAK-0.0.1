@@ -1,6 +1,6 @@
 let loginOverlay = document.querySelector(".loginOverlay")
 let regOverlay = document.querySelector(".regOverlay")
-let body = document.querySelector("body")
+var body = document.querySelector("body")
 const banner = document.querySelector(".imgContainer")
 const logo = document.querySelector(".imgContainer > img")
 const regButton = document.querySelector("#signup")
@@ -61,11 +61,11 @@ let showMenu = (menuToShow) => {
     }
 }
 
-function showSpinner(bool) {
+/* function showSpinner(bool) {
     const spinner = document.querySelector("#roller")
     bool ? spinner.setAttribute("class", "roller-show") : spinner.setAttribute("class", "roller-hide")
 }
-
+ */
 
 function loginMenu(input) {
     if (input == "show") {
@@ -220,7 +220,7 @@ aszfLink.addEventListener("click", () =>{
 
 regButton.addEventListener("click", async (e) => {
     e.preventDefault()
-    showSpinner(true)
+    spinner.add()
     let uName = document.querySelector("#usernamefield").value
     let email = document.querySelector("#emailfield").value
     let pWord = document.querySelector("#passwordfield").value
@@ -239,13 +239,13 @@ regButton.addEventListener("click", async (e) => {
     )
 
     if (response) {
-        showSpinner(false)
+        spinner.remove()
         if (response.data.status == "error") {
             showRegDialog(response.data.message, "error")
         }
         else if (response.data.status == "OK") {
             showRegDialog(response.data.message, "confirm")
-            setTimeout(function () { regMenu() }, 3000)
+            setTimeout(function () { regMenu() }, 1000)
         }
     }
 })
@@ -256,7 +256,7 @@ regButton.addEventListener("click", async (e) => {
 
 loginButton.addEventListener("click", async (e) => {
     e.preventDefault()
-    showSpinner(true)
+    spinner.add()
     let uName = document.querySelector("#usernamefieldLogin").value
     let pWord = document.querySelector("#passwordfieldLogin").value
     let user = {
@@ -271,13 +271,13 @@ loginButton.addEventListener("click", async (e) => {
     if (response.data.status == "error") {
             showLoginDialog(response.data.message)
             console.log("Error status")
-            showSpinner(false)
+            spinner.remove()
         }
     
     else{
         console.log("Confirm status")
         showLoginDialog(response.data.message, "confirm")
-        showSpinner(false)
+        spinner.remove()
         setTimeout(function() {
             window.location.href = "/main" 
         }, 2000)

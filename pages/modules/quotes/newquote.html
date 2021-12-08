@@ -1,9 +1,40 @@
 <div id="module">
+    <!-- 
+    QUOTE_DETAILS
+    Adatok az adatbázishoz:
 
+    #quote_id = Sorszám "string"
+    #customer_type = natural || company "string"
+    #customer_name "string"
+    #customer_address "string"
+    #contract_type 1 || 2 || 3 || 4 || 5 "number"
+    #workphases = {
+        workphase_1 = {
+            name "string"
+            -norm_price "number" %WILL BE SET AT USERS ACCOUNT%
+            qty "number"
+            unit = fm, db, kg, etc... "string"
+            multiplier "number"
+        } "object"
+        workphase_2 = {}
+        etc...
+    }
+    #materials = {
+        mat_1 = {
+            name "string"
+            price "number"
+            qty "number"
+            unit "string"
+        }
+    }
+    #tax_type = 5 || 18 || 27 || aam || tam || fad "string"
+    #discount "number"
+
+ -->
 
     <!-- QUOTE DETAILS START -->
     <div class="quote_details">
-        <span class="quote_id">Sorszám: AB0001</span>
+        <span class="quote_id">AB0001</span>
         <table class="quote_persons_details">
             <tbody>
                 <tr>
@@ -13,13 +44,13 @@
                     <td>
                         <span>
                             Megrendelő besorolása:
-                        </span> 
+                        </span>
                     </td>
                     <td>
-                        <input type="radio" name="isnatural" id="isnatural" value="natural" checked>
                         <label for="isnatural">Magánszemély</label>
-                        <input type="radio" name="iscompany" id="iscompany" value="company">
+                        <input type="radio" name="isnatural" id="isnatural" value="natural" checked>
                         <label for="iscompany">Cég / jogi személy</label>
+                        <input type="radio" name="iscompany" id="iscompany" value="company">
 
                     </td>
                 </tr>
@@ -28,7 +59,8 @@
                         <span>Megrendelő neve: </span>
                     </td>
                     <td>
-                        <input type="text" value="Rafaelné Tóth Jólán" class="forminput width300"></input>
+                        <input type="text" id="customer_name" value="Rafaelné Tóth Jólán"
+                            class="forminput width300"></input>
                     </td>
                 </tr>
                 <tr>
@@ -36,7 +68,8 @@
                         <span>Címe: </span>
                     </td>
                     <td>
-                        <input type="text" value="1234 Baktalófalva Putri u. 23" class="forminput width300"></input>
+                        <input type="text" id="customer_address" value="1234 Baktalófalva Putri u. 23"
+                            class="forminput width300"></input>
                     </td>
                 </tr>
                 <tr>
@@ -44,7 +77,7 @@
                         <span>Munka típusa: </span>
                     </td>
                     <td>
-                        <select name="contract_type" class="forminput width300">
+                        <select name="contract_type" id="contract_type" class="forminput width300">
                             <option value="1">Új hálózat</option>
                             <option value="2">Meglévő hálózat átalakítása</option>
                             <option value="3">Meglévő hálózat felújítása</option>
@@ -57,87 +90,81 @@
             </tbody>
         </table>
 
-        <table class="workphases">
+        <table class="workphases" id="work_table">
             <tbody>
                 <tr>
+                    <td colspan="6">
+                        <label for="norm_price">Norma díj:</label>
+                        <input type="number" name="norm_price" value="4000" >
+                        <span> Ft</span>
+                    </td>
+                </tr>
+
+                <tr>
                     <th>Munkafolyamatok</th>
-                    <th>Norma ár</th>
+                    <th>Megjegyzés</th>
                     <th>Mennyiség</th>
                     <th>Mértékegység</th>
-                    <th>Összesített ár</th>
                     <th>Norma szorzó</th>
+                    <th>Összesített ár</th>
                 </tr>
-
-                <tr id="workphase_1">
-
-                    <td>
-                        <select name="" id="">
-                            <option value="none">Válasszon munkafolyamatot!</option>
-                            <option value="chasing">Horonymarás</option>
-                        </select>
-                    </td>
-                    <td><input type="number" name="" id="" value="500">Ft</td>
-                    <td><input type="number" name="" id="" value="10">
-                    </td>
-                    <td>
-                        <select name="" id="">
-                            <option value="fm">fm</option>
-                            <option value="db">db</option>
-                        </select>
-                    </td>
-                    <td>5000 <span>Ft</span></td>
-                    <td><input type="number" name="" id="" value="1" step=".1" class="width50">x</td>
-                </tr>
-            </tbody>
         </table>
-        <a href="#" class="color_blue _HOVER_border actionbtn1"><i class="fas fa-plus-circle"></i>Munkafolyamat
+        <a href="/" id="add_work_btn" class="color_blue _HOVER_border actionbtn1"><i
+                class="fas fa-plus-circle"></i>Munkafolyamat
             hozzáadása</a>
         <table class="quote_work_total">
             <tbody>
                 <tr>
                     <th>
-                        Összesített munkadíj: 5000 Ft
+                        <span>
+                            Összesített munkadíj:
+                        </span>
+                        <span id="worklist_final_price">
+                            0 Ft
+                        </span>
                     </th>
                 </tr>
             </tbody>
         </table>
-        <table class="workphases">
+        <table class="workphases" id="material_table">
             <tbody>
+                <tr>
+                    <td colspan="6">
+                        <span>
+                            Globális anyagár szorzó
+                        </span>
+                        <input type="number" value="1" step=".01" name="material_norm_multiplier" class="width50">
+                        <span>x</span>
+                    </td>
+                </tr>
                 <tr>
                     <th>Szükséges anyagok</th>
                     <th>Egység ár</th>
                     <th>Mennyiség</th>
                     <th>Mértékegység</th>
-                    <th>Összesített ár</th>
                     <th>Egység szorzó</th>
+                    <th>Összesített ár</th>
                 </tr>
-                <tr id="workphase_1">
-                    <td>
-                        <select name="" id="">
-                            <option value="none">Válasszon munkafolyamatot!</option>
-                            <option value="chasing">Horonymarás</option>
-                        </select>
-                    </td>
-                    <td><input type="number" name="" id="" value="500">Ft</td>
-                    <td><input type="number" name="" id="" value="10">
-                    </td>
-                    <td>
-                        <select name="" id="">
-                            <option value="fm">fm</option>
-                            <option value="db">db</option>
-                        </select>
-                    </td>
-                    <td>550 <span>Ft</span></td>
-                    <td><input type="number" name="" id="" value="1" step=".1" class="width50">x</td>
-                </tr>
+
+
+
             </tbody>
         </table>
-        <a href="#" class="color_blue _HOVER_border actionbtn1"><i class="fas fa-plus-circle"></i>Anyag hozzáadása</a>
+        <a href="/" class="color_blue _HOVER_border actionbtn1" id="add_material_btn"><i
+                class="fas fa-plus-circle"></i>Anyag hozzáadása</a>
         <table class="quote_work_total">
             <tbody>
                 <tr>
-                    <th>Összesített anyagköltség:</th>
-                    <th>550 Ft</th>
+                    <th>
+                        <span>
+                            Összesített anyagköltség:
+                        </span>
+                    </th>
+                    <th>
+                        <span id="final_mat_price">
+                            0
+                        </span>
+                    </th>
                 </tr>
             </tbody>
         </table>
@@ -172,9 +199,9 @@
                 <tr>
                     <td colspan="7">
                         <div id="footer">
-                            <a href="#" id="closebtn_1" class="color_red _HOVER_border closebtn"><i
+                            <a href="/" id="closebtn_1" class="color_red _HOVER_border closebtn"><i
                                     class="fas fa-trash-alt"></i>Mégsem</a>
-                            <a href="#" id="edit_1" class="color_blue _HOVER_border closebtn"><i
+                            <a href="/" id="save_quote_btn" class="color_blue _HOVER_border closebtn"><i
                                     class="fas fa-file-export"></i>Mentés</a>
                         </div>
                     </td>
@@ -452,3 +479,4 @@
         }
     </style>
 </div>
+<script>quotes / newquote.js </script>

@@ -12,7 +12,9 @@
             <li><span>A chat fal elárasztása (spam) figyelmeztetést, illetve a chat falról való kitiltást
                     eredményezhet.</span></li>
         </ul>
-        <a href="#" id="proceed" onclick="selectPage('content/chat/chat')">Továbblépek a beszélgetéshez.</a>
+        <div style="width: 100%">
+            <a href="/" id="proceed" class="btn2" target="content/chat/chat">Továbblépek a beszélgetéshez.</a>
+        </div>
     </div>
 
     <style>
@@ -51,6 +53,7 @@
         }
 
         #module {
+            display: flex;
             margin-top: 30px;
             box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
             border: 1px solid rgba(0, 0, 0, .3);
@@ -58,6 +61,8 @@
             text-align: center;
             overflow: auto;
             width: 100%;
+            align-items: center;
+            justify-content: center;
         }
 
         #module>#main {
@@ -66,7 +71,7 @@
             scrollbar-width: none;
             /* Firefox */
             margin-top: 50px;
-            position: absolute;
+            position: relative;
             text-align: left;
             padding: 0 40px;
             width: 90%;
@@ -91,4 +96,4 @@
 
     </style>
 </div>
-<script></script>
+<script>chat / chat_doorstep.js </script>

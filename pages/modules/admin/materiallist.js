@@ -8,6 +8,7 @@ var elemTitle = sel("#material_title")
 var elemPrice = sel("#material_price")
 var flowTable = sel("#materialflowtable")
 var matCounter = sel("#material_counter")
+var backBtn = sel("#module_back_button")
 
 var optionsObj = []
 var elementsList = []
@@ -20,7 +21,8 @@ var categories = [
     'védőcsövek',
     'bilincsek',
     'vezetékek',
-    'kábelek',
+    'erősáramú kábelek',
+    'gyengeáramú kábelek',
     'elosztó szekrények',
     'szerelvények',
     'szerelvény keretek',
@@ -69,7 +71,7 @@ var addPropertiesToList = (objKey, objValue) => {
 
 
 var addElementToList = async () => {
-    
+
     let title = elemTitle.value
     let price = elemPrice.value
     let category = matCategory.value
@@ -87,6 +89,7 @@ var addElementToList = async () => {
 }
 
 var getDataFromDb = async (key, value, location) => {
+    spinner.add(sel("#module"), 0)
     flowTable.innerHTML = ""
     var keepList = sel("#keep_properties").checked
     let keyLower, valueLower, dir;
@@ -106,10 +109,11 @@ var getDataFromDb = async (key, value, location) => {
         await fetch(`/admin/lists/materiallist/${keyLower}&${valueLower}&${dir}`)
             .then(response => response.json())
             .then(json => {
+                console.log(json)
                 matCounter.innerHTML = json.length
                 json.forEach(entry => {
                     let tr = elemCreate("tr")
-                    if(flowTable.children.length % 2 == 0) {
+                    if (flowTable.children.length % 2 == 0) {
                         tr.classList.toggle("dimmed")
                     }
                     let title_string = elemCreate("td", cap(entry.title))
@@ -121,7 +125,9 @@ var getDataFromDb = async (key, value, location) => {
                     tr.appendChild(category_string)
                     if (entry.tags.length) {
                         let properties_td = elemCreate("td")
-                        let properties_dropdown = elemCreate("details")
+                        let properties_dropdown = elemCreate("details", "", {
+                            "class" : "prop_dropdown"
+                        })
                         let summary = elemCreate("summary", cap("hozzáadott értékek"))
                         properties_dropdown.appendChild(summary)
                         properties_td.appendChild(properties_dropdown)
@@ -135,12 +141,12 @@ var getDataFromDb = async (key, value, location) => {
                     }
                     flowTable.appendChild(tr)
                     elementsList.push(entry)
-                    
+
                 })
                 if (!keepList) {
                     clearList()
                 }
-
+                spinner.remove()
             })
 
             .catch(err => console.error("Hiba..." + err))
@@ -151,6 +157,7 @@ var getDataFromDb = async (key, value, location) => {
 }
 
 var sendDataToDb = async (object) => {
+    spinner.add(flowTable)
     try {
         await fetch("/admin/lists/materiallist", {
             method: "POST",
@@ -161,6 +168,7 @@ var sendDataToDb = async (object) => {
         }).then(response => {
             if (response.status == 200) {
                 getDataFromDb()
+                spinner.remove()
                 return
             }
             else {
@@ -211,8 +219,9 @@ setEvent.keypress(option_key, "enter", () => {
 setEvent.click(optionRemoveBtn, () => {
     clearList()
 })
-
 setEvent.keypress(elemTitle, "enter", () => { elemPrice.focus() })
 setEvent.keypress(elemPrice, "enter", () => { matCategory.focus() })
-
 getDataFromDb()
+setEvent.click(backBtn, () => {
+    selectPage("admin")
+})

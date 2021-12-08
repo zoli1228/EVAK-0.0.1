@@ -11,11 +11,9 @@
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-content: center;
-
 }
 
 #rollerDiv>.container {
-
     position: relative;
     background: #888;
     display: inline-block;
@@ -27,8 +25,6 @@
     left: 0;
     border-radius: 100%;
     box-shadow: black 0 0 10px 2px;
-    
-    
 }
 
 .container>img {
@@ -39,8 +35,6 @@
     /*     width: 200px; */
     width: 100%;
     border-radius: 100%;
-
-    
 }
 
 .container>span {
@@ -89,10 +83,12 @@
     box-shadow: 0 0 3px rgba(0, 0, 0, .8), 0 0 10px rgba(0, 0, 0, .6);
     ;
 }
+
 ._HOVER_BORDER:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 4px black;
     transition: box-shadow 100ms ease;
 }
+
 ._HOVER_SCALE:hover {
     transform: scale(1.1);
     box-shadow: 4px 45px 25px 0 rgba(0, 0, 0, .3);
@@ -217,29 +213,31 @@
 }
 
 #spinner {
-    z-index: 100;
-    position: fixed;
-    display: block;
+    z-index: 200;
+    position: absolute;
+    display: flex;
+    opacity: 1;
     overflow: hidden;
     user-select: none;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
+    width: 100%;
+    height: 100%;
     left: 0;
-    background: rgba(0, 0, 0, .5);
-    backdrop-filter: blur(5px);
+    top: 0;
+    
+/*     background: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(5px); */
 }
 
-#spinner > img {
+#spinner>img {
+    box-shadow: 0 0 4px black;
     position: relative;
-    display: block;
-    width: 150px;
-    height: 150px;
+    display: inline-block;
+    width: auto;
+    max-width: 150px;
     margin: auto auto;
     border-radius: 100%;
     padding: 0;
-    top: calc(50% - 75px)
-    
+    /* top: calc(50% - 75px) */
 }
 
 .color_blue {
@@ -249,9 +247,11 @@
 .color_blue:hover {
     background: #59f;
 }
+
 .color_red {
     background: #c22;
 }
+
 .color_red:hover {
     background: #e55;
 }

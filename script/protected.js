@@ -1,4 +1,3 @@
-
 let docBody = document.querySelector("body")
 let dom = document.querySelector("#update")
 let userDetails = document.querySelector("#userdetails")
@@ -54,12 +53,28 @@ logoutBtn.addEventListener("click", (e) => {
 
 })
 
+var navBarButtons = [
+    navbar_homeBtn = sel("#navbar_homeBtn"),
+    navbar_chatBtn = sel("#navbar_chatBtn"),
+    navbar_quotesBtn = sel("#navbar_quotesBtn"),
+    navbar_profileBtn = sel("#navbar_profileBtn"),
+    navbar_forumBtn = sel("#navbar_forumBtn"),
+    navbar_helpBtn = sel("#navbar_helpBtn"),
+    navbar_settingsBtn = sel("#navbar_settingsBtn"),
+    navbar_404testBtn = sel("#navbar_404testBtn"),
 
+]
+
+navBarButtons.forEach(elem => {
+    setEvent.click(elem, function() {
+        selectPage(elem.target)
+    })
+})
 var selectPage = async (string) => {
+    spinner.add()
     await fetch(`/${string}`).then(Response => {
-
         if (Response.status == 404) {
-            return "404 - A keresett oldal nem található."
+            return 404
         }
         else if (Response.status == 401) {
             return 401
@@ -67,7 +82,16 @@ var selectPage = async (string) => {
             return Response.json()
         }
     }).then(function (input) {
-        input == 401 ? window.location.href = "/" : null
+        if(input == 401) {
+            window.location.href = "/"
+        }
+        if(input == 404) {
+            changeHeader("404 hibakód")
+            changeContent("A keresett tartalom nem létezik a szerveren.")
+            spinner.remove()
+            return
+        }
+            
         if (input) {
             changeHeader(input.data.header)
             changeContent(input.template)
@@ -75,11 +99,14 @@ var selectPage = async (string) => {
             changeContent("Nincs tartalom...")
             console.log("Nincs tartalom")
         }
-        setRoller(dom, false)
+        spinner.remove()
     }).catch(err => {
+        spinner.remove()
+        if(err.status == 404) {
+        changeContent("404 hibakód: A kért tartalom nem létezik")
 
+        }
         changeContent("Hiba az adatok lekérdezésében:  " + err)
-        setRoller(dom, false)
     })
 
 
