@@ -11,6 +11,7 @@
     #workphases = {
         workphase_1 = {
             name "string"
+            note: string
             -norm_price "number" %WILL BE SET AT USERS ACCOUNT%
             qty "number"
             unit = fm, db, kg, etc... "string"
@@ -34,33 +35,30 @@
 
     <!-- QUOTE DETAILS START -->
     <div class="quote_details">
-        <span class="quote_id">AB0001</span>
+        
         <table class="quote_persons_details">
             <tbody>
                 <tr>
-                    <th>Adatok</th>
-                </tr>
-                <tr>
                     <td>
                         <span>
-                            Megrendelő besorolása:
+                            Árajánlat sorozatszáma:
                         </span>
                     </td>
                     <td>
-                        <label for="isnatural">Magánszemély</label>
-                        <input type="radio" name="isnatural" id="isnatural" value="natural" checked>
-                        <label for="iscompany">Cég / jogi személy</label>
-                        <input type="radio" name="iscompany" id="iscompany" value="company">
-
+                        <span class="quote_id" id="quote_id" value="none">0000000000</span>
                     </td>
                 </tr>
+                <tr>
+                    <th>Adatok</th>
+                </tr>
+
                 <tr>
                     <td>
                         <span>Megrendelő neve: </span>
                     </td>
                     <td>
-                        <input type="text" id="customer_name" value="Rafaelné Tóth Jólán"
-                            class="forminput width300"></input>
+                        <input type="text" id="customer_name" value=""
+                            class="forminput width300" placeholder="Név..."></input>
                     </td>
                 </tr>
                 <tr>
@@ -68,10 +66,21 @@
                         <span>Címe: </span>
                     </td>
                     <td>
-                        <input type="text" id="customer_address" value="1234 Baktalófalva Putri u. 23"
-                            class="forminput width300"></input>
+                        <input type="text" id="customer_address" value=""
+                            class="forminput width300" placeholder="Cím / Telephely..."></input>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <span>Adószám / adóazonosító jel: </span>
+                        
+                    </td>
+                    <td>
+                        <input type="text" id="customer_tax_number" value=""
+                            class="forminput width300" placeholder="Adószám / adóazonosító jel..."></input>
+                    </td>
+                </tr>
+                
                 <tr>
                     <td>
                         <span>Munka típusa: </span>
@@ -87,13 +96,28 @@
                     </td>
 
                 </tr>
+                <tr>
+                    <td>
+                        <span>Ajánlat érvényességi ideje: </span>
+                    </td>
+                    <td>
+                        <input type="date" name="expiry_date" id="expiry_date" class="forminput width300">
+                    </td>
+                </tr>
             </tbody>
         </table>
 
         <table class="workphases" id="work_table">
+            <thead>
+                <tr>
+                    <td colspan="7">
+                        <h2 class="center">Munkafolyamatok</h2>
+                    </td>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         <label for="norm_price">Norma díj:</label>
                         <input type="number" name="norm_price" value="4000" >
                         <span> Ft</span>
@@ -106,6 +130,7 @@
                     <th>Mennyiség</th>
                     <th>Mértékegység</th>
                     <th>Norma szorzó</th>
+                    <th>Norma ár</th>
                     <th>Összesített ár</th>
                 </tr>
         </table>
@@ -119,7 +144,7 @@
                         <span>
                             Összesített munkadíj:
                         </span>
-                        <span id="worklist_final_price">
+                        <span id="worklist_final_price" value="0">
                             0 Ft
                         </span>
                     </th>
@@ -127,9 +152,16 @@
             </tbody>
         </table>
         <table class="workphases" id="material_table">
+            <thead>
+                <tr>
+                    <td colspan="7">
+                        <h2 class="center">Anyaglista</h2>
+                    </td>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         <span>
                             Globális anyagár szorzó
                         </span>
@@ -139,10 +171,11 @@
                 </tr>
                 <tr>
                     <th>Szükséges anyagok</th>
-                    <th>Egység ár</th>
+                    <th>Alap egység ár</th>
                     <th>Mennyiség</th>
                     <th>Mértékegység</th>
                     <th>Egység szorzó</th>
+                    <th>Új egység ár</th>
                     <th>Összesített ár</th>
                 </tr>
 
@@ -161,7 +194,7 @@
                         </span>
                     </th>
                     <th>
-                        <span id="final_mat_price">
+                        <span id="final_mat_price" value="0">
                             0
                         </span>
                     </th>
@@ -174,27 +207,27 @@
                 <tr>
                     <th>Nettó összeg</th>
                     <th>Kedvezmény %</th>
-                    <th>Kedvezmény összeg</th>
-                    <th>Nettó összeg</th>
+                    <th>Kedvezmény</th>
+                    <th>Nettó kedvezményes összeg</th>
                     <th>áfa %</th>
-                    <th>áfa összeg</th>
+                    <th>áfa</th>
                     <th>Bruttó végösszeg</th>
                 </tr>
                 <tr>
-                    <th>23.000 Ft</th>
+                    <th><span id="total_final_price"></span></th>
                     <th><input type="number" name="discount" id="discount" value="0" max="100" min="0">%</th>
-                    <th>2300 Ft</th>
-                    <th>21.700 Ft</th>
+                    <th><span id="discount_amount" value="0">0</span></th>
+                    <th><span id="total_final_price_after_discount"></span></th>
                     <th><select name="tax" id="tax">
-                            <option value="5">5%</option>
-                            <option value="18">18%</option>
-                            <option value="27" selected>27%</option>
-                            <option value="aam">AAM</option>
-                            <option value="tam">TAM</option>
-                            <option value="fad">FAD</option>
+                            <option value="0.05">5%</option>
+                            <option value="0.18">18%</option>
+                            <option value="0.27" selected>27%</option>
+                            <option value="0">AAM</option>
+                            <option value="0">TAM</option>
+                            <option value="0">FAD</option>
                         </select></th>
-                    <th>6500 Ft</th>
-                    <th>28.200 Ft</th>
+                    <th><span id="tax_amount"></span></th>
+                    <th><span id="final_end_price"></span></th>
                 </tr>
                 <tr>
                     <td colspan="7">
@@ -297,7 +330,7 @@
             height: 60px;
             margin: 0 auto;
             left: 0px;
-            background: #ddd;
+            background: #ccc;
             font-size: 18px;
             border-collapse: collapse;
         }
@@ -403,7 +436,7 @@
 
         #module {
             width: 100%;
-            margin: 10px;
+            margin: 20px 10px 100px 10px;
             left: 0;
             top: 0;
             text-align: center;
@@ -412,9 +445,11 @@
         }
 
 
+
         .quote_details>table>tbody>tr>td,
         th :not(.quote_work_total) {
-            border: 1px solid #aaa;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
             padding: 5px;
         }
 
@@ -475,8 +510,13 @@
             text-align: center;
             margin: 0 auto;
             width: 100%;
+            border-collapse: collapse;
 
         }
+        .center {
+            text-align: center;
+        }
+
     </style>
 </div>
 <script>quotes / newquote.js </script>
