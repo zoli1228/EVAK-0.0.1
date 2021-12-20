@@ -2,7 +2,7 @@ var setEvent = {
     click: (element, func) => {
         element.addEventListener("click", (e) => {
             e.preventDefault()
-            return func()
+            return func(e)
         })
     },
     change: (element, func) => {
@@ -27,9 +27,13 @@ var setEvent = {
             case "enter":
                 keyCode = 13
                 break;
+            case "any":
+                keyCode = "any"
         }
         element.addEventListener("keypress", (e) => {
             if (e.keyCode == keyCode) {
+                return func()
+            } else if(keyCode == "any") {
                 return func()
             }
         })

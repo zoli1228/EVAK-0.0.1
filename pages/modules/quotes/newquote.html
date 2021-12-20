@@ -1,51 +1,22 @@
 <div id="module">
-    <!-- 
-    QUOTE_DETAILS
-    Adatok az adatbázishoz:
-
-    #quote_id = Sorszám "string"
-    #customer_type = natural || company "string"
-    #customer_name "string"
-    #customer_address "string"
-    #contract_type 1 || 2 || 3 || 4 || 5 "number"
-    #workphases = {
-        workphase_1 = {
-            name "string"
-            note: string
-            -norm_price "number" %WILL BE SET AT USERS ACCOUNT%
-            qty "number"
-            unit = fm, db, kg, etc... "string"
-            multiplier "number"
-        } "object"
-        workphase_2 = {}
-        etc...
-    }
-    #materials = {
-        mat_1 = {
-            name "string"
-            price "number"
-            qty "number"
-            unit "string"
-        }
-    }
-    #tax_type = 5 || 18 || 27 || aam || tam || fad "string"
-    #discount "number"
-
- -->
 
     <!-- QUOTE DETAILS START -->
     <div class="quote_details">
-        
+
         <table class="quote_persons_details">
             <tbody>
                 <tr>
                     <td>
                         <span>
-                            Árajánlat sorozatszáma:
+                            Árajánlat sorozatszáma:*
                         </span>
                     </td>
                     <td>
                         <span class="quote_id" id="quote_id" value="none">0000000000</span>
+                    </td>
+                    <td>
+                        <a id="refresh_serial_btn" class="color_blue _HOVER_border actionbtn2 btn_disabled"><i
+                                class="fas fa-sync-alt"></i></a>
                     </td>
                 </tr>
                 <tr>
@@ -54,36 +25,36 @@
 
                 <tr>
                     <td>
-                        <span>Megrendelő neve: </span>
+                        <span>Megrendelő neve:* </span>
                     </td>
                     <td>
-                        <input type="text" id="customer_name" value=""
-                            class="forminput width300" placeholder="Név..."></input>
+                        <input type="text" id="customer_name" value="" class="forminput width300"
+                            placeholder="Név..."></input>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <span>Címe: </span>
+                        <span>Címe:* </span>
                     </td>
                     <td>
-                        <input type="text" id="customer_address" value=""
-                            class="forminput width300" placeholder="Cím / Telephely..."></input>
+                        <input type="text" id="customer_address" value="" class="forminput width300"
+                            placeholder="Cím / Telephely..."></input>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <span>Adószám / adóazonosító jel: </span>
-                        
+
                     </td>
                     <td>
-                        <input type="text" id="customer_tax_number" value=""
-                            class="forminput width300" placeholder="Adószám / adóazonosító jel..."></input>
+                        <input type="text" id="customer_tax_number" value="" class="forminput width300"
+                            placeholder="Adószám / adóazonosító jel..."></input>
                     </td>
                 </tr>
-                
+
                 <tr>
                     <td>
-                        <span>Munka típusa: </span>
+                        <span>Munka típusa:* </span>
                     </td>
                     <td>
                         <select name="contract_type" id="contract_type" class="forminput width300">
@@ -98,7 +69,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <span>Ajánlat érvényességi ideje: </span>
+                        <span>Ajánlat érvényességi ideje:* </span>
                     </td>
                     <td>
                         <input type="date" name="expiry_date" id="expiry_date" class="forminput width300">
@@ -119,7 +90,7 @@
                 <tr>
                     <td colspan="7">
                         <label for="norm_price">Norma díj:</label>
-                        <input type="number" name="norm_price" value="4000" >
+                        <input type="number" name="norm_price" value="4000">
                         <span> Ft</span>
                     </td>
                 </tr>
@@ -134,7 +105,7 @@
                     <th>Összesített ár</th>
                 </tr>
         </table>
-        <a href="/" id="add_work_btn" class="color_blue _HOVER_border actionbtn1"><i
+        <a id="add_work_btn" class="color_blue _HOVER_border actionbtn1 btn_disabled"><i
                 class="fas fa-plus-circle"></i>Munkafolyamat
             hozzáadása</a>
         <table class="quote_work_total">
@@ -183,7 +154,7 @@
 
             </tbody>
         </table>
-        <a href="/" class="color_blue _HOVER_border actionbtn1" id="add_material_btn"><i
+        <a class="color_blue _HOVER_border actionbtn1 btn_disabled" id="add_material_btn"><i
                 class="fas fa-plus-circle"></i>Anyag hozzáadása</a>
         <table class="quote_work_total">
             <tbody>
@@ -222,9 +193,9 @@
                             <option value="0.05">5%</option>
                             <option value="0.18">18%</option>
                             <option value="0.27" selected>27%</option>
-                            <option value="0">AAM</option>
-                            <option value="0">TAM</option>
-                            <option value="0">FAD</option>
+                            <option value="AAM">AAM</option>
+                            <option value="TAM">TAM</option>
+                            <option value="FAD">FAD</option>
                         </select></th>
                     <th><span id="tax_amount"></span></th>
                     <th><span id="final_end_price"></span></th>
@@ -232,9 +203,9 @@
                 <tr>
                     <td colspan="7">
                         <div id="footer">
-                            <a href="/" id="closebtn_1" class="color_red _HOVER_border closebtn"><i
+                            <a id="closebtn_1" class="color_red _HOVER_border closebtn btn_disabled"><i
                                     class="fas fa-trash-alt"></i>Mégsem</a>
-                            <a href="/" id="save_quote_btn" class="color_blue _HOVER_border closebtn"><i
+                            <a id="save_quote_btn" class="color_blue _HOVER_border closebtn btn_disabled"><i
                                     class="fas fa-file-export"></i>Mentés</a>
                         </div>
                     </td>
@@ -245,10 +216,11 @@
 
 
     <style>
+
+
         #footer {
             margin: 0 auto;
             padding: 0;
-
             position: relative;
             width: 100%;
             display: flex;
@@ -279,9 +251,6 @@
 
         }
 
-        ._HOVER_border:hover {
-            box-shadow: #fff 0px 0px 0px 2px, black 0px 0px 2px 3px;
-        }
 
         .quote>table {
             pointer-events: none;
@@ -304,21 +273,17 @@
             border-radius: 5px;
         }
 
-        .closebtn {
-            display: inline-block;
+        .actionbtn2 {
+            display: block;
+            margin: 0;
             padding: 10px;
-            margin: 10px 30px;
             text-decoration: none;
             cursor: pointer;
             color: white;
-            width: 200px;
             text-align: center;
-            font-weight: 600;
-            font-size: 20px;
+            font-weight: 500;
+            font-size: 16px;
             border-radius: 5px;
-            z-index: 99;
-
-
         }
 
         .quote_summary {
@@ -426,24 +391,27 @@
             position: relative;
             overflow-x: hidden;
             overflow-y: auto;
-            margin: 30px 0;
-            width: 90%;
-            left: 5%;
-            padding: 20px 5px;
+            margin: 30px 0 100px 0;
+            width: 100%;
+            left: 0;
+            padding: 10px;
             z-index: 80;
 
         }
 
         #module {
+            box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            margin: 20px 10px 100px 10px;
+            margin: 0;
             left: 0;
             top: 0;
             text-align: center;
             background: #eee;
-            border-radius: 10px;
+            border-radius: 5px;
         }
-
 
 
         .quote_details>table>tbody>tr>td,
@@ -513,10 +481,15 @@
             border-collapse: collapse;
 
         }
+        #update {
+            margin: 100px;
+            width: 100%;
+            height: 150%;
+        }
         .center {
             text-align: center;
         }
-
     </style>
 </div>
+<script>global / tocurrency.js</script>
 <script>quotes / newquote.js </script>

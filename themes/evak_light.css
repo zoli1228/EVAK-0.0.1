@@ -230,6 +230,8 @@ img {
         box-shadow: rgba(0, 0, 0, .8) 0 0 30px 5px;
         border-radius: 5px;
     }
+
+
     body {
         margin: 0;
         padding: 0;
@@ -525,13 +527,20 @@ img {
         box-shadow: rgba(0, 0, 0, .8) 0 0 30px 5px;
         border-radius: 5px;
     }
+
+    @font-face {
+        font-family: "Prompt-Light";
+        src: url("resources/fonts/Prompt-Light.ttf");
+    }
+
+
     body {
         margin: 0;
         padding: 0;
         margin-left: calc(100vw - 100%);
         align-content: center;
         text-align: center;
-        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Prompt-Light', sans-serif;
         overflow: hidden;
         background: #eee;
         height: 100%;
@@ -711,6 +720,27 @@ img {
         text-decoration: none;
         outline: none;
     }
+
+    .btn4 {
+        transition: background 100ms;
+        background: rgba(255,255,255,0);
+        text-decoration: none;
+        color: white;
+        padding: 10px ;
+        margin: 0;
+        text-align: center
+    }
+
+    ._HOVER_menubar:hover {
+        background: rgba(255,255,255,0.3);
+        text-decoration: underline;
+    }
+    ._HOVER_menubar:active {
+        background: rgba(255,255,255,0.6);
+        transition: background 30ms;
+        text-decoration: underline;
+    }
+
     .btnContainer {
         display: block;
     }

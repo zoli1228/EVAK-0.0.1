@@ -1,7 +1,26 @@
 var addWorkBtn = sel("#add_work_btn")
 var addMatBtn = sel("#add_material_btn")
+var cancelBtn = sel("#closebtn_1")
 var workInputElements = []
+var formChanged = false;
 
+setEvent.change(sel("#module"), () => {
+    formChanged = true;
+})
+
+
+setEvent.click(cancelBtn, () => {
+    if (formChanged == true) {
+        new Confirm([
+            "Az űrlapon változások vannak", "white",
+            "Ha mentés előtt kilép, a változások elvesznek.", "grey"
+        ], () => { selectPage("content/quotes/landing") })
+
+    } else {
+        selectPage("content/quotes/landing")
+    }
+
+})
 
 setEvent.click(addWorkBtn, function () {
     let newRow = createRow.work()
@@ -53,25 +72,30 @@ setEvent.click(saveBtn, async function () {
         createdAt on server,
         modifiedAt on server,*/
     let data = {
-
         clientname: sel("#customer_name")["value"],
         clientaddress: sel("#customer_address")["value"],
         contract_type: sel("#contract_type")["value"],
         serialnumber: sel("#quote_id")["value"],
         worklist: workListArray,
         materiallist: matListArray,
-        netPrice: finalRawPrice["value"],
+        netPrice: Math.round(finalRawPrice["value"]),
         discount: discountPercentage["value"],
         discountValue: Math.round(discountAmount["value"]),
         valueAfterDiscount: Math.round(priceAfterDiscount["value"]),
         taxCode: taxCode["value"],
-        taxAmount: taxAmount["value"],
+        taxAmount: Math.round(taxAmount["value"]),
         grossTotal: Math.round(finalPrice["value"]),
-        expiryDate: sel("#expiry_date")["value"],
+        expiryDate: new Date(sel("#expiry_date")["value"]),
         globalMatMultiplier: sel("[name=material_norm_multiplier]")["value"],
         globalNormPrice: Math.round(sel("input[name='norm_price']")["value"])
-
     }
+    if (checkInputData(data) == false) {
+        return new Alert(
+            ["Kötelező adatok hiányoznak.", "red", "Kérjük nézze át az űrlapot,", "white", "és minden hiányzó adatot töltsön ki.", "white"]
+        )
+    }
+
+    spinner.add()
     fetch("/content/quotes/savequote", {
         method: "POST",
         headers: {
@@ -82,13 +106,27 @@ setEvent.click(saveBtn, async function () {
     }).then(
         response => response.json()
     ).then(
-        json => console.log("Successful fecth: " + JSON.stringify(json))
+        (json) => {
+            if (json.statusMessage == "OK") {
+                new Alert(json.message)
+            } else if (json.statusMessage == "ERROR") {
+                new Alert(json.message)
+            }
+            spinner.remove()
+        }
     ).catch(
-        reject => console.log("Error fetching: " + reject)
+        reject => {
+            new Alert([
+                "Hiba", "red",
+                "Ismeretlen hiba történt.", "white"
+            ])
+            spinner.remove()
+        }
     )
 })
 
-let createRow = {
+
+var createRow = {
     work: function () {
         let row = elemCreate("tr", { name: "workphase", id: `wp_${sel("#work_table > tbody").childElementCount - 1}` })
         let td_worktype = elemCreate("td", {})
@@ -217,14 +255,11 @@ let createRow = {
     }
 }
 
-var toCurrency = (number) => {
-    let c = new Intl.NumberFormat('hu-HU', { style: 'currency', currency: 'HUF', maximumFractionDigits: 0 }).format(number)
-    return c
-}
-let workFinalPrice = sel("#worklist_final_price")
-let matFinalPrice = sel("#final_mat_price")
-let storedWorkFinalPrice;
-let storedMatFinalPrice;
+
+var workFinalPrice = sel("#worklist_final_price")
+var matFinalPrice = sel("#final_mat_price")
+var storedWorkFinalPrice;
+var storedMatFinalPrice;
 
 var calculatePrices = {
     material: function (mat_normMultiplier, qty, multiplier, price, total, newPrice) {
@@ -271,23 +306,35 @@ var calculatePrices = {
 addWorkBtn.click()
 addMatBtn.click()
 
-let finalRawPrice = sel("#total_final_price")
-let discountPercentage = sel("#discount")
-let discountAmount = sel("#discount_amount")
-let priceAfterDiscount = sel("#total_final_price_after_discount")
-let taxCode = sel("#tax")
-let taxAmount = sel("#tax_amount")
-let finalPrice = sel("#final_end_price")
+var finalRawPrice = sel("#total_final_price")
+var discountPercentage = sel("#discount")
+var discountAmount = sel("#discount_amount")
+var priceAfterDiscount = sel("#total_final_price_after_discount")
+var taxCode = sel("#tax")
+var taxCodeParsed
+var taxAmount = sel("#tax_amount")
+var finalPrice = sel("#final_end_price")
+
 
 setArrayEvent.change([discountPercentage, taxCode], () => { calculateFinalPrices() })
 
 var calculateFinalPrices = () => {
+    try {
+        taxCodeParsed = parseFloat(taxCode["value"])
+        if(taxCodeParsed.toString() == "NaN") {
+            taxCodeParsed = 0
+        }
+    } catch(e) {
+        taxCodeParsed = 0
+    }
+
+    
     let total = storedWorkFinalPrice + storedMatFinalPrice
     let discount;
     discountPercentage["value"] > 0 ? discount = discountPercentage["value"] / 100 : discount = 0
     let discVal = total * discount
     let priceAfterDiscount_data = total - discVal
-    let taxAmount_data = priceAfterDiscount_data * taxCode["value"]
+    let taxAmount_data = priceAfterDiscount_data * taxCodeParsed
     let finalPrice_data = priceAfterDiscount_data + taxAmount_data;
 
     finalRawPrice.innerHTML = toCurrency(total)
@@ -303,7 +350,7 @@ var calculateFinalPrices = () => {
 
 }
 
-let clientNameInput = sel("#customer_name")
+var clientNameInput = sel("#customer_name")
 var generateSerialNumber = () => {
     let clientName = clientNameInput["value"]
     let numberString = ""
@@ -328,4 +375,44 @@ var generateSerialNumber = () => {
     sel("#quote_id").innerHTML = numberString + nameString
 }
 
+var checkInputData = (input) => {
+    let passed = true;
+    let clientname = sel("#customer_name")
+    let clientaddress = sel("#customer_address")
+    let expiryDate = sel("#expiry_date")
+    let highLight = (elem) => {
+        elem.style = "background: rgb(255,200,200);"
+        setEvent.keypress(elem, "any", () => {
+            elem.style = ""
+        })
+        setEvent.change(elem, () => {
+            elem.style = ""
+        })
+    }
+    if (!input.clientname) {
+        highLight(clientname)
+        passed = false
+    }
+    if (!input.clientaddress) {
+        highLight(clientaddress)
+        passed = false
+    }
+    if (!input.expiryDate) {
+        highLight(expiryDate)
+        passed = false
+    }
+    if (!passed) {
+        return false
+    } else {
+        return true
+    }
+}
+
+setEvent.click(sel("#refresh_serial_btn"), () => { generateSerialNumber() })
 setEvent.change(clientNameInput, () => { generateSerialNumber() })
+
+selArray("a").forEach(elem => {
+    if(elem.classList.toString().includes("btn_disabled")) {
+        elem.classList.toggle("btn_disabled")
+    }
+})

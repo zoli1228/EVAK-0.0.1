@@ -35,6 +35,7 @@ var getUserDetails = async () => {
                 span.innerHTML = data.username
                 span.setAttribute("style", "color: #cf0;")
                 userDetails.appendChild(span)
+                localStorage["username"] = data.username
             }
             if (data.role) {
                 if (data.role == "admin") {
@@ -97,7 +98,7 @@ var selectPage = async (string) => {
             changeContent(input.template)
         } else {
             changeContent("Nincs tartalom...")
-            console.log("Nincs tartalom")
+
         }
         spinner.remove()
     }).catch(err => {
@@ -161,38 +162,17 @@ var changeContent = (content) => {
 }
 
 
-var rollerTimeout;
-var setRoller = (parent, bool) => {
-    if (bool) {
-        rollerTimeout = setTimeout(function () {
-            parent.appendChild(rollerDiv)
-        }, rollerDelay)
-    }
-    else {
-
-        clearTimeout(rollerTimeout)
-
-        /* roller.setAttribute("class", "roller-hide") */
-        if (parent.children.toString().includes(rollerDiv)) {
-            parent.removeChild(rollerDiv)
-
-        }
-
-
-
-        return
-    }
-}
-
 navbarMenu.addEventListener("mouseenter", () => {
     navbarMenu.classList.toggle("shownav")
-    mainFrame.classList.toggle("shrinkmainframe")
+/*     mainFrame.classList.toggle("shrinkmainframe") */
     indicator.classList.toggle("hideIndicator")
 })
 
 navbarMenu.addEventListener("mouseleave", () => {
     navbarMenu.classList.remove("shownav")
-    mainFrame.classList.remove("shrinkmainframe")
+/*     mainFrame.classList.remove("shrinkmainframe") */
     indicator.classList.remove("hideIndicator")
 
 })
+
+sel("#navbar_homeBtn").click()

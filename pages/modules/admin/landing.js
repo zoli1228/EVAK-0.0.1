@@ -57,3 +57,9 @@ btn.addEventListener("click", async (e) => {
         console.error("Caught Error: " + err)
     })
 })
+
+selArray("a").forEach(elem => {
+    if(elem.classList.toString().includes("btn_disabled")) {
+        elem.classList.toggle("btn_disabled")
+    }
+})

@@ -1,193 +1,106 @@
 <div id="quote_module">
-    
+
 
     <div class="toolbar">
-        <a href="" class="btn3">Vissza az előző oldalra</a>
-        <div class="searchbar">
-            <span><i class="fas fa-search"></i></span>
-            <input type="text" name="" id="">
-        </div>
-        <div>
-
-        </div>
-    </div>
-    <table class="table_header">
-        <tbody>
+        <table>
             <tr>
+                <td>
+                    <div class="searchbar">
+                        <span><i class="fas fa-search"></i></span>
+                        <input type="text" name="quote_searchbar" id="quote_searchbar">
+                    </div>
+                </td>
+                <td>
+                    <a target="content/quotes/landing" id="backBtn" class="btn4 _HOVER_menubar">Vissza az előző
+                        oldalra</a>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+
+    <table id="quotes_table">
+        <thead class="table_header">
+            <tr>
+                <td></td>
+                <td><span>Sorszám</span></td>
                 <td><span>Megrendelő</span></td>
-                <td><span>Létrehozás dátuma</span></td>
-                <td><span>Bruttó költség</span></td>
+                <td><span>Kiállítás dátuma</span></td>
                 <td><span>Lejárat dátuma</span></td>
+                <td><span>Össz költség</span></td>
                 <td><span>Státusz</span></td>
-                <td class="quote_actions_header"><span>Kezelés</span></td>
+                <td></td>
 
             </tr>
+        </thead>
+        <tbody>
+
         </tbody>
     </table>
-    <div id="quote_frame">
-        <!-- QUOTE CARD START -->
-        <div class="quote _HOVER_color_grey" id="quote_1">
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Rafaelné Tóth Jolán</td>
-                        <td>2019.01.21</td>
-                        <td>28.200 Ft</td>
-                        <td>2019.02.21</td>
-                        <td>Jóváhagyásra vár</span></td>
-                        <td>
-                            <a class="quote_action_btn color_red _HOVER_border"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
 
-            <!-- QUOTE CARD END-->
-
-        </div>
-        <!-- QUOTE DETAILS START -->
-        <div class="quote_details quote_hidden">
-            <div id="loading" class="hide">
-                <img src="resources/spinner02.gif" alt="loading_icon">
-            </div>
-            <span class="quote_id">Sorszám: AB0001</span>
-            <table class="quote_persons_details">
-                <tbody>
-                    <tr>
-                        <th>Adatok</th>
-                    </tr>
-                    <tr>
-                        <td>Megrendelő neve: Rafaelné Tóth Jólán
-                            <!-- <input type="text" value="Rafaelné Tóth Jólán" class="quote_client_name"></input> -->
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Címe: <span>1234 Baktalófalva Putri u. 23</span>
-                            <!-- <input type="text" value="1234 Baktalófalva Putri u. 23"
-                        class="quote_client_name"></input> -->
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>Munka típusa: </span>
-                            <span>Új hálózat</span>
-                            <!-- <select name="contract_type">
-                        <option value="1">Új hálózat</option>
-                        <option value="2">Meglévő hálózat átalakítása</option>
-                        <option value="3">Meglévő hálózat felújítása</option>
-                        <option value="4">Meglévő hálózat bővítése</option>
-                        <option value="5">Meglévő hálózat bontása</option>
-                    </select> -->
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <hr>
-            <table class="workphases">
-                <tbody>
-                    <tr>
-                        <th colspan="1" class="darkbg">Tétel</th>
-                        <th colspan="4" class="darkbg">Egységre jutó</th>
-                        <th colspan="3" class="darkbg">Összesített</th>
-                        <th class="darkbg">Norma szorzó</th>
-                    </tr>
-                    <tr>
-                        <th class="darkbg">Anyag</th>
-                        <th class="darkbg">Norma idő</th>
-                        <th class="darkbg">Anyagköltség</th>
-                        <th class="darkbg">Mennyiség</th>
-                        <th class="darkbg">Mértékegység</th>
-                        <th class="darkbg">Anyagköltség</th>
-                        <th class="darkbg">Munkadíj</th>
-                        <th class="darkbg">Összesen</th>
-                        <th class="darkbg">Anyag szorzó</th>
-
-                    </tr>
-
-                    <tr id="workphase_1">
-
-                        <td colspan="8" class="bold _leftAlign">
-                            Védőcső elhelyezése horonyvéséssel együtt.
-                        </td>
-                        <td class="_centerAlign">
-                           1x
-                        </td>
-
-                    </tr>
-                    <tr class="_centerAlign">
-                        <td class="_leftAlign">
-                            MÜ III. műanyag védőcső 16mm átmérő
-                        </td>
-                        <td>
-                            0.35
-                        </td>
-                        <td>
-                            48 Ft
-                        </td>
-                        <td>
-                            200
-                        </td>
-                        <td>
-                            fm
-                        </td>
-                        <td>
-                            9.600 Ft
-                        </td>
-                        <td>
-                            40.000 Ft
-                        </td>
-                        <td>
-                            49.600 Ft
-                        </td>
-                        <td>
-                            1x                      
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-            <div class="quote_edit_toolbar">
-            </div>
-            <table class="quote_summary">
-                <tbody>
-                    <tr>
-                        <th>Teljes végösszeg</th>
-                        <th>Kedvezmény %</th>
-                        <th>Kedvezmény összeg</th>
-                        <th>Nettó összeg</th>
-                        <th>ÁFA %</th>
-                        <th>ÁFA összeg</th>
-                        <th>Bruttó végösszeg</th>
-                    </tr>
-                    <tr>
-                        <th>23.000 Ft</th>
-                        <th>10%</th>
-                        <th>2300 Ft</th>
-                        <th>21.700 Ft</th>
-                        <th>27%</th>
-                        <th>6500 Ft</th>
-                        <th>28.200 Ft</th>
-                    </tr>
-
-                </tbody>
-            </table>
-            <table class="navButtonContainer">
-                <tr>
-                    <td colspan="7">
-                        <a href="#" id="closebtn_1" class="color_blue _HOVER_border closebtn">Bezárás</a>
-                        <a href="#" id="edit_1" class="color_blue _HOVER_border closebtn">Szerkesztés</a>
-                    </td>
-                </tr>
+    <!-- QUOTE DETAILS START -->
+    <div id="details_wrapper">
+        <div class="quote_details quote_hidden" id="quoteDetails">
+                <!-- injected -->
             </table>
         </div>
     </div>
 
+
+
     <!-- QUOTE DETAILS END -->
-    <style scoped>
-        .navButtonContainer {
+    <style>
+        #details_wrapper {
+            pointer-events: none;
+            width: 100%;
+            max-width: 100%;
+            max-height: 90%;
+            height: 90%;
+            display: flex;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+            left: 0;
+            top: 0;
+        }
+
+        .faded_row {
+            background: #f5f5f5;
+        }
+
+        .width_100 {
+            width: 100px;
+        }
+
+        .width_60percent {
+            width: 60%;
+        }
+
+        .quote_checkbox {
+            outline: none;
+            background: red;
+        }
+
+        #quotes_table {
+            border-collapse: collapse;
             width: 100%;
         }
+
+        .navButtonContainer {
+            margin: 0;
+            width: calc(100% + 40px);
+            background: #333;
+            line-height: 30px;
+            position: sticky;
+            display: table;
+            top: 0;
+            transform: translate(-20px, -20px);
+
+
+        }
+
+
         .workphases>tbody>tr>th {
             text-align: center;
             font-size: 14px;
@@ -203,30 +116,6 @@
 
         .hide {
             display: none !important;
-        }
-
-        #loading {
-            display: block;
-            position: absolute;
-            background: white;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            left: 0;
-            top: 0;
-            z-index: 100;
-
-            
-        }
-
-        #loading>img {
-            display: block;
-            position: absolute;
-            width: 150px;
-            margin: 0 auto;
-            border-radius: 100%;
-            top: calc(50% - 75px);
-            left: calc(50% - 75px);
         }
 
         .quote>table {
@@ -276,6 +165,12 @@
             margin-left: 20px;
         }
 
+        .listHeader {
+            text-align: center;
+            font-size: 25px;
+            margin-top: 30px;
+        }
+
         .quote_summary {
             display: table;
             position: sticky;
@@ -283,15 +178,15 @@
             width: 100%;
             padding: 0 20px;
             height: 60px;
-            margin: 0 auto;
+            margin: 40px auto;
             left: 0px;
-            background: #ddd;
+            background: #eee;
             font-size: 14px;
             border-collapse: collapse;
         }
 
         .quote_summary>tbody>tr>th {
-            border: 1px solid #aaa;
+            border: 1px solid #ddd;
             padding: 5px;
 
         }
@@ -339,12 +234,9 @@
             text-align: center;
             padding: 2px;
             width: 20px;
-
-
         }
 
         .quote_edit_toolbar {
-
             width: 100%;
             margin: 50px auto 60px auto;
             top: 0px;
@@ -369,46 +261,51 @@
         }
 
         .workphases {
-            margin: 0 auto;
+            margin: 30px auto;
             width: 100%;
             text-align: left;
         }
 
         .quote_persons_details {
             margin: 0 auto;
-
             width: 100%;
         }
 
-        .quote_hidden {
-            overflow: hidden !important;
-            pointer-events: none !important;
-            user-select: none !important;
-            transform: scale(0) !important;
-            opacity: 0 !important;
-            padding: 0 10px !important;
+        .quote_persons_details>tbody>tr>td {
+            width: 50%;
         }
 
+
+
         .quote_details {
+            pointer-events: visible;
             opacity: 1;
-            width: calc(100% - 80px);
+            width: 90%;
+            height: 90%;
             display: block;
-            transform-origin: top;
             text-align: center;
-            position: absolute;
+            position: relative;
             background: #fff;
             overflow-x: hidden;
             overflow-y: auto;
-            margin: 30px 30px;
-            height: 85%;
-            max-height: 85%;
-            padding: 20px 10px;
-            top: 0 !important;
-            left: 0 !important;
-            z-index: 200;
-            box-shadow: 0 0 40px 10px rgba(0, 0, 0, .8);
+            z-index: 100;
+            box-shadow: 0 0 10px 10px rgba(0, 0, 0, .5);
+            transform: scale(1);
+            transition: all 400ms ease-in-out;
+            padding: 20px;
+/*             left: 0;
+            top: 0; */
         }
 
+        .quote_hidden {
+
+            pointer-events: none;
+            user-select: none;
+            transform: scale(0);
+            opacity: 0;
+            padding: 0 10px;
+            transition: all 300ms ease-in-out;
+        }
 
 
         .quote_details>table>tbody>tr>td,
@@ -452,13 +349,6 @@
 
         }
 
-        ._HOVER_border:hover {
-            box-shadow: #fff 0px 0px 0px 2px, black 0px 0px 2px 3px;
-        }
-
-        ._HOVER_color_grey:hover {
-            background-color: #ddd;
-        }
 
         /* td:not(.quote_actions .quote_actions_header) {
             width: calc(100% / 7);
@@ -471,10 +361,12 @@
 
         .toolbar {
 
-            width: calc(100% - 20px);
+            /* width: calc(100% - 20px) */
+            width: 100%;
             position: sticky;
             text-align: center;
-            display: inline-block;
+            display: flex;
+            justify-content: center;
             background: #333;
             top: 0;
             left: 0;
@@ -482,19 +374,10 @@
             z-index: 99;
         }
 
-        .toolbar>button {
-            background: green;
-            display: inline-block;
-            width: 100px;
-            margin: 0 20px;
-            border-radius: 5px;
-            border-bottom: 1px solid black;
-        }
-
         .table_header {
             position: sticky;
             top: 40px;
-            text-align: center;
+            text-align: left;
             margin: 0 auto;
             width: calc(100% - 20px);
             background: #ddd;
@@ -502,11 +385,12 @@
             font-weight: 600;
             border-radius: 0;
             z-index: 99;
+            text-indent: 10px;
 
 
         }
 
-        .quote>table {
+        /* .quote>table {
             text-align: center;
             width: calc(100% - 20px);
             display: table;
@@ -514,31 +398,46 @@
             border-collapse: collapse;
 
 
-        }
+        } */
 
         .quote {
 
             font-size: 14px;
             font-weight: 500;
-            background: white;
             border-radius: 0;
-            margin: 2px 10px;
-            padding: 15px 0;
-            display: block;
+            display: table-row;
             user-select: none;
+            width: 100%;
 
         }
 
+        .quote>td {
+            padding: 10px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .bg_white {
+            background: #fff;
+        }
+
+        .bg_grey {
+            background: #eee;
+        }
+
         #quote_module {
+            display: block;
             max-height: 85vh;
             padding-bottom: 10px;
             margin-bottom: 30px;
+            width: 80%;
             overflow-y: auto;
             scrollbar-width: 50px;
             background: #333;
             margin-top: 30px;
             box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
             border-radius: 10px;
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, .5);
 
         }
 
@@ -556,9 +455,14 @@
             text-align: center;
         }
 
+        ._rightAlign {
+            text-align: right;
+        }
+
+
         .darkbg {
-            background: rgba(0, 0, 0, .10);
-            border: 1px solid rgba(0, 0, 0, .35)
+            background: #ddd;
+            border: 1px solid #ccc;
         }
 
         .quote_summary>tfoot>* {
@@ -566,6 +470,13 @@
             display: none;
             border: none;
         }
+
+        #update {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
     </style>
 </div>
-<script>modules / quotes.js</script>
+<script>global / tocurrency.js</script>
+<script>quotes / quotes.js</script>

@@ -1,19 +1,30 @@
-/* let body = document.body
-let img = document.createElement("img")
-        img.src = "spinner02.gif"
-        img.alt = "Spinner_gif"
+var body = document.body
+var img, imgUrl, div
+
+var preloadSpinner = () => {
+    img = document.createElement("img")
+    imgUrl = "resources/spinner02compressed.gif"
+    img.src = imgUrl
+    img.alt = "Spinner_gif"
+    div = document.createElement("div")
+    div.id = "spinner"
+    div.appendChild(img)
+
+}
+var spinnerDelay
 var spinner = {
-    add: function() {
-        let div = document.createElement("div")
-        div.id = "spinner"
-        div.appendChild(img)
-        body.appendChild(div)
+    add: function (parent = body, delay = 750) {
+        spinnerDelay = setTimeout(() => {
+            parent.appendChild(div)
+        }, delay)
 
     },
-    remove: function() {
+    remove: function () {
+        clearTimeout(spinnerDelay)
         let elem = document.querySelector("#spinner")
-        if(elem) {
+        if (elem) {
             elem.remove()
         }
     }
-} */
+}
+preloadSpinner()

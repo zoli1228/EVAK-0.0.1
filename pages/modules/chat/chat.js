@@ -4,6 +4,7 @@ var chatWindow = document.querySelector("#chatwindow")
 var rules = document.querySelector(".rules")
 var input = document.querySelector("#message")
 var submit = document.querySelector("#send")
+var ownUserName = localStorage.getItem("username")
 
 spinner.add()
 
@@ -101,7 +102,8 @@ var insertMessage = (json) => {
         input.value += "@" + highlight + " "
         input.focus()
     })
-    if (message.innerHTML.trim().toLowerCase().includes("@" + getCookie("username"))) {
+    
+    if (message.innerHTML.trim().toLowerCase().includes("@" + ownUserName)) {
         messageDiv.classList.toggle("ownmessage")
     }
 
@@ -158,8 +160,14 @@ var loopChatRefresh = async () => {
         ).catch((err) => {
             spinner.remove()
             console.error(err)
+            new Alert([
+                "Hiba történt", "red",
+                "Hiba: " + err, "white"
+            ])
+            clearInterval(refresh)
+            return
         })
     }
 }
 
-setInterval(loopChatRefresh, 1000)
+var refresh = setInterval(loopChatRefresh, 1000)
