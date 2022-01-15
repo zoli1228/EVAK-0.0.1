@@ -8,15 +8,21 @@ var setEvent = {
     change: (element, func) => {
         element.addEventListener("change", (e) => {
             e.preventDefault()
-            return func()
+            return func(e)
+        })
+    },
+    loaded: (element, func) => {
+        element.addEventListener("load", (e) => {
+            e.preventDefault()
+            return func(e)
         })
     },
     hover: (element, onenter, onleave) => {
-        element.addEventListener("mouseenter", () => {
-            return onenter()
+        element.addEventListener("mouseenter", (e) => {
+            return onenter(e)
         },
-            element.addEventListener("mouseleave", () => {
-                return onleave()
+            element.addEventListener("mouseleave", (e) => {
+                return onleave(e)
             })
 
         )
@@ -32,9 +38,9 @@ var setEvent = {
         }
         element.addEventListener("keypress", (e) => {
             if (e.keyCode == keyCode) {
-                return func()
+                return func(e)
             } else if(keyCode == "any") {
-                return func()
+                return func(e)
             }
         })
     }

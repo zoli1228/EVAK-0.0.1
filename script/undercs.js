@@ -1,37 +1,54 @@
-let bt1 = document.querySelector("#whatIsEvak")
-let bt2 = document.querySelector("#howItWorks")
-let bt3 = document.querySelector("#whosItFor")
-let bt4 = document.querySelector("#pricing")
 
-let menuElements = {
-    "dp1": document.querySelector(".whatIsEvak"),
-    "dp2": document.querySelector(".howItWorks"),
-    "dp3": document.querySelector(".whosItFor"),
-    "dp4": document.querySelector(".pricing")
-}
+let loginButton = document.querySelector("#login")
+let msg = document.querySelector("#msg")
+loginButton.addEventListener("click", async (e) => {
+    e.preventDefault()
 
-let show = "display: block;"
-let hide = "display: none;"
+    let uName = document.querySelector("#usernamefieldLogin").value
+    let pWord = document.querySelector("#passwordfieldLogin").value
 
-bt1.addEventListener("click", () => {
-    showMenu("dp1")
-})
-bt2.addEventListener("click", () => {
-    showMenu("dp2")
-})
-bt3.addEventListener("click", () => {
-    showMenu("dp3")
-})
-bt4.addEventListener("click", () => {
-    showMenu("dp4")
-})
 
-let showMenu = (menuToShow) => {
 
-    for (elem in menuElements) {
-        if (elem == menuToShow) {
-            menuElements[elem].getAttribute("style") != show ? menuElements[elem].setAttribute("style", show) : menuElements[elem].setAttribute("style", hide)
+    await fetch("/login", {
+        method: "POST",
+        body: JSON.stringify({
+            username: uName,
+            password: pWord
+        }),
+        headers: {
+            "Content-Type": "Application/json"
         }
-        else { menuElements[elem].setAttribute("style", hide) }
+    })
+        .then(response => response.json())
+        .then((json) => {
+
+            if (json.statusMsg == "error") {
+                msg.innerHTML = json.message                
+                return
+            }
+
+            if (json["status"] == "OK") {
+                console.log("Confirm status")
+                window.location.href = "/main"
+            }
+            console.log("Semmi nem érkezett vissza.")
+            console.log(json)
+        })
+        .catch((err) => {
+            return console.log(err)
+        })
+
+})
+
+let logo = document.querySelector(".logo")
+let displayLoginCounter = 0
+logo.addEventListener("click", (e) => {
+    if(displayLoginCounter < 10) {
+        displayLoginCounter++
+        if(displayLoginCounter == 10) {
+            document.querySelector("#loginBox").classList.toggle("hidden")
+            document.querySelector(".text").classList.toggle("hidden")
+        }
     }
-}
+
+})

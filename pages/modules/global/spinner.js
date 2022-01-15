@@ -13,7 +13,7 @@ var preloadSpinner = () => {
 }
 var spinnerDelay
 var spinner = {
-    add: function (parent = body, delay = 750) {
+    add: function (delay = 750, parent = body) {
         spinnerDelay = setTimeout(() => {
             parent.appendChild(div)
         }, delay)

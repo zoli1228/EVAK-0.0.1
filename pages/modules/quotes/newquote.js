@@ -95,7 +95,7 @@ setEvent.click(saveBtn, async function () {
         )
     }
 
-    spinner.add()
+    spinner.add(100)
     fetch("/content/quotes/savequote", {
         method: "POST",
         headers: {
@@ -130,7 +130,8 @@ var createRow = {
     work: function () {
         let row = elemCreate("tr", { name: "workphase", id: `wp_${sel("#work_table > tbody").childElementCount - 1}` })
         let td_worktype = elemCreate("td", {})
-        let work_type = elemCreate("select", { name: "work_type" })
+        /* let work_type = elemCreate("select", { name: "work_type" }) */
+        let work_type = elemCreate("input", { name: "work_type", type: "text" })
         let work_type_option = elemCreate("option", { value: "none", selected: "true" }, "Válasszon munkafolyamatot!")
         let td_note = elemCreate("td", {})
         let note = elemCreate("input", { type: "text", name: "note", placeholder: "Megjegyzés" })
@@ -194,7 +195,8 @@ var createRow = {
     material: function () {
         let row = elemCreate("tr", { name: "material", id: `wp_${sel("#material_table > tbody").childElementCount - 1}` })
         let td_material = elemCreate("td", {})
-        let material_type = elemCreate("select", { name: "work_type" })
+        /* let material_type = elemCreate("select", { name: "work_type" }) */
+        let material_type = elemCreate("input", { name: "material_type", type: "text" })
         let material_type_option = elemCreate("option", { value: "none", selected: "true" }, "Válasszon anyagot!")
         let td_price = elemCreate("td", {})
         let price = elemCreate("input", { type: "number", name: "price", placeholder: "Anyagár", value: 0 })
@@ -226,7 +228,7 @@ var createRow = {
         })
 
         td_material.appendChild(material_type)
-        material_type.appendChild(material_type_option)
+      /*   material_type.appendChild(material_type_option) */
         td_price.appendChild(price)
         td_price.appendChild(price_x)
         td_qty.appendChild(qty)

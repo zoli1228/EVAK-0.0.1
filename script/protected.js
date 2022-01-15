@@ -26,6 +26,105 @@ container.appendChild(rollerImg)
 /* container.appendChild(loadingText) */
 rollerDiv.appendChild(container)
 
+var dropDownOpen = false;
+
+setEvent.click(docBody, (e) => {
+    let dropDownMenu = sel("#dropdownmenu")
+    if(dropDownMenu && e.target != dropDownMenu && dropDownOpen == true) {
+        docBody.removeChild(dropDownMenu)
+        dropDownOpen = false;
+    }
+})
+
+var addDropDown = (e, [...options], animationLength = 500) => {
+    let menuHeight = 0;
+    let dropDownMenu = sel("#dropdownmenu")
+    if (dropDownMenu) {
+        docBody.removeChild(dropDownMenu)
+    }
+    let menuDiv = elemCreate("div", { id: "dropdownmenu", class: "dropDownMenu" })
+    for (let i = 0; i < options.length; i++) {
+        let btn = elemCreate("div", { class: "dropDownMenuButton" })
+        let icon = elemCreate("i", { class: `dropDownMenuIcon ${options[i].icon}` })
+        let text = elemCreate("span", { class: "dropDownMenuText" }, options[i].text)
+        btn.appendChild(icon)
+        btn.appendChild(text)
+        setEvent.click(btn, () => {
+            options[i].func()
+        })
+        if (options[i].class) {
+            btn.classList.add(options[i].class)
+        }
+        menuDiv.appendChild(btn)
+        menuHeight += 34
+
+    }
+
+    let dropDownX = e.target.getBoundingClientRect().left;
+    let dropDownY = e.target.getBoundingClientRect().top + e.target.getBoundingClientRect().height;
+    
+    menuDiv.setAttribute("style", `transform: scaleY(1); top:${dropDownY}px; left:${dropDownX}px;`)
+    docBody.appendChild(menuDiv)
+    
+    menuDiv.animate([
+       /*  { transform: "scaleY(0)" },
+        { transform: "scaleY(1.1)" },
+        { transform: "scaleY(0.8)" },
+        { transform: "scaleY(1)" }, */
+        {height: "0px"},
+        {height: menuHeight + "px"}
+    ],
+        {
+            duration: animationLength,
+            fill: "forwards",
+            easing: "ease"
+        })
+    setTimeout(() => {
+        dropDownOpen = true
+    }, animationLength)
+    let closeDropDown;
+    let isClosing = false;
+
+   
+    setTimeout(() => {
+        setEvent.hover(menuDiv,
+            () => {
+                try {
+                    clearTimeout(closeDropDown)
+                    dropDownOpen = true
+                } catch (err) {
+                    return null
+                }
+            },
+            () => {
+                dropDownOpen = false
+                closeDropDown = setTimeout(() => {
+                    menuDiv.animate([
+/*                         { transform: "scaleY(1)" },
+                        { transform: "scaleY(0)" } */
+                        {height: menuHeight + "px"},
+                        {height: 0}
+
+                    ], {
+                        duration: animationLength / 2,
+                        fill: "forwards",
+                        easing: "ease"
+                    })
+                    setTimeout(() => {
+                        if (!isClosing) {
+                            isClosing = true
+                            docBody.removeChild(menuDiv)
+                            dropDownOpen = false
+                        }
+
+                    }, animationLength / 2) /* Removing dropdown from DOM delay */
+
+                }, 250) /* After hover event closing dropdown delay */
+            })
+    }, 10)/* Adding hover event After opening dropdown delay */
+    
+}
+
 
 var getUserDetails = async () => {
     let span = document.createElement("span")
@@ -51,6 +150,7 @@ getUserDetails()
 
 logoutBtn.addEventListener("click", (e) => {
     document.cookie = "username=" + getCookie("username") + "=; Max-Age=-9999;"
+    window.location = "/logout"
 
 })
 
@@ -67,12 +167,12 @@ var navBarButtons = [
 ]
 
 navBarButtons.forEach(elem => {
-    setEvent.click(elem, function() {
+    setEvent.click(elem, function () {
         selectPage(elem.target)
     })
 })
 var selectPage = async (string) => {
-    spinner.add()
+    spinner.add(500)
     await fetch(`/${string}`).then(Response => {
         if (Response.status == 404) {
             return 404
@@ -83,16 +183,16 @@ var selectPage = async (string) => {
             return Response.json()
         }
     }).then(function (input) {
-        if(input == 401) {
+        if (input == 401) {
             window.location.href = "/"
         }
-        if(input == 404) {
+        if (input == 404) {
             changeHeader("404 hibakód")
             changeContent("A keresett tartalom nem létezik a szerveren.")
             spinner.remove()
             return
         }
-            
+
         if (input) {
             changeHeader(input.data.header)
             changeContent(input.template)
@@ -103,8 +203,8 @@ var selectPage = async (string) => {
         spinner.remove()
     }).catch(err => {
         spinner.remove()
-        if(err.status == 404) {
-        changeContent("404 hibakód: A kért tartalom nem létezik")
+        if (err.status == 404) {
+            changeContent("404 hibakód: A kért tartalom nem létezik")
 
         }
         changeContent("Hiba az adatok lekérdezésében:  " + err)
@@ -133,9 +233,9 @@ var deleteScripts = () => {
     let scripts = document.querySelectorAll("script")
     scripts.forEach(element => {
         let elemId = element.getAttribute("id")
-        if(elemId?.includes("injected")) {
-                element.remove()
-        } 
+        if (elemId?.includes("injected")) {
+            element.remove()
+        }
     })
 }
 var changeContent = (content) => {
@@ -164,13 +264,13 @@ var changeContent = (content) => {
 
 navbarMenu.addEventListener("mouseenter", () => {
     navbarMenu.classList.toggle("shownav")
-/*     mainFrame.classList.toggle("shrinkmainframe") */
+    /*     mainFrame.classList.toggle("shrinkmainframe") */
     indicator.classList.toggle("hideIndicator")
 })
 
 navbarMenu.addEventListener("mouseleave", () => {
     navbarMenu.classList.remove("shownav")
-/*     mainFrame.classList.remove("shrinkmainframe") */
+    /*     mainFrame.classList.remove("shrinkmainframe") */
     indicator.classList.remove("hideIndicator")
 
 })

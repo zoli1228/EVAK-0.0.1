@@ -6,7 +6,7 @@ var input = document.querySelector("#message")
 var submit = document.querySelector("#send")
 var ownUserName = localStorage.getItem("username")
 
-spinner.add()
+spinner.add(0)
 
 /* var getCookie = (name) => {
     let re = new RegExp(name + "=([^;]+)");
@@ -108,7 +108,7 @@ var insertMessage = (json) => {
     }
 
     user.setAttribute("style", `color: rgb(${json.colour.R}, ${json.colour.G}, ${json.colour.B})`)
-    user.setAttribute("class", "user")
+    user.setAttribute("class", "user _HOVER_border")
     messageDiv.appendChild(time)
     messageDiv.appendChild(user)
     messageDiv.appendChild(message)

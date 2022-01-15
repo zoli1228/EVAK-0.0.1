@@ -291,7 +291,7 @@ img {
         padding: 0;
         margin: 0;
         /* background: linear-gradient(#3399ff, #0470d6); */
-        background-image: linear-gradient(#666, #222), url("resources/lightning.gif");
+        background: #333;
         background-blend-mode: screen;
         background-origin: padding-box;
         background-position-x: center;
@@ -595,7 +595,7 @@ img {
         padding: 0;
         margin: 0;
         /* background: linear-gradient(#3399ff, #0470d6); */
-        background-image: linear-gradient(#666, #222), url("resources/lightning.gif");
+        background: #333;
         background-blend-mode: screen;
         background-origin: padding-box;
         background-position-x: center;

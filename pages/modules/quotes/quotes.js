@@ -4,11 +4,13 @@ var quoteDetails = sel(".quote_details")
 var updateContainer = sel("#update")
 var closeBtn = sel(".closebtn")
 var list = [];
+spinner.add(0)
 
 setEvent.click(backBtn, () => { selectPage(backBtn.target) })
 var fetchQuotes = () => {
-    spinner.add()
     try {
+        spinner.add(0)
+
         fetch("/content/quotes/list").then(
             response => response.json()
         ).then((data) => {
@@ -23,12 +25,18 @@ var fetchQuotes = () => {
                 noDataRow.appendChild(td_noData)
                 noDataRow.appendChild(td_createQuote)
                 table.appendChild(noDataRow)
+                spinner.remove()
                 return
             }
             data.forEach(e => {
                 e.user = {
-                    "fullname": "Kalányos Jóska",
-                    "address": "2858 Aprajafalva 32"
+                    "fullname": "Szöllősi Zoltán",
+                    "title": "Villanyszerelő - Kisadózó",
+                    "id_number": "55029155",
+                    "tax_number": "56389469-1-33",
+                    "phone_number": "+36 30 206 7344",
+                    "email": "szev.villszer@gmail.com",
+                    "address": "2730 Albertirsa, Kinizsi u. 47"
                 }
             });
 
@@ -78,7 +86,8 @@ var fetchQuotes = () => {
                 setEvent.click(row, (e) => {
                     /* Details (Expanded) */
                     details.innerHTML = ""
-
+                    /* Footer notes to be added on submit form */
+                    entry.footerNotes = "Ez az árajánlat az alapszerelésre vonatkozik. A szerelvények, világítótestek szerelése, készülékek beüzemelése másik munkafolyamat, külön árazással."
                     /* Controls */
 
                     let btnContainer = elemCreate("table", { class: "navButtonContainer" })
@@ -106,6 +115,54 @@ var fetchQuotes = () => {
                         details.style.transformOrigin = `${xClickPos}px ${yClickPos}px`
                         quoteDetails.classList.toggle("quote_hidden")
                     })
+                    setEvent.click(printBtn, () => {
+
+                        /* let a = window.open('', '_Blank', 'location=0'); */
+                        let a = elemCreate("iframe", { width: "0", height: "0", id: "print_frame", name: "print_frame" })
+                        document.body.appendChild(a)
+                        let frame = window.frames["print_frame"]
+                        let frameHead = window.frames["print_frame"].document.head
+                        let frameBody = window.frames["print_frame"].document.body
+                        let cssLink = document.createElement("link");
+                        cssLink.href = "toBePrinted.css";
+                        cssLink.rel = "stylesheet";
+                        cssLink.type = "text/css";
+                        frameHead.appendChild(cssLink)
+
+                        /*                         a.moveTo(0,0)
+                                                a.resizeTo(screen.availWidth, screen.availHeight) */
+                        let print_details = details.cloneNode(true)
+                        let detailsTable = document.getElementById("details_table")
+                        let print_detailsTable = detailsTable.cloneNode(true)
+                        print_detailsTable.classList.add("print_quote_persons_details")
+
+                        let print_serialDiv = elemCreate("div", { class: "print_serial" })
+                        let print_serial = elemCreate("span", { class: "page" }, "Sorszám: " + entry.serialnumber)
+                        print_serialDiv.appendChild(print_serial)
+                        let print_backgroundImg = elemCreate("img", { src: "resources/EVAK01.png", alt: "EVAK logo", class: "print_img" })
+                        let print_header = elemCreate("div", { class: "print_header" })
+                        let print_headerSpan = elemCreate("span", {}, "Árajánlat " + entry.clientname + " részére")
+                        print_header.appendChild(print_backgroundImg)
+                        print_header.appendChild(print_headerSpan)
+                        print_header.appendChild(print_detailsTable)
+                        let print_footer = elemCreate("span", {}, entry.footerNotes)
+
+
+                        frameBody.appendChild(print_header)
+                        frameBody.appendChild(print_serialDiv)
+                        frameBody.appendChild(print_details)
+                        frameBody.appendChild(print_footer)
+
+                        setTimeout(() => {
+                            frame.focus()
+                            frame.print()
+                            frame.close()
+                            document.body.removeChild(a)
+
+                        }, 500)
+
+                    })
+
 
                     let xClickPos = e.clientX
                     let yClickPos = e.clientY
@@ -113,26 +170,79 @@ var fetchQuotes = () => {
                     details.setAttribute("class", "quote_details")
 
                     let serialSpan = elemCreate("span", { class: "quote_id" }, "Sorszám: " + entry.serialnumber)
-                    let details_table = elemCreate("table", { class: "quote_persons_details" })
+                    let details_table = elemCreate("table", { class: "quote_persons_details", id: "details_table" })
                     let details_tbody = elemCreate("tbody", {})
                     let trd_detailsRow = elemCreate("tr", {})
-                    let thd_details = elemCreate("th", { colspan: "2" }, "Adatok")
+                    let thd_details = elemCreate("th", { colspan: "2" }, "Árajánlat adatai")
                     let trd_myDetailsRow = elemCreate("tr", {})
                     let thd_myDetailsTitle = elemCreate("th", {}, "Vállalkozó")
                     let thd_clientDetailsTitle = elemCreate("th", {}, "Megrendelő")
+
                     let trd_namesRow = elemCreate("tr", {})
-                    let tdd_myName = elemCreate("td", {}, "Név: ")
-                    let myName = elemCreate("span", {}, entry.user.fullname)
-                    let tdd_clientsName = elemCreate("td", {}, "Név: ")
-                    let clientsName = elemCreate("span", {}, entry.clientname)
                     let trd_addressRow = elemCreate("tr", {})
-                    let tdd_myAddress = elemCreate("td", {}, "Cím: ")
-                    let myAddress = elemCreate("span", {}, entry.user.address)
-                    let tdd_clientAddress = elemCreate("td", {}, "Cím: ")
-                    let clientAddress = elemCreate("span", {}, entry.clientaddress)
                     let trd_workTypeRow = elemCreate("tr", {})
+
+                    let trd_titleRow = elemCreate("tr", {})
+                    let trd_idNumberRow = elemCreate("tr", {})
+                    let trd_taxNumberRow = elemCreate("tr", {})
+                    let trd_phoneNumberRow = elemCreate("tr", {})
+                    let trd_emailRow = elemCreate("tr", {})
+
+                    let tdd_myName = elemCreate("td", {}, "Név: ")
+                    let tdd_clientsName = elemCreate("td", {}, "Név: ")
+                    let tdd_titleTd = elemCreate("td", {})
+                    let tdd_idNumberTd = elemCreate("td", {}, "Nyílvántartási szám: ")
+                    let tdd_taxNumber = elemCreate("td", {}, "Adószám: ")
+                    let tdd_phoneNumber = elemCreate("td", {}, "Tel.: ")
+                    let tdd_email = elemCreate("td", {}, "Email: ")
+                    let tdd_myAddress = elemCreate("td", {}, "Cím: ")
+                    let tdd_clientAddress = elemCreate("td", {}, "Cím: ")
                     let tdd_workType = elemCreate("td", { colspan: "2" }, "Munka típusa: ")
-                    let workType = elemCreate("span", {}, entry.contract_type)
+
+                    let myName = elemCreate("span", {}, entry.user.fullname)
+                    let myTitle = elemCreate("span", {}, entry.user.title)
+                    let myIdNumber = elemCreate("span", {}, entry.user.id_number)
+                    let myTaxNumber = elemCreate("span", {}, entry.user.tax_number)
+                    let myPhoneNumber = elemCreate("span", {}, entry.user.phone_number)
+                    let myEmail = elemCreate("span", {}, entry.user.email)
+                    let myAddress = elemCreate("span", {}, entry.user.address)
+                    let clientsName = elemCreate("span", {}, entry.clientname)
+                    let clientAddress = elemCreate("span", {}, entry.clientaddress)
+
+                    tdd_titleTd.appendChild(myTitle)
+                    tdd_idNumberTd.appendChild(myIdNumber)
+                    tdd_taxNumber.appendChild(myTaxNumber)
+                    tdd_phoneNumber.appendChild(myPhoneNumber)
+                    tdd_email.appendChild(myEmail)
+
+                    trd_titleRow.appendChild(tdd_titleTd)
+                    trd_idNumberRow.appendChild(tdd_idNumberTd)
+                    trd_taxNumberRow.appendChild(tdd_taxNumber)
+                    trd_phoneNumberRow.appendChild(tdd_phoneNumber)
+                    trd_emailRow.appendChild(tdd_email)
+
+                    let workTypeString;
+                    switch (entry.contract_type) {
+                        case 1:
+                            workTypeString = "Új elektromos hálózat kiépítése"
+                            break
+                        case 2:
+                            workTypeString = "Meglévő elektromos hálózat módosítása"
+                            break
+                        case 3:
+                            workTypeString = "Meglévő elektromos hálózat felújítása"
+                            break
+                        case 4:
+                            workTypeString = "Meglévő elektromos hálózat bővítése"
+                            break
+                        case 5:
+                            workTypeString = "Meglévő elektromos hálózat bontása"
+                            break
+                        default:
+                            workTypeString = "Elektromos hálózat szerelése"
+                    }
+
+                    let workType = elemCreate("span", {}, workTypeString)
 
                     details.appendChild(serialSpan)
                     details.appendChild(details_table)
@@ -147,10 +257,17 @@ var fetchQuotes = () => {
                     tdd_myName.appendChild(myName)
                     trd_namesRow.appendChild(tdd_clientsName)
                     tdd_clientsName.appendChild(clientsName)
+
+                    details_tbody.appendChild(trd_titleRow)
+                    details_tbody.appendChild(trd_idNumberRow)
+                    details_tbody.appendChild(trd_taxNumberRow)
+                    details_tbody.appendChild(trd_phoneNumberRow)
+                    details_tbody.appendChild(trd_emailRow)
+
                     details_tbody.appendChild(trd_addressRow)
                     trd_addressRow.appendChild(tdd_myAddress)
                     tdd_myAddress.appendChild(myAddress)
-                    trd_addressRow.appendChild(tdd_clientAddress)
+                    trd_titleRow.appendChild(tdd_clientAddress)
                     tdd_clientAddress.appendChild(clientAddress)
                     details_tbody.appendChild(trd_workTypeRow)
                     trd_workTypeRow.appendChild(tdd_workType)
@@ -282,6 +399,7 @@ var fetchQuotes = () => {
                     /* End of material list */
 
                     /* Quote summary footer */
+
                     let sum_table = elemCreate("table", { class: "quote_summary" })
                     let sum_tableTitleRow = elemCreate("tr", { class: "darkbg _leftAlign" })
                     let sum_rawPriceTitle = elemCreate("th", {}, "Nettó ár")
@@ -291,11 +409,12 @@ var fetchQuotes = () => {
                     let sum_taxCodeTitle = elemCreate("th", {}, "áfa %")
                     let sum_taxValueTitle = elemCreate("th", {}, "áfa érték")
                     let sum_finalPriceTitle = elemCreate("th", {}, "Bruttó végösszeg")
-
                     sum_tableTitleRow.appendChild(sum_rawPriceTitle)
-                    sum_tableTitleRow.appendChild(sum_discountTitle)
-                    sum_tableTitleRow.appendChild(sum_discountValueTitle)
-                    sum_tableTitleRow.appendChild(sum_priceAfterDiscountTitle)
+                    if (entry.discount > 0) {
+                        sum_tableTitleRow.appendChild(sum_discountTitle)
+                        sum_tableTitleRow.appendChild(sum_discountValueTitle)
+                        sum_tableTitleRow.appendChild(sum_priceAfterDiscountTitle)
+                    }
                     sum_tableTitleRow.appendChild(sum_taxCodeTitle)
                     sum_tableTitleRow.appendChild(sum_taxValueTitle)
                     sum_tableTitleRow.appendChild(sum_finalPriceTitle)
@@ -303,16 +422,17 @@ var fetchQuotes = () => {
 
                     let taxCodeParsed
                     try {
-                        taxCodeParsed = parseFloat(entry.taxCode) * 100
                         if (taxCodeParsed.toString() == "NaN") {
                             taxCodeParsed = entry.taxCode
                         }
+                        taxCodeParsed = (parseFloat(entry.taxCode) * 100).toString() + "%"
                     } catch (e) {
                         taxCodeParsed = entry.taxCode
                     }
 
                     let sum_tableDataRow = elemCreate("tr", { class: "_leftAlign" })
                     let sum_rawPrice = elemCreate("td", {}, toCurrency(entry.netPrice))
+
                     let sum_discount = elemCreate("td", {}, entry.discount + "%")
                     let sum_discountValue = elemCreate("td", {}, toCurrency(entry.discountValue))
                     let sum_priceAfterDiscount = elemCreate("td", {}, toCurrency(entry.valueAfterDiscount))
@@ -320,10 +440,14 @@ var fetchQuotes = () => {
                     let sum_taxAmount = elemCreate("td", {}, toCurrency(entry.taxAmount))
                     let sum_finalPrice = elemCreate("td", {}, toCurrency(entry.grossTotal))
 
+
                     sum_tableDataRow.appendChild(sum_rawPrice)
-                    sum_tableDataRow.appendChild(sum_discount)
-                    sum_tableDataRow.appendChild(sum_discountValue)
-                    sum_tableDataRow.appendChild(sum_priceAfterDiscount)
+                    if (entry.discount > 0) {
+                        sum_tableDataRow.appendChild(sum_discount)
+                        sum_tableDataRow.appendChild(sum_discountValue)
+                        sum_tableDataRow.appendChild(sum_priceAfterDiscount)
+
+                    }
                     sum_tableDataRow.appendChild(sum_taxCode)
                     sum_tableDataRow.appendChild(sum_taxAmount)
                     sum_tableDataRow.appendChild(sum_finalPrice)

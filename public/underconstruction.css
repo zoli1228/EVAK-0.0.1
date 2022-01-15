@@ -6,117 +6,78 @@ html {
 }
 
 body {
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
-    
+    align-items: center;
+
     padding-top: 10vh;
-    display: table-cell;
+    display: flex;
+    flex-direction: column;
     vertical-align: middle;
     font-family: 'Roboto', sans-serif;
-    background: #222;
+    background: #eee;
     text-align: center;
-    color: white;
-    text-shadow: 3px 5px 6px rgba(0, 0, 0, .7), 0 0 5px black;
+    color: #333;
     
 }
-
-#whatIsEvak {
-    
-    color: white;
-    display: block;
-    font-size: 20px;
-    font-weight: 600;
-    
-}
-.whatIsEvak {
+.hidden {
     display: none;
 }
-
-#howItWorks {
-    
-    color: white;
-    display: block;
-    font-size: 20px;
-    font-weight: 600;
+#loginBox {
+    width: 400px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, .5);
 }
-.howItWorks {
-    display: none;
-}
-#whosItFor {
-    
-    color: white;
-    display: block;
-    font-size: 20px;
-    font-weight: 600;
-}
-.whosItFor {
-    display: none;
-}
-#pricing {
-    
-    color: white;
-    display: block;
-    font-size: 20px;
-    font-weight: 600;
-}
-.pricing {
-    display: none;
-}
-
-.logo {
-    margin-bottom: 60px;
+#loginBox > table {
     width: 100%;
-    animation: swing alternate ease-in-out infinite 2s
+    
+}
+.logo {
+    user-select: none;
+    margin: 40px 0 20px 0;
+    width: 30%;
+    min-width: 200px;
+    animation: swing alternate ease-in-out infinite 1s
     
 }
 
 @keyframes swing {
     
-    0% {transform: rotate(3deg) scale(1);}
-    100% {transform: rotate(-3deg) scale(1.1);}
+    0% {transform: rotate(3deg);}
+    100% {transform: rotate(-3deg);}
     
 }
 
 .logo > img {
-    width: 80%;
-    min-width: 200px;
-    max-width: 700px;
+    width: 100%;
     pointer-events: none;
     user-select: none;
     
 
 }
 
-h1 {
-    font-size: xx-large;
-}
 
-h2 {
-    font-size: x-large;
-}
 
 .footer {
     font-size: small;
-    position: relative;
-    bottom: 0;
-    left: 0;
+    display: block;
+    text-align: center;
     margin: 30px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+
     -webkit-text-stroke: 0;
     
 }
 .text {
-    width: 100vw;
-}
-
-a {
-    margin: 20px;
-    text-align: left;
-    text-decoration: underline ;
+    width: 50vw;
+    max-width: 400px;
+    min-width: 200px;
 }
 
 
 p {
     margin-left: 20px;
     margin-right: 20px;
+    font-size: 10%;
     text-align: justify;
 }

@@ -1,0 +1,178 @@
+<div id="module">
+    <div id="profileFrame">
+        <div class="profileMenuBar">
+
+            <a id="dropdowntest" class="_HOVER_menubar padding10px">Menü</a>
+        </div>
+        <table>
+            <tbody>
+                
+                
+                <tr>
+                    <th colspan="2">
+                        <h2>Személyes adatok</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <span>Profilkép</span>
+                    </td>
+                    <td>
+                        <div class="_HOVER_border profilePicContainer">
+                            <img id="profilePic" src="resources/placeholder_profilepic2.png" alt="profile_pic">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <span>Vezetéknév</span>
+                    </th>
+                    <td>
+                        <span>Szöllősi</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <span>
+                            Keresztnév
+                        </span>
+                    </th>
+                    <td>
+                        <span>
+                            Zoltán
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <span>
+                            Felhasználónév
+                        </span>
+                    </th>
+                    <td>
+                        <span>
+                            admin
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <span>
+                            Email cím
+                        </span>
+                    </th>
+                    <td>
+                        <span>
+                            szev.villszer@gmail.com
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <h2>Lakhely / telephely adatok</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <span>
+                            Irányítószám
+                        </span>
+                    </th>
+                    <td>
+                        <span>
+                            2730
+                        </span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th>
+                        <span>
+                            Település
+                        </span>
+                    </th>
+                    <td>
+                        <span>
+                            Albertirsa
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <span>
+                            Cím / Házszám
+                        </span>
+                    </th>
+                    <td>
+                        <span>
+                            Kinizsi utca 47
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        #module {
+            margin-top: 30px;
+            width: 40%;
+            padding: 0;
+            display: table;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #333;
+            color: white;
+            border-radius: 2px;
+            box-shadow: 5px 5px 10px rgba(0,0,0,.60);
+        }
+        #update {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        #profileFrame {
+            width: 100%;
+        }
+        #profileFrame > table {
+            width: 100%;
+        }
+        #profilePic {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 100%;
+            box-shadow: 0 0 0 1px black, 0 0 0 4px #333, 0 0 0 6px #cf0;
+            transform: scale(.9);
+        }
+        .profilePicContainer {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        #profileFrame > table > tbody > tr > td, th {
+            
+            border-bottom: 1px solid #555;
+            padding: 10px;
+        }
+        .profileMenuBar {
+            text-align: left;
+            background: #222;
+            width: 100%;
+            padding: 10px 0;
+        }
+        th:not(th[colspan="2"]) {
+            text-align: left;
+        }
+
+    </style>
+</div>
+<script>profile / profile.js</script>
